@@ -95,16 +95,16 @@ $(()=>{
         }
 
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
-        $enemyInfoDisplay.css('background-image', 'url(../css/images/pokemon/pikachu.jpg);')
+        $enemyInfoDisplay.css('background-image', 'url(css/images/pokemon/pikachu.jpg)')
 
         let $enemyPicture = $('.enemyPicture')
-        $enemyPicture.css('background-image', '../css/images/pokemon/team_rocket.jpg')
+        $enemyPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
         let $userPicture = $('.userPicture')
-        $userPicture.css('background-image', 'url(images/pokemon/pikachu.jpg)')
+        $userPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
         let $userInfoDisplay = $('.userInfoDisplay')
-        $userInfoDisplay.css('background-image', 'url(../css/images/pokemon/pikachu.jpg);')
+        $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
     }
 
 
