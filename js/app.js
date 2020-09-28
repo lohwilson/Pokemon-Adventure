@@ -117,15 +117,34 @@ $(()=>{
                 userPokemonList.push(bulbasaur)
                 console.log(userPokemonList)
             }
-
             newJourneyBegins()
         })  
     }
 
 
+    function newJourneyBegins(){
+        $('.choosePokemon').remove()
+        mainTown()
+    }
+
+    function mainTown(){
+        $mainTown = $('<div>').addClass('mainTown')
+        $layout.append($mainTown)
+
+        $practise = $('<button>').addClass('practise').text('Practise')
+        $mainTown.append($practise)
+
+        $practise.on('click', ()=>{
+            battle()
+        })
+
+    }
+
     // this should lead to the battle page
     function battle(){
-        $mainPage.addClass('battle')
+        $('.mainTown').removeClass()
+        $('.practise').remove()
+        $mainTown.addClass('battle')
 
         for (let i = 0; i < battleContainerArray.length; i++){
             let $display = $('<div>').addClass(battleContainerArray[i])
@@ -155,23 +174,23 @@ $(()=>{
             console.log($(event.eventListener))
         })
 
-        let $itemButton = $('.itemButton')
-        $itemButton.on('click', (event)=>{
-            console.log('item')
-            console.log($(event.eventListener))
-        })
+        // let $itemButton = $('.itemButton')
+        // $itemButton.on('click', (event)=>{
+        //     console.log('item')
+        //     console.log($(event.eventListener))
+        // })
 
-        let $changePokemonButton = $('.changePokemonButton')
-        $changePokemonButton.on('click', (event)=>{
-            console.log('change')
-            console.log($(event.eventListener))
-        })
+        // let $changePokemonButton = $('.changePokemonButton')
+        // $changePokemonButton.on('click', (event)=>{
+        //     console.log('change')
+        //     console.log($(event.eventListener))
+        // })
 
-        let $runButton = $('.runButton')
-        $runButton.on('click', (event)=>{
-            console.log('run')
-            console.log($(event.eventListener))
-        })
+        // let $runButton = $('.runButton')
+        // $runButton.on('click', (event)=>{
+        //     console.log('run')
+        //     console.log($(event.eventListener))
+        // })
     }
 
 
