@@ -11,6 +11,8 @@
 .mainPage {
     /* background-color: royalblue; */
     background-image: url('images/main_page.jpg');
+    /* background-image: url('images/pokemon/pikachu.jpg'); */
+
     opacity: 0.5;
     background-repeat: no-repeat, repeat;
     width: 100%;

@@ -14,6 +14,22 @@ class Pokemon {
     }
 }
 
+// const pokemonSkills = [
+//     {
+//         pikachuSkill: [{
+//             QuickAttack: 5, 
+//             Thundershock: 10,
+//             }]
+//     },
+//     {
+
+//     }
+
+
+// ]
+
+
+
 let pikachuSkill = [{
     QuickAttack: 5, 
     Thundershock: 10,
@@ -34,7 +50,35 @@ let bulbasaurSkill = [{
     LeechSeed: 10,
 }]
 
-let zubatSkill
+let caterpieSkill = [{
+    Tackle: 5, 
+    LeechSeed: 10,
+}]
+
+let ratataSkill = [{
+    Tackle: 5, 
+    LeechSeed: 10,
+}]
+
+let pidgeySkill = [{
+    Tackle: 5, 
+    LeechSeed: 10,
+}]
+
+let weedleSkill = [{
+    Tackle: 5, 
+    LeechSeed: 10,
+}]
+
+// let bulbasaurSkill = [{
+//     Tackle: 5, 
+//     LeechSeed: 10,
+// }]
+
+// let bulbasaurSkill = [{
+//     Tackle: 5, 
+//     LeechSeed: 10,
+// }]
 
 const pikachu = new Pokemon('pikachu', '100', pikachuSkill, 5)
 console.log(pikachu)
@@ -44,3 +88,4 @@ const squirtle = new Pokemon('squirtle', '100', squirtleSkill, 5)
 console.log(squirtle)
 const bulbasaur = new Pokemon('bulbasaur', '100', bulbasaurSkill, 5)
 console.log(bulbasaur)
+
