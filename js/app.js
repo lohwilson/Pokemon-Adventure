@@ -9,6 +9,7 @@ let battleButtonsArray = []
 let battleContainerArray = ['enemyInfoDisplay', 'enemyPicture', 'userPicture', 'userInfoDisplay', 'alertBox', 'battleCommandsDisplay']
 
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
+let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 let userPokemonList = []
 
 $(()=>{
@@ -59,6 +60,18 @@ $(()=>{
 
         $professorOak = $('<div>').addClass('professorOak')
         $('.choosePokemon').append($professorOak)
+
+        $professorOak.one('click', ()=>{
+            // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
+            // alert('You look very excited to begin your journey, so i\'ll get right to it.')
+            // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
+            // alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
+            // alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
+            // alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
+            choosePokemonButtons()
+        })
+
+
         // setTimeout(showAlert(), 10000)
 
         // alert('Welcome to Professor Oak\'s lab')
@@ -83,18 +96,32 @@ $(()=>{
             $('.choosePokemon').append($button)
         }
 
+        // let $modal = $('<div>').attr('id', choosePokemonArray[i]+'Modal').text(choosePokemonText[i])
+        // $modal.css('background-image', 'url(css/images/pokemon/pikachu.jpg)').css('opacity', 0.5)
+        // $(choosePokemonArray[i]).append($modal)
+
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
-            console.log($(event.eventListener))
-            console.log()
+            console.log(event.currentTarget.classList[0])
+
+            if (event.currentTarget.classList[0] === 'charmander'){
+                console.log('i got charmander')
+                userPokemonList.push(charmander)
+                console.log(userPokemonList)
+            } else if (event.currentTarget.classList[0] === 'squirtle'){
+                console.log('i got squirtle')
+                userPokemonList.push(squirtle)
+                console.log(userPokemonList)
+            } else if (event.currentTarget.classList[0] === 'bulbasaur'){
+                console.log('i got bulbasaur')
+                userPokemonList.push(bulbasaur)
+                console.log(userPokemonList)
+            }
+
+            newJourneyBegins()
         })  
-        
-        if ($button.text === 'Pokeball 1'){
-            userPokemonList.push(charmander)
-        }
     }
 
-    userPokemonList.push(squirtle)
 
     // this should lead to the battle page
     function battle(){
