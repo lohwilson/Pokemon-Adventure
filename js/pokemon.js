@@ -24,8 +24,6 @@ class Pokemon {
 //     {
 
 //     }
-
-
 // ]
 
 
@@ -70,15 +68,6 @@ let weedleSkill = [{
     LeechSeed: 10,
 }]
 
-// let bulbasaurSkill = [{
-//     Tackle: 5, 
-//     LeechSeed: 10,
-// }]
-
-// let bulbasaurSkill = [{
-//     Tackle: 5, 
-//     LeechSeed: 10,
-// }]
 
 const pikachu = new Pokemon('pikachu', '100', pikachuSkill, 5)
 console.log(pikachu)

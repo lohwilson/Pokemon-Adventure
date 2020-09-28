@@ -37,8 +37,7 @@ $(()=>{
     $mainPageButton.on('click', ()=>{
         $mainPage.removeClass()
         $mainPageButton.remove()
-        battle()
-        callAlerts()
+        choosePokemon()
     })
 
     const alerts = {
@@ -49,14 +48,29 @@ $(()=>{
         return alerts.beginJourney
     }
 
-
-
-    // alert('Welcome to Professor Oak\'s lab')
-
+    function showAlert(){
+        alert('Welcome to Professor Oak\'s lab')
+        alert('You will begin your journey')
+    }
 
     // this should lead to the choose pokemon page
     function choosePokemon(){
         $mainPage.addClass('choosePokemon')
+
+        $professorOak = $('<div>').addClass('professorOak')
+        $('.choosePokemon').append($professorOak)
+        // setTimeout(showAlert(), 10000)
+
+        // alert('Welcome to Professor Oak\'s lab')
+        // alert('You will begin your journey')
+        // let input = prompt('Are you ready?')
+        // if(input.toLowerCase() === 'yes'){
+        //     alert('Let\'s begin')
+        // } else if (input == null || input == ""){
+        //     alert('No one is born ready! let\'s go')
+        // } else {
+        //     alert('No one is born ready! let\'s go')
+        // }
     }
 
 
@@ -79,6 +93,7 @@ $(()=>{
             userPokemonList.push(charmander)
         }
     }
+
     userPokemonList.push(squirtle)
 
     // this should lead to the battle page
@@ -130,8 +145,6 @@ $(()=>{
             console.log('run')
             console.log($(event.eventListener))
         })
-
-
     }
 
 

@@ -1,4 +1,3 @@
-const alerts = {
-
-    beginJourney: 'Your Pokemon Adventure Begins'
-}
+// const alerts = {
+//     beginJourney: alert('Your Pokemon Adventure Begins')
+// }
