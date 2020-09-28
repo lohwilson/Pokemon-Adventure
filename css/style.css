@@ -20,17 +20,6 @@
     border: 2px solid black;
 }
 
-.battle {
-    background-image: url('images/pokemonred-e1529430185757.jpg');
-    opacity: 0.5;
-    background-repeat: no-repeat, repeat;
-    width: 100%;
-    height: 100%;
-    border: 2px solid black;
-    display: inline-flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .choosePokemon {
     background-image: url('images/pokemon-professor-oak-facts-trivia.jpg');
@@ -129,6 +118,18 @@
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
 
+.battle {
+    background-image: url('images/pokemonred-e1529430185757.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
 .enemyInfoDisplay{
     border: 2px solid red;
     width: 300px;
@@ -139,12 +140,14 @@
     border: 2px solid red;
     width: 300px;
     height: 300px;
+    margin: 10px;
 }
 
 .userPicture{
     border: 2px solid red;
     width: 300px;
     height: 300px;
+    margin: 10px;
 }
 
 .userInfoDisplay{
@@ -164,7 +167,6 @@
     width: 200px;
     height: 200px;
 }
-
 
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */

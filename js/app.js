@@ -94,6 +94,7 @@ $(()=>{
             $('.battleCommandsDisplay').append(battleButtonsArray[i])
         }
 
+
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
         $enemyInfoDisplay.css('background-image', 'url(css/images/pokemon/pikachu.jpg)')
 
@@ -105,6 +106,32 @@ $(()=>{
 
         let $userInfoDisplay = $('.userInfoDisplay')
         $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
+
+        let $fightButton = $('.fightButton')
+        $fightButton.on('click', (event)=>{
+            console.log('fight')
+            console.log($(event.eventListener))
+        })
+
+        let $itemButton = $('.itemButton')
+        $itemButton.on('click', (event)=>{
+            console.log('item')
+            console.log($(event.eventListener))
+        })
+
+        let $changePokemonButton = $('.changePokemonButton')
+        $changePokemonButton.on('click', (event)=>{
+            console.log('change')
+            console.log($(event.eventListener))
+        })
+
+        let $runButton = $('.runButton')
+        $runButton.on('click', (event)=>{
+            console.log('run')
+            console.log($(event.eventListener))
+        })
+
+
     }
 
 
