@@ -34,6 +34,8 @@ let bulbasaurSkill = [{
     LeechSeed: 10,
 }]
 
+let zubatSkill
+
 const pikachu = new Pokemon('pikachu', '100', pikachuSkill, 5)
 console.log(pikachu)
 const charmander = new Pokemon('charmander', '100', charmanderSkill, 5)
