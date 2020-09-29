@@ -221,7 +221,7 @@
     height: 100px;
 }
 
-#display0{
+#userDisplay0{
     width: 300px;
     height: 50px;
     display: flex;
@@ -229,7 +229,23 @@
     align-items: center;
 }
 
-#display1{
+#userDisplay1{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemyDisplay0{
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemyDisplay1{
     width: 300px;
     height: 50px;
     display: flex;

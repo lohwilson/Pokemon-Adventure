@@ -174,7 +174,7 @@ $(()=>{
 
         //should display userbattlepokemon[0].health
         let $userInfoDisplay = $('.userInfoDisplay')
-        $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
+        // $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
         // on click, should display userbattlepokemon[0].skills 
         let $fightButton = $('.fightButton')
@@ -192,14 +192,28 @@ $(()=>{
         userBattlePokemon[0].level
         userBattlePokemon[0].image
 
+
+        // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
-            $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'display'+i)
+            $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'userDisplay'+i)
             $userInfoDisplay.append($splitDisplay)
         }
-     
-        $('#display0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
-        $('#display1').text('Health Points: '+ userBattlePokemon[0].health)
-        
+        $('#userDisplay0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
+        $('#userDisplay1').text('Health Points: '+ userBattlePokemon[0].health)
+
+
+
+
+
+        // split enemy display to 2 rows to show level and name on top and HP at the bottom
+        for (let i = 0; i < 2; i++){
+            $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'enemyDisplay'+i)
+            $enemyInfoDisplay.append($splitDisplay)
+        }
+        $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
+        $('#enemyDisplay1').text('Health Points: '+ enemyBattlePokemon[0].health)
+
+
 
 
 
