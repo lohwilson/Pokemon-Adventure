@@ -220,31 +220,19 @@ $(()=>{
                 $('.battleCommandsDisplay').append($pokemonSkill)
             }
 
-            $('#skill0').on('click', ()=>{
-                console.log(enemyBattlePokemon[0].health)
-                enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[0].damage
-                console.log(enemyBattlePokemon[0].health)
-            })
-
-            $('#skill1').on('click', ()=>{
-                console.log(enemyBattlePokemon[0].health)
-                enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[1].damage
-                console.log(enemyBattlePokemon[0].health)
-            })
-
-            $('#skill2').on('click', ()=>{
-                console.log(enemyBattlePokemon[0].health)
-                enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[2].damage
-                console.log(enemyBattlePokemon[0].health)
-            })
-
-            $('#skill3').on('click', ()=>{
-                console.log(enemyBattlePokemon[0].health)
-                enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[3].damage
-                console.log(enemyBattlePokemon[0].health)
-            })
+            for (let i = 0; i < userPokemonSkillsArray.length; i++){
+                $('#skill'+i).on('click', ()=>{
+                    console.log(enemyBattlePokemon[0].health)
+                    enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[i].damage
+                    console.log(enemyBattlePokemon[0].health)
+                    updateDisplay()
+                })
+            }
         })
 
+        function updateDisplay(){
+
+        }
    
     
 
