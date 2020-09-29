@@ -192,7 +192,21 @@ $(()=>{
         userBattlePokemon[0].level
         userBattlePokemon[0].image
 
+        for (let i = 0; i < 2; i++){
+            $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'display'+i)
+            $userInfoDisplay.append($splitDisplay)
+        }
+     
+        $('#display0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
+        $('#display1').text('Health Points: '+ userBattlePokemon[0].health)
+        
+
+
+
+
+
         console.log(userBattlePokemon[0].image)
+        // display image for user pokemon, need to add function to change image when pokemon changes
         $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
 
 
