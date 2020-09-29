@@ -145,6 +145,10 @@ $(()=>{
 
     }
 
+
+    function leavePage(){
+    }
+
     // this should lead to the battle page
     function battle(){
         $('.mainTown').removeClass()
@@ -184,14 +188,10 @@ $(()=>{
         })
 
         userBattlePokemon.push(userPokemonList[0])
+        enemyBattlePokemon.push(ratata)
         console.log(userBattlePokemon)
 
-        userBattlePokemon[0].name
-        userBattlePokemon[0].health
         userBattlePokemon[0].skills
-        userBattlePokemon[0].level
-        userBattlePokemon[0].image
-
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -200,8 +200,6 @@ $(()=>{
         }
         $('#userDisplay0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
         $('#userDisplay1').text('Health Points: '+ userBattlePokemon[0].health)
-
-
 
 
 
@@ -214,13 +212,9 @@ $(()=>{
         $('#enemyDisplay1').text('Health Points: '+ enemyBattlePokemon[0].health)
 
 
-
-
-
-
-
         console.log(userBattlePokemon[0].image)
         // display image for user pokemon, need to add function to change image when pokemon changes
+        $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
         $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
 
 

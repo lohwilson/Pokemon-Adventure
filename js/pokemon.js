@@ -84,3 +84,4 @@ console.log(squirtle)
 const bulbasaur = new Pokemon('bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
 console.log(bulbasaur)
 
+const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
