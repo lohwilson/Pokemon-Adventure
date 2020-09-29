@@ -10,7 +10,11 @@ let battleContainerArray = ['enemyInfoDisplay', 'enemyPicture', 'userPicture', '
 
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
+
 let userPokemonList = []
+
+let userBattlePokemon = []
+let enemyBattlePokemon = []
 
 $(()=>{
 
@@ -121,12 +125,13 @@ $(()=>{
         })  
     }
 
-
+    // this should leave the choosing pokemon page, and run maintown function
     function newJourneyBegins(){
         $('.choosePokemon').remove()
         mainTown()
     }
 
+    // maintown function
     function mainTown(){
         $mainTown = $('<div>').addClass('mainTown')
         $layout.append($mainTown)
@@ -155,24 +160,43 @@ $(()=>{
             $('.battleCommandsDisplay').append(battleButtonsArray[i])
         }
 
-
+        // should display enemybattlepokemon[0].health
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
         $enemyInfoDisplay.css('background-image', 'url(css/images/pokemon/pikachu.jpg)')
 
+        // should display enemybattlepokemon[0]
         let $enemyPicture = $('.enemyPicture')
         $enemyPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
+        // should display userbattlepokemon[0]
         let $userPicture = $('.userPicture')
-        $userPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
+        // $userPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
+        //should display userbattlepokemon[0].health
         let $userInfoDisplay = $('.userInfoDisplay')
         $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
+        // on click, should display userbattlepokemon[0].skills 
         let $fightButton = $('.fightButton')
         $fightButton.on('click', (event)=>{
             console.log('fight')
             console.log($(event.eventListener))
         })
+
+        userBattlePokemon.push(userPokemonList[0])
+        console.log(userBattlePokemon)
+
+        userBattlePokemon[0].name
+        userBattlePokemon[0].health
+        userBattlePokemon[0].skills
+        userBattlePokemon[0].level
+        userBattlePokemon[0].image
+
+        console.log(userBattlePokemon[0].image)
+        $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
+
+
+
 
         // let $itemButton = $('.itemButton')
         // $itemButton.on('click', (event)=>{
