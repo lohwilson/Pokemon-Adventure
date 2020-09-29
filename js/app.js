@@ -217,13 +217,21 @@ $(()=>{
             // console.log(Object.keys(userBattlePokemon[0].skills[0])[1])
 
             $('.battleCommandsDisplay').empty()
-            $div1 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[0]).text(Object.keys(userBattlePokemon[0].skills[0])[0])
+
+            $div1 = $('<button>').addClass(Object.keys(userBattlePokemon[0].skills[0])[0]).text(Object.keys(userBattlePokemon[0].skills[0])[0])
+            $div1.attr('id', 'skill1')
             $('.battleCommandsDisplay').append($div1)
-            $div2 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[1]).text(Object.keys(userBattlePokemon[0].skills[0])[1])
+
+            $div2 = $('<button>').addClass(Object.keys(userBattlePokemon[0].skills[0])[1]).text(Object.keys(userBattlePokemon[0].skills[0])[1])
+            $div2.attr('id', 'skill2')
             $('.battleCommandsDisplay').append($div2)
-            $div3 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[2]).text(Object.keys(userBattlePokemon[0].skills[0])[2])
+
+            $div3 = $('<button>').addClass(Object.keys(userBattlePokemon[0].skills[0])[2]).text(Object.keys(userBattlePokemon[0].skills[0])[2])
+            $div3.attr('id', 'skill3')
             $('.battleCommandsDisplay').append($div3)
-            $div4 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[3]).text(Object.keys(userBattlePokemon[0].skills[0])[3])
+
+            $div4 = $('<button>').addClass(Object.keys(userBattlePokemon[0].skills[0])[3]).text(Object.keys(userBattlePokemon[0].skills[0])[3])
+            $div4.attr('id', 'skill4')
             $('.battleCommandsDisplay').append($div4)
 
 
@@ -237,7 +245,32 @@ $(()=>{
             //     $('.battleCommandsDisplay').append($pokemonSkill)
             // }
 
+            let $skill1 = $('#skill1')
+            $skill1.on('click', (event)=>{
+
+                let skillName = Object.keys(userBattlePokemon[0].skills[0])[0]
+                console.log(skillName)
+
+                console.log(event)
+                console.log(userBattlePokemon[0].skills[0])
+
+                console.log(userBattlePokemon[0].skills[0])
+                
+                console.log(userBattlePokemon[0].skills[0].skillName)
+
+                console.log(enemyBattlePokemon[0].health)
+                enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[0].skillName
+                console.log(enemyBattlePokemon[0].health)
+            })
+    
+            
+
         })
+
+
+        function userPokemonSkill(){
+
+        }
 
 
         // let $itemButton = $('.itemButton')
