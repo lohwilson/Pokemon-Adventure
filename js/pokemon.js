@@ -33,31 +33,68 @@ class Pokemon {
 // ]
 
 
+let pikachuSkill = [
+    {
+        name: 'Quick Attack',
+        damage: 5
+    },
+    {
+        name: 'Thunder',
+        damage: 10
+    }
+]
 
-let pikachuSkill = [{
-    QuickAttack: 5, 
-    Thundershock: 10,
-}]
+let charmanderSkill = [
+    {
+        name: 'Scratch',
+        damage: 5
+    },
+    {
+        name: 'Ember',
+        damage: 10
+    },
+    {
+        name: 'Slash',
+        damage: 20
+    },
+    {
+        name: 'Fire Spin',
+        damage: 45
+    }
+]
 
-let charmanderSkill = [{
-    Scratch: 5, 
-    Ember: 10,
-}]
+let squirtleSkill = [
+    {
+        name: 'Scratch',
+        damage: 5
+    },
+    {
+        name: 'Bubble',
+        damage: 10
+    }
+]
 
-let squirtleSkill = [{
-    Scratch: 5, 
-    Bubble: 10,
-}]
+let bulbasaurSkill = [
+    {
+        name: 'Tackle',
+        damage: 5
+    },
+    {
+        name: 'Leech Seed',
+        damage: 10
+    }
+]
 
-let bulbasaurSkill = [{
-    Tackle: 5, 
-    LeechSeed: 10,
-}]
-
-let caterpieSkill = [{
-    Tackle: 5, 
-    LeechSeed: 10,
-}]
+let caterpieSkill = [
+    {
+        name: 'Tackle',
+        damage: 5
+    },
+    {
+        name: 'Leech Seed',
+        damage: 10
+    }
+]
 
 let ratataSkill = [{
     Tackle: 5, 
@@ -73,7 +110,6 @@ let weedleSkill = [{
     Tackle: 5, 
     LeechSeed: 10,
 }]
-
 
 const pikachu = new Pokemon('pikachu', '100', pikachuSkill, 5)
 const charmander = new Pokemon('charmander', '100', charmanderSkill, 5)
