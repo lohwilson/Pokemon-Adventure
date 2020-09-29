@@ -92,7 +92,6 @@ $(()=>{
 
 
     function choosePokemonButtons(){
-        let $button = $('button')
 
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
@@ -106,8 +105,6 @@ $(()=>{
 
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
-            console.log(event.currentTarget.classList[0])
-
             if (event.currentTarget.classList[0] === 'charmander'){
                 console.log('i got charmander')
                 userPokemonList.push(charmander)
@@ -142,9 +139,7 @@ $(()=>{
         $practise.on('click', ()=>{
             battle()
         })
-
     }
-
 
     function leavePage(){
     }
@@ -182,16 +177,11 @@ $(()=>{
 
         // on click, should display userbattlepokemon[0].skills 
         let $fightButton = $('.fightButton')
-        $fightButton.on('click', (event)=>{
-            console.log('fight')
-            console.log($(event.eventListener))
-        })
 
+
+        // choose the current pokemon for battle for both user and enemy
         userBattlePokemon.push(userPokemonList[0])
         enemyBattlePokemon.push(ratata)
-        console.log(userBattlePokemon)
-
-        userBattlePokemon[0].skills
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -201,8 +191,6 @@ $(()=>{
         $('#userDisplay0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
         $('#userDisplay1').text('Health Points: '+ userBattlePokemon[0].health)
 
-
-
         // split enemy display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'enemyDisplay'+i)
@@ -211,13 +199,45 @@ $(()=>{
         $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
         $('#enemyDisplay1').text('Health Points: '+ enemyBattlePokemon[0].health)
 
-
-        console.log(userBattlePokemon[0].image)
         // display image for user pokemon, need to add function to change image when pokemon changes
         $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
         $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
 
+        // onclick skill should display the skill list of current pokemon
 
+        userBattlePokemon[0].skills
+
+        $fightButton.on('click', (event)=>{
+            console.log('fight')
+            // console.log($(event.eventListener))
+            // console.log(userBattlePokemon[0].skills)
+            // console.log(userBattlePokemon[0].skills[0])
+            // console.log(Object.keys(userBattlePokemon[0].skills[0]))
+            // console.log(Object.keys(userBattlePokemon[0].skills[0])[0])
+            // console.log(Object.keys(userBattlePokemon[0].skills[0])[1])
+
+            $('.battleCommandsDisplay').empty()
+            $div1 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[0]).text(Object.keys(userBattlePokemon[0].skills[0])[0])
+            $('.battleCommandsDisplay').append($div1)
+            $div2 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[1]).text(Object.keys(userBattlePokemon[0].skills[0])[1])
+            $('.battleCommandsDisplay').append($div2)
+            $div3 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[2]).text(Object.keys(userBattlePokemon[0].skills[0])[2])
+            $('.battleCommandsDisplay').append($div3)
+            $div4 = $('<div>').addClass(Object.keys(userBattlePokemon[0].skills[0])[3]).text(Object.keys(userBattlePokemon[0].skills[0])[3])
+            $('.battleCommandsDisplay').append($div4)
+
+
+            // this loop function text has an error
+            
+            // for (let i = 0; i < 4; i++){
+            //     console.log(Object.keys(userBattlePokemon[0].skills[0])[i])
+            //     console.log(typeof Object.keys(userBattlePokemon[0].skills[0])[i])
+
+            //     $pokemonSkill = $('<div>').attr('skill'+i).text(`${Object.keys(userBattlePokemon[0].skills[0])[i]}`)
+            //     $('.battleCommandsDisplay').append($pokemonSkill)
+            // }
+
+        })
 
 
         // let $itemButton = $('.itemButton')
@@ -238,39 +258,6 @@ $(()=>{
         //     console.log($(event.eventListener))
         // })
     }
-
-
-//     class Battle {
-//         constructor(enemyInfoDisplay,enemyPicture,userPicture,userInfoDisplay){
-//             this.enemyInfoDisplay = enemyInfoDisplay;
-//             this.enemyPicture = enemyPicture;
-//             this.userPicture = userPicture;
-//             this.userInfoDisplay = userInfoDisplay
-//         }
-//     }
-
-//     let a = 'enemy display'
-//     let b = '../css/images/pokemon/team_rocket.jpg'
-//     let c = '../css/images/pokemon/pikachu.jpg'
-//     let d = '../css/images/pokemon/pikachu.jpg'
-
-//     let pokeBattle = new Battle(a,b,c,d)
-
-//     pokeBattle.set = () => {
-//         let $enemyInfoDisplay = $('.enemyInfoDisplay')
-//         $enemyInfoDisplay.css('background-img', pokeBattle.enemyInfoDisplay)
-
-//         let $enemyPicture = $('.enemyPicture')
-//         $enemyPicture.css('background-img', pokeBattle.enemyPicture)
-
-//         let $userPicture = $('.userPicture')
-//         $userPicture.css('background-img', pokeBattle.userPicture)
-
-//         let $userInfoDisplay = $('.userInfoDisplay')
-//         $userInfoDisplay.css('background-img', pokeBattle.userInfoDisplay)
-//     }
-
-
 
 })
 
