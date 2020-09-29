@@ -96,10 +96,17 @@ let caterpieSkill = [
     }
 ]
 
-let ratataSkill = [{
-    Tackle: 5, 
-    LeechSeed: 10,
-}]
+let ratataSkill = [
+    {
+        name: 'Tackle',
+        damage: 5
+    },
+    {
+        name: 'Scratch',
+        damage: 10
+    }
+]
+
 
 let pidgeySkill = [{
     Tackle: 5, 

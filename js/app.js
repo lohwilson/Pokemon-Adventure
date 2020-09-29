@@ -156,11 +156,14 @@ $(()=>{
             let $display = $('<div>').addClass(battleContainerArray[i])
             $('.battle').append($display)
         }
-
-        for (let i = 0; i < battleButtonsArray.length; i++){
-            $('.battleCommandsDisplay').append(battleButtonsArray[i])
+        
+        function createBattleButtons () {
+            for (let i = 0; i < battleButtonsArray.length; i++){
+                $('.battleCommandsDisplay').append(battleButtonsArray[i])
+            }
         }
 
+        createBattleButtons()
         // should display enemybattlepokemon[0].health
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
         $enemyInfoDisplay.css('background-image', 'url(css/images/pokemon/pikachu.jpg)')
@@ -185,33 +188,46 @@ $(()=>{
         userBattlePokemon.push(userPokemonList[0])
         enemyBattlePokemon.push(ratata)
 
+        let userFullHealth = userBattlePokemon[0].health
+        let userCurrentHealth = userBattlePokemon[0].health
+        let enemyFullHealth = enemyBattlePokemon[0].health
+        let enemyCurrentHealth = enemyBattlePokemon[0].health
         // split user display to 2 rows to show level and name on top and HP at the bottom
+
         for (let i = 0; i < 2; i++){
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'userDisplay'+i)
             $userInfoDisplay.append($splitDisplay)
         }
         $('#userDisplay0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
-        $('#userDisplay1').text('Health Points: '+ userBattlePokemon[0].health)
+        $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
+
 
         // split enemy display to 2 rows to show level and name on top and HP at the bottom
+
         for (let i = 0; i < 2; i++){
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'enemyDisplay'+i)
             $enemyInfoDisplay.append($splitDisplay)
         }
         $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
-        $('#enemyDisplay1').text('Health Points: '+ enemyBattlePokemon[0].health)
+        $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
 
         // display image for user pokemon, need to add function to change image when pokemon changes
         $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
         $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
 
-        // onclick skill should display the skill list of current pokemon
+        function updateUserHealth () {
+            $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
+            console.log('user health updated')
+        }
 
-        userBattlePokemon[0].skills
+        function updateEnemyHealth () {
+            $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
+        }
 
-        $fightButton.on('click', (event)=>{
+        $fightButton.on('click', ()=>{
             console.log('fight')
             $('.battleCommandsDisplay').empty()
+
             let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
 
             for (let i = 0; i < userPokemonSkillsArray.length; i++){
@@ -219,22 +235,29 @@ $(()=>{
                 $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
                 $('.battleCommandsDisplay').append($pokemonSkill)
             }
-
+                
             for (let i = 0; i < userPokemonSkillsArray.length; i++){
                 $('#skill'+i).on('click', ()=>{
-                    console.log(enemyBattlePokemon[0].health)
-                    enemyBattlePokemon[0].health = enemyBattlePokemon[0].health - userBattlePokemon[0].skills[i].damage
-                    console.log(enemyBattlePokemon[0].health)
-                    updateDisplay()
+                    enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
+                    updateEnemyHealth()
+                    enemyAttack()
+                    // this removes the pokemon skill buttons and created battle buttons but not able to recreate poke buttons.
+                    $('.battleCommandsDisplay').empty()
+                    createBattleButtons()
                 })
             }
         })
 
-        function updateDisplay(){
-
+        function enemyAttack () {
+            let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
+            console.log(enemyPokemonSkillsArray)
+            random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
+            console.log(random)
+            console.log(enemyBattlePokemon[0].skills[random].damage)
+            userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            updateUserHealth()
         }
-   
-    
+
 
         function userPokemonSkill(){
 
