@@ -281,61 +281,10 @@ $(()=>{
                     }
                     updateEnemyHealth()
                     checkPokemonHealth()
-                    enemyAttack()
-
                     hideSkillButtons()
-                    showBattleButtons()
+                    enemyAttack()
                 })
             }
-
-            // $('#skill0').on('click', ()=>{
-            //     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[0].damage
-            //     if (enemyCurrentHealth <= 0){
-            //         enemyCurrentHealth = 0;
-            //     }
-            //     updateEnemyHealth()
-            //     checkPokemonHealth()
-            //     enemyAttack()
-
-            //     hideSkillButtons()
-            //     showBattleButtons()
-            // })
-            // $('#skill1').on('click', ()=>{
-            //     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[1].damage
-            //     if (enemyCurrentHealth <= 0){
-            //         enemyCurrentHealth = 0;
-            //     }
-            //     updateEnemyHealth()
-            //     checkPokemonHealth()
-            //     enemyAttack()
-
-            //     hideSkillButtons()
-            //     showBattleButtons()
-            // })
-            // $('#skill2').on('click', ()=>{
-            //     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[2].damage
-            //     if (enemyCurrentHealth <= 0){
-            //         enemyCurrentHealth = 0;
-            //     }
-            //     updateEnemyHealth()
-            //     checkPokemonHealth()
-            //     enemyAttack()
-
-            //     hideSkillButtons()
-            //     showBattleButtons()
-            // })
-            // $('#skill3').on('click', ()=>{
-            //     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[3].damage
-            //     if (enemyCurrentHealth <= 0){
-            //         enemyCurrentHealth = 0;
-            //     }
-            //     updateEnemyHealth()
-            //     checkPokemonHealth()
-            //     enemyAttack()
-
-            //     hideSkillButtons()
-            //     showBattleButtons()
-            // })
         })
         
 
@@ -361,6 +310,8 @@ $(()=>{
                 $alertButton.on('click', ()=>{
                     checkEnemyPokemonAvailability()
                 })
+            } else {
+                showBattleButtons()
             }
         }
 
