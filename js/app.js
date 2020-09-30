@@ -43,6 +43,7 @@ $(()=>{
         $mainPage.removeClass()
         $mainPageButton.remove()
         choosePokemon()
+        callAlerts()
     })
 
     const alerts = {
@@ -144,6 +145,7 @@ $(()=>{
     }
 
     function leavePage(){
+        
     }
 
     // this should lead to the battle page
