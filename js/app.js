@@ -108,15 +108,15 @@ $(()=>{
 
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
-            if (event.currentTarget.classList[0] === 'charmander'){
+            if (event.currentTarget.classList[0] === 'Charmander'){
                 console.log('i got charmander')
                 userPokemonList.push(charmander)
                 console.log(userPokemonList)
-            } else if (event.currentTarget.classList[0] === 'squirtle'){
+            } else if (event.currentTarget.classList[0] === 'Squirtle'){
                 console.log('i got squirtle')
                 userPokemonList.push(squirtle)
                 console.log(userPokemonList)
-            } else if (event.currentTarget.classList[0] === 'bulbasaur'){
+            } else if (event.currentTarget.classList[0] === 'Bulbasaur'){
                 console.log('i got bulbasaur')
                 userPokemonList.push(bulbasaur)
                 console.log(userPokemonList)
@@ -144,6 +144,12 @@ $(()=>{
             battle()
         })
     }
+
+    function pokeCentre(){
+
+    }
+
+
 
     function leavePage(){
     }
@@ -305,7 +311,7 @@ $(()=>{
         })
         
         // enemy attack function 
-        function enemyAttack () {
+        function enemyAttack() {
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
@@ -316,7 +322,7 @@ $(()=>{
             checkPokemonHealth()
         }
 
-        function checkPokemonHealth (){
+        function checkPokemonHealth(){
             if (userCurrentHealth <= 0){
                 $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
                 checkUserPokemonAvailability()
@@ -326,14 +332,22 @@ $(()=>{
             }
         }
 
-        function checkUserPokemonAvailability (){
+        function checkUserPokemonAvailability(){
             if (userPokemonList.length === 0){
-
+                $alertBox.text('You have no pokemon left!')
+                pokeCentre()
             }
         }
 
-        function checkEnemyPokemonAvailability (){
+        function checkEnemyPokemonAvailability(){
+            if (userPokemonList.length === 0){
+                $alertBox.text(enemyName + ' has no pokemon left!')
+                winBattle()
+            }
+        }
 
+        function winBattle(){
+            $alertBox.text(enemyName + ' has no pokemon left!')
         }
 
         // let $itemButton = $('.itemButton')

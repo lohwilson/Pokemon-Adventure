@@ -118,9 +118,9 @@ let weedleSkill = [{
     LeechSeed: 10,
 }]
 
-const pikachu = new Pokemon('pikachu', '100', pikachuSkill, 5)
-const charmander = new Pokemon('charmander', '100', charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
-const squirtle = new Pokemon('squirtle', '100', squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
-const bulbasaur = new Pokemon('bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
+const pikachu = new Pokemon('Pikachu', '100', pikachuSkill, 5)
+const charmander = new Pokemon('Charmander', '100', charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
+const squirtle = new Pokemon('Squirtle', '100', squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
+const bulbasaur = new Pokemon('Bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
 
 const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
