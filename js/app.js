@@ -12,6 +12,7 @@ let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
 let userPokemonList = []
+let enemyPokemonList = []
 
 let userBattlePokemon = []
 let enemyBattlePokemon = []
@@ -139,6 +140,7 @@ $(()=>{
         $mainTown.append($practise)
 
         $practise.on('click', ()=>{
+            enemyPokemonList.push(ratata)
             battle()
         })
     }
@@ -146,7 +148,27 @@ $(()=>{
     function leavePage(){
     }
 
+    // const battleButtons = {
+        
+    //     setBattleOptions: ()=>{
+    //         for (let i = 0; i < battleButtonsArray.length; i++){
+    //             $('.battleCommandsDisplay').append(battleButtonsArray[i])
+    //         }
+    //     },
+
+    //     setAlertButton: ()=>{
+    //         let $alertBoxButton = $('<button>').addClass('alertBoxButton').text('Next')
+    //         $('.alertBox').append($alertBoxButton)
+    //     },
+
+    // }
+
+
+
+    let enemyName = 'Gary'
+
     // this should lead to the battle page
+
     function battle(){
         $('.mainTown').removeClass()
         $('.practise').remove()
@@ -164,6 +186,7 @@ $(()=>{
         }
 
         createBattleButtons()
+
         // should display enemybattlepokemon[0].health
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
         $enemyInfoDisplay.css('background-image', 'url(css/images/pokemon/pikachu.jpg)')
@@ -174,19 +197,27 @@ $(()=>{
 
         // should display userbattlepokemon[0]
         let $userPicture = $('.userPicture')
-        // $userPicture.css('background-image', 'url(js/team-rocket.900x.jpg)')
 
         //should display userbattlepokemon[0].health
         let $userInfoDisplay = $('.userInfoDisplay')
-        // $userInfoDisplay.css('background-image', 'url(js/team-rocket.900x.jpg)')
+
+        // set alertBox
+        let $alertBox = $('.alertBox')
 
         // on click, should display userbattlepokemon[0].skills 
         let $fightButton = $('.fightButton')
+        let $itemButton = $('.itemButton')
+        let $changePokemonButton = $('.changePokemonButton')
+        let $runButton = $('.runButton')
+
+        // battleButtons.setBattleOptions()
+        // battleButtons.setAlertButton()
+
 
 
         // choose the current pokemon for battle for both user and enemy
         userBattlePokemon.push(userPokemonList[0])
-        enemyBattlePokemon.push(ratata)
+        enemyBattlePokemon.push(enemyPokemonList[0])
 
         let userFullHealth = userBattlePokemon[0].health
         let userCurrentHealth = userBattlePokemon[0].health
@@ -208,6 +239,7 @@ $(()=>{
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'enemyDisplay'+i)
             $enemyInfoDisplay.append($splitDisplay)
         }
+
         $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
         $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
 
@@ -217,43 +249,69 @@ $(()=>{
 
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
-            console.log('user health updated')
+            console.log(userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
         }
 
         function updateEnemyHealth () {
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
+            console.log(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
         }
+
+        // let $alertBoxButton = $('<button>').addClass('alertBoxButton').text('Next')
+        // $('.alertBox').append($alertBoxButton)
+
+        let $alertButton = $('<button>').addClass('alertButton').text('Next')
+        $('.battle').append($alertButton)
+
+        function updateAlertBox(){
+            $alertBoxButton.on('click', (alertText)=>{
+                return alertText
+            })
+        }
+
+        $alertBox.text(enemyName + ' would like to battle')
+        // $alertBox.text(enemyName + ' chooses ' + enemyBattlePokemon[0].name)
+
+
+
+
+
+
+
+
+
+
+
+        let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
+        for (let i = 0; i < userPokemonSkillsArray.length; i++){
+            $pokemonSkill = $('<button>').attr('id', 'skill'+i)
+            $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
+            $('.battleCommandsDisplay').append($pokemonSkill)
+        }
+        hideSkillButtons()
 
         $fightButton.on('click', ()=>{
             console.log('fight')
-            $('.battleCommandsDisplay').empty()
+            // $('.battleCommandsDisplay').empty()
+            hideBattleButtons()
+            showSkillButtons()
 
-            let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
-
-            for (let i = 0; i < userPokemonSkillsArray.length; i++){
-                $pokemonSkill = $('<button>').attr('id', 'skill'+i)
-                $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
-                $('.battleCommandsDisplay').append($pokemonSkill)
-            }
-                
             for (let i = 0; i < userPokemonSkillsArray.length; i++){
                 $('#skill'+i).on('click', ()=>{
                     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
                     updateEnemyHealth()
                     enemyAttack()
-                    // this removes the pokemon skill buttons and created battle buttons but not able to recreate poke buttons.
-                    $('.battleCommandsDisplay').empty()
-                    createBattleButtons()
+
+                    hideSkillButtons()
+                    showBattleButtons()
                 })
             }
-        })
 
+        })
+        
         function enemyAttack () {
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
-            console.log(enemyPokemonSkillsArray)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
-            console.log(random)
-            console.log(enemyBattlePokemon[0].skills[random].damage)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
             updateUserHealth()
         }
@@ -283,6 +341,62 @@ $(()=>{
         // })
     }
 
+    // $fightButton = ('.fightButton')
+
+    // $fightButton.on('click', ()=>{
+    //     console.log('fight')
+    //     // $('.battleCommandsDisplay').empty()
+    //     hideBattleButtons()
+
+    //     let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
+
+    //     for (let i = 0; i < userPokemonSkillsArray.length; i++){
+    //         $pokemonSkill = $('<button>').attr('id', 'skill'+i)
+    //         $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
+    //         $('.battleCommandsDisplay').append($pokemonSkill)
+    //     }
+            
+    //     for (let i = 0; i < userPokemonSkillsArray.length; i++){
+    //         $('#skill'+i).on('click', ()=>{
+    //             enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
+    //             updateEnemyHealth()
+    //             enemyAttack()
+    //             // this removes the pokemon skill buttons and created battle buttons but not able to recreate poke buttons.
+    //             // $('.battleCommandsDisplay').empty()
+
+    //             hideSkillButtons()
+    //             showBattleButtons()
+    //         })
+    //     }
+    // })
+
+
+    function hideBattleButtons (){
+        $('.fightButton').hide()
+        $('.itemButton').hide()
+        $('.changePokemonButton').hide()
+        $('.runButton').hide()
+    }
+    function showBattleButtons (){
+        $('.fightButton').show()
+        $('.itemButton').show()
+        $('.changePokemonButton').show()
+        $('.runButton').show()
+    }
+
+    function hideSkillButtons (){
+        $('#skill0').hide()
+        $('#skill1').hide()
+        $('#skill2').hide()
+        $('#skill3').hide()
+    }
+
+    function showSkillButtons (){
+        $('#skill0').show()
+        $('#skill1').show()
+        $('#skill2').show()
+        $('#skill3').show()
+    }
 })
 
 
