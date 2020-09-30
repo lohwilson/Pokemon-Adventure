@@ -7,6 +7,12 @@ let pokemonHealth = []
 let pokemonLevel = []
 let pokemonImage = []
 
+
+
+
+
+let garyPokemonList = []
+
 class Pokemon {
     constructor(name, health, skills, level, image){
         this.name = name;
@@ -124,3 +130,10 @@ const squirtle = new Pokemon('Squirtle', '100', squirtleSkill, 5, 'css/images/po
 const bulbasaur = new Pokemon('Bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
 
 const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
+const caterpie = new Pokemon('Caterpie', '100', caterpieSkill, 5, 'css/images/pokemon/caterpie.jpg')
+const pidgey = new Pokemon('Pidgey', '100', pidgeySkill, 5, 'css/images/pokemon/pidgey.jpg')
+const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.jpg')
+
+
+garyPokemonList.push(ratata)
+garyPokemonList.push(caterpie)
