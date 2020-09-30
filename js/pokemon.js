@@ -77,6 +77,14 @@ let squirtleSkill = [
     {
         name: 'Bubble',
         damage: 10
+    },
+    {
+        name: 'Water Gun',
+        damage: 20
+    },
+    {
+        name: 'Hydro Pump',
+        damage: 45
     }
 ]
 
@@ -88,6 +96,14 @@ let bulbasaurSkill = [
     {
         name: 'Leech Seed',
         damage: 10
+    },
+    {
+        name: 'Vine Whip',
+        damage: 20
+    },
+    {
+        name: 'Solar Beam',
+        damage: 45
     }
 ]
 
