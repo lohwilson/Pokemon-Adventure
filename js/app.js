@@ -272,22 +272,14 @@ $(()=>{
         $alertBox.text(enemyName + ' would like to battle')
         // $alertBox.text(enemyName + ' chooses ' + enemyBattlePokemon[0].name)
 
-
-
-
-
-
-
-
-
-
-
+        // create skill buttons
         let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
             $pokemonSkill = $('<button>').attr('id', 'skill'+i)
             $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
             $('.battleCommandsDisplay').append($pokemonSkill)
         }
+
         hideSkillButtons()
 
         $fightButton.on('click', ()=>{
@@ -299,28 +291,50 @@ $(()=>{
             for (let i = 0; i < userPokemonSkillsArray.length; i++){
                 $('#skill'+i).on('click', ()=>{
                     enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
+                    if (enemyCurrentHealth <= 0){
+                        enemyCurrentHealth = 0;
+                    }
                     updateEnemyHealth()
+                    checkPokemonHealth()
                     enemyAttack()
 
                     hideSkillButtons()
                     showBattleButtons()
                 })
             }
-
         })
         
+        // enemy attack function 
         function enemyAttack () {
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            if (userCurrentHealth <= 0){
+                userCurrentHealth = 0;
+            }
             updateUserHealth()
+            checkPokemonHealth()
         }
 
-
-        function userPokemonSkill(){
-
+        function checkPokemonHealth (){
+            if (userCurrentHealth <= 0){
+                $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
+                checkUserPokemonAvailability()
+            } else if (enemyCurrentHealth <= 0){
+                $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
+                checkEnemyPokemonAvailability()
+            }
         }
 
+        function checkUserPokemonAvailability (){
+            if (userPokemonList.length === 0){
+
+            }
+        }
+
+        function checkEnemyPokemonAvailability (){
+
+        }
 
         // let $itemButton = $('.itemButton')
         // $itemButton.on('click', (event)=>{
