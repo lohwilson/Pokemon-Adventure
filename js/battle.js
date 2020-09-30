@@ -41,6 +41,8 @@ $(()=>{
         let $userInfoDisplay = $('.userInfoDisplay')
         $userInfoDisplay.css('background-img', pokeBattle.userInfoDisplay)
     }
+
+    
 })
 
 
