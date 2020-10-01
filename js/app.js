@@ -381,12 +381,18 @@ $(()=>{
 
         // enemy attack function 
         function enemyAttack() {
-            let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
-            random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
-            userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
-            if (userCurrentHealth <= 0){
-                userCurrentHealth = 0;
-            }
+            $alertButton.show()
+            $alertButton.on('click', ()=>{
+                $alertButton.hide()
+                
+                let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
+                random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
+                userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+                if (userCurrentHealth <= 0){
+                    userCurrentHealth = 0;
+                }
+            })
+
             updateUserHealth()
             checkUserHealth()
             $alertBox.text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '. ' + userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
