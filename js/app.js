@@ -405,13 +405,17 @@ $(()=>{
                 showBattleButtons()
             } else if (userCurrentHealth <= 0){
                 $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
+                $alertButton.show()
                 $alertButton.on('click', ()=>{
                     checkUserPokemonAvailability()
+                    $alertButton.hide()
                 })
             } else if (enemyCurrentHealth <= 0){
                 $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
+                $alertButton.show()
                 $alertButton.on('click', ()=>{
                     checkEnemyPokemonAvailability()
+                    $alertButton.hide()
                 })
             }
         }
@@ -460,15 +464,12 @@ $(()=>{
             displayEnemyInfo()
         }
         
-
         function loseBattle(){
-
         }
 
         function winBattle(){
             $alertBox.text(enemyName + ' has no pokemon left!')
         }
-
         
         function hideBattleButtons (){
             $('.fightButton').hide()
@@ -482,14 +483,12 @@ $(()=>{
             $('.changePokemonButton').show()
             $('.runButton').show()
         }
-
         function hideSkillButtons (){
             $('#skill0').hide()
             $('#skill1').hide()
             $('#skill2').hide()
             $('#skill3').hide()
         }
-
         function showSkillButtons (){
             $('#skill0').show()
             $('#skill1').show()
@@ -506,17 +505,14 @@ $(()=>{
         $alertButton.on('click', ()=>{
             $alertBox.text(enemyName + ' chooses ' + enemyBattlePokemon[0].name)
             showBattleButtons()
+            $alertButton.remove()
         })
-
-
 
         $fightButton.on('click', ()=>{
             console.log('fight')
             // $('.battleCommandsDisplay').empty()
             hideBattleButtons()
             showSkillButtons()
-
-
         })
         
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
@@ -527,16 +523,12 @@ $(()=>{
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
                 }
-
                 updateEnemyHealth()
                 checkPokemonHealth()
                 hideSkillButtons()
-                setTimeout(enemyAttack(), 2000)
+                enemyAttack()
             })
         }
-
-
-
 
         // let $itemButton = $('.itemButton')
         // $itemButton.on('click', (event)=>{
@@ -557,10 +549,7 @@ $(()=>{
         // })
     }
 
-
     //////////////////////////////////      EVENT LISTENERS     /////////////////////////////////////
-
-
 
 })
 
