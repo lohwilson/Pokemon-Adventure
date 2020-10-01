@@ -69,17 +69,18 @@ $(()=>{
 
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
 
-    let $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
-    $mainPage.append($mainPageButton)
 
-    let $professorOak = $('<div>').addClass('professorOak')
-    $choosePokemonPage.append($professorOak)
 
-    // create battle buttons 
-    for (let i = 0; i < battleCommands.length; i++){
-        let $buttons = $('<button>').addClass(battleCommandsButton[i]).text(battleCommands[i].toUpperCase())
-        battleButtonsArray.push($buttons)
-    }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,8 +113,14 @@ $(()=>{
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
     // create start game button
     $mainPage.show()
-   
-    //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
+    let $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
+    $mainPage.append($mainPageButton)
+
+    // create battle buttons 
+    for (let i = 0; i < battleCommands.length; i++){
+        let $buttons = $('<button>').addClass(battleCommandsButton[i]).text(battleCommands[i].toUpperCase())
+        battleButtonsArray.push($buttons)
+    }
 
     // click event listener on main page button
     $mainPageButton.on('click', ()=>{
@@ -121,23 +128,6 @@ $(()=>{
         alerts.beginJourney()
         choosePokemonPage()
     })
-
-    // try to set to open modal
-
-    $professorOak.one('click', ()=>{
-        // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
-        // alert('You look very excited to begin your journey, so i\'ll get right to it.')
-        // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
-        // alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
-        // alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
-        // alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
-        choosePokemonButtons()
-    })
-
-
-
-
-
 
     const alerts = {
         beginJourney: ()=>{
@@ -153,6 +143,21 @@ $(()=>{
     function choosePokemonPage(){
         $choosePokemonPage.show()
 
+        $professorOak = $('<div>').addClass('professorOak')
+        $choosePokemonPage.append($professorOak)
+
+        // try to set to open modal
+
+        $professorOak.one('click', ()=>{
+            // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
+            // alert('You look very excited to begin your journey, so i\'ll get right to it.')
+            // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
+            // alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
+            // alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
+            // alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
+            choosePokemonButtons()
+        })
+
         // setTimeout(showAlert(), 10000)
 
         // alert('Welcome to Professor Oak\'s lab')
@@ -165,18 +170,17 @@ $(()=>{
         // } else {
         //     alert('No one is born ready! let\'s go')
         // }
-
     }
 
 
     function choosePokemonButtons(){
 
-            // create choose pokemon buttons
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
             $choosePokemonPage.append($button)
         }
+
         // let $modal = $('<div>').attr('id', choosePokemonArray[i]+'Modal').text(choosePokemonText[i])
         // $modal.css('background-image', 'url(css/images/pokemon/pikachu.jpg)').css('opacity', 0.5)
         // $(choosePokemonArray[i]).append($modal)
@@ -213,29 +217,18 @@ $(()=>{
         for (let i = 0; i < mainTownButtons.length; i++){
             let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
             $mainTown.append($mainTownButton)
-
-            // $mainTownButton.on('click', ()=>{
-            //     mainTown.hide()
-            //     $mainTownButton.show()
-            // })
         }
 
         $training = $('.training')
         $pokeCentre = $('pokeCentre')
         $shop = $('.shop')
-        $gym = $('.gym')
-
-        // for (let i = 0; i < mainTownButtons.length; i++){
-
-        // }
+        $gtm = $('.gym')
 
         $training.on('click', ()=>{
             $mainTown.hide()
             battle()
         })
     }
-
-
 
     function goToPokeCentre(){
 
@@ -264,14 +257,14 @@ $(()=>{
     // let enemyPokemonList = garyPokemonList
 
     let battleOpponent = []
+    battleOpponent.push(gary)
 
-    function battleGary (){
-        battleOpponent.push(gary)
-    }
-    battleGary()
     // this should lead to the battle page
 
     function battle(){
+        // $('.mainTown').removeClass()
+        // $('.practise').remove()
+        // $mainTown.addClass('battle')
         $battle.show()
 
         let enemyName = battleOpponent[0].name
@@ -289,6 +282,7 @@ $(()=>{
         }
         hideBattleButtons()
 
+
         //setting jquery variables
         let $enemyInfoDisplay = $('.enemyInfoDisplay')
         let $enemyPicture = $('.enemyPicture')
@@ -304,21 +298,12 @@ $(()=>{
         userBattlePokemon.push(userPokemonList[0])
         enemyBattlePokemon.push(enemyPokemonList[0])
         enemyPokemonList.shift()
-        console.log('Enemy Pokemon List: ' + enemyPokemonList)
+        console.log(enemyPokemonList)
 
-
-        let userFullHealth
-        let userCurrentHealth
-        let enemyFullHealth
-        let enemyCurrentHealth 
-
-        function setHealth(){
-            userFullHealth = userBattlePokemon[0].health
-            userCurrentHealth = userBattlePokemon[0].health
-            enemyFullHealth = enemyBattlePokemon[0].health
-            enemyCurrentHealth = enemyBattlePokemon[0].health
-        }
-        setHealth()
+        let userFullHealth = userBattlePokemon[0].health
+        let userCurrentHealth = userBattlePokemon[0].health
+        let enemyFullHealth = enemyBattlePokemon[0].health
+        let enemyCurrentHealth = enemyBattlePokemon[0].health
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -397,9 +382,7 @@ $(()=>{
                 showBattleButtons()
             } else if (userCurrentHealth <= 0){
                 $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
-                $alertButton.on('click', ()=>{
-                    checkUserPokemonAvailability()
-                })
+                checkUserPokemonAvailability()
             } else if (enemyCurrentHealth <= 0){
                 $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
                 $alertButton.on('click', ()=>{
@@ -487,8 +470,6 @@ $(()=>{
 
         $alertBox.text(enemyName + ' would like to battle')
 
-
-//////////////////////////////////      EVENT LISTENERS     /////////////////////////////////////
         $alertButton.on('click', ()=>{
             $alertBox.text(enemyName + ' chooses ' + enemyBattlePokemon[0].name)
             showBattleButtons()
@@ -536,9 +517,6 @@ $(()=>{
         //     console.log($(event.eventListener))
         // })
     }
-
-
-    //////////////////////////////////      EVENT LISTENERS     /////////////////////////////////////
 
 
 
