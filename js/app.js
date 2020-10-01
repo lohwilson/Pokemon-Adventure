@@ -306,11 +306,10 @@ $(()=>{
         enemyPokemonList.shift()
         console.log('Enemy Pokemon List: ' + enemyPokemonList)
 
-        let  userFullHealth = userBattlePokemon[0].health
+        let userFullHealth = userBattlePokemon[0].health
         let userCurrentHealth = userBattlePokemon[0].health
         let enemyFullHealth = enemyBattlePokemon[0].health
         let enemyCurrentHealth = enemyBattlePokemon[0].health
-    
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -379,23 +378,20 @@ $(()=>{
             console.log(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
         }
 
-        // enemy attack function 
         function enemyAttack() {
-            $alertButton.show()
-            $alertButton.on('click', ()=>{
-                $alertButton.hide()
-                
-                let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
-                random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
-                userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
-                if (userCurrentHealth <= 0){
-                    userCurrentHealth = 0;
-                }
-            })
+
+
+            let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
+            random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
+            userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            if (userCurrentHealth <= 0){
+                userCurrentHealth = 0;
+            }
 
             updateUserHealth()
             checkUserHealth()
             $alertBox.text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '. ' + userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
+
         }
 
         function checkUserHealth(){
@@ -557,14 +553,13 @@ $(()=>{
                 checkEnemyHealth()
                 $alertBox.text(userBattlePokemon[0].name + ' used ' + userBattlePokemon[0].skills[i].name + '. ' + enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
 
-                // $alertButton.on('click', (event)=>{
-                //     event.preventDefault()
+                $alertButton.on('click', (event)=>{
+                    event.preventDefault()
 
-                //     enemyAttack()
-                //     showBattleButtons()
-                //     $alertButton.hide()
-                // })
-                enemyAttackButton()
+                    enemyAttack()
+                    showBattleButtons()
+                    $alertButton.hide()
+                })
             })
         }
 
