@@ -20,16 +20,52 @@ let enemyBattlePokemon = []
 $(()=>{
 
     let $layout = $('#layout')
+
+    ////////////////////////////////////        PAGES       //////////////////////////////////////////
     let $mainPage = $('<div>').addClass('mainPage')
     $layout.append($mainPage)
+    $mainPage.hide()
+    let $2ndPage = $('<div>').addClass('2ndPage')
+    $layout.append($2ndPage)
+    $2ndPage.hide()
+    let $3rdPage = $('<div>').addClass('3rdPage')
+    $layout.append($3rdPage)
+    $3rdPage.hide()
+    let $4thPage = $('<div>').addClass('4thPage')
+    $layout.append($4thPage)
+    $4thPage.hide()
+
+    let $choosePokemonPage = $('<div>').addClass('choosePokemonPage')
+    $layout.append($choosePokemonPage)
+    $choosePokemonPage.hide()
+    let $mainTown = $('<div>').addClass('mainTown')
+    $layout.append($mainTown)
+    $mainTown.hide()
+    let $battle = $('<div>').addClass('battle')
+    $layout.append($battle)
+    $battle.hide()
+    let $pokeCentre = $('<div>').addClass('pokeCentre')
+    $layout.append($pokeCentre)
+    $pokeCentre.hide()
+
+
 
     // create pages array with page classes
-    for (let i = 0; i < pages.length; i++){
-        let $page = $('<div>').addClass(pages[i])
-        pagesArray.push($page)
-    }
+    // for (let i = 0; i < pages.length; i++){
+    //     let $page = $('<div>').addClass(pages[i])
+    //     pagesArray.push($page)
+    //     $layout.append($page)
+    //     $page.hide()
+    // }
+
+    // let $mainPage = ('.mainPage')
+    // $($mainPage).show()
+
+
+    //////////////////////////////////////////      PAGES       ///////////////////////////////////////
 
     // create start game button
+    $mainPage.show()
     let $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
     $mainPage.append($mainPageButton)
 
@@ -41,24 +77,23 @@ $(()=>{
 
     // click event listener on main page button
     $mainPageButton.on('click', ()=>{
-        $mainPage.removeClass()
-        $mainPageButton.remove()
+        $mainPage.hide()
         alerts.beginJourney()
-        choosePokemon()
+        choosePokemonPage()
     })
 
     const alerts = {
         beginJourney: ()=>{
-            console.log('Your Pokemon Adventure Begins')
+            alert('Your Pokemon Adventure Begins')
         }
     }
 
     // this should lead to the choose pokemon page
-    function choosePokemon(){
-        $mainPage.addClass('choosePokemon')
+    function choosePokemonPage(){
+        $choosePokemonPage.show()
 
         $professorOak = $('<div>').addClass('professorOak')
-        $('.choosePokemon').append($professorOak)
+        $('.choosePokemonPage').append($professorOak)
 
         $professorOak.one('click', ()=>{
             // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
@@ -91,7 +126,7 @@ $(()=>{
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
-            $('.choosePokemon').append($button)
+            $('.choosePokemonPage').append($button)
         }
 
         // let $modal = $('<div>').attr('id', choosePokemonArray[i]+'Modal').text(choosePokemonText[i])
@@ -119,20 +154,22 @@ $(()=>{
 
     // this should leave the choosing pokemon page, and run maintown function
     function newJourneyBegins(){
-        $('.choosePokemon').remove()
+        $('.choosePokemonPage').hide()
         mainTown()
     }
 
     // maintown function
     function mainTown(){
-        $mainTown = $('<div>').addClass('mainTown')
-        $layout.append($mainTown)
+        // $mainTown = $('<div>').addClass('mainTown')
+        // $layout.append($mainTown)
+        $mainTown.show()
 
         $practise = $('<button>').addClass('practise').text('Practise')
         $mainTown.append($practise)
 
         $practise.on('click', ()=>{
             // enemyPokemonList.push(ratata)
+            $mainTown.hide()
             battle()
         })
     }
@@ -171,9 +208,10 @@ $(()=>{
     // this should lead to the battle page
 
     function battle(){
-        $('.mainTown').removeClass()
-        $('.practise').remove()
-        $mainTown.addClass('battle')
+        // $('.mainTown').removeClass()
+        // $('.practise').remove()
+        // $mainTown.addClass('battle')
+        $battle.show()
 
         let enemyName = battleOpponent[0].name
         let enemyPokemonList = battleOpponent[0].pokemonList
