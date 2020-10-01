@@ -388,15 +388,13 @@ $(()=>{
                 userCurrentHealth = 0;
             }
             updateUserHealth()
-            checkPokemonHealth()
+            checkUserHealth()
             $alertBox.text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '. ' + userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
         }
 
-        function checkPokemonHealth(){
-            // debugger;
-            if (userCurrentHealth > 0 && enemyCurrentHealth > 0){
+        function checkUserHealth(){
+            if (userCurrentHealth > 0){
                 $alertButton.show()
-                // showBattleButtons()
             } else if (userCurrentHealth <= 0){
                 $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
                 $alertButton.show()
@@ -404,6 +402,12 @@ $(()=>{
                     checkUserPokemonAvailability()
                     $alertButton.hide()
                 })
+            }
+        }
+
+        function checkEnemyHealth(){
+            if (enemyCurrentHealth > 0){
+                $alertButton.show()
             } else if (enemyCurrentHealth <= 0){
                 $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
                 $alertButton.show()
@@ -413,6 +417,28 @@ $(()=>{
                 })
             }
         }
+
+        // function checkPokemonHealth(){
+        //     // debugger;
+        //     if (userCurrentHealth > 0 && enemyCurrentHealth > 0){
+        //         $alertButton.show()
+        //         // showBattleButtons()
+        //     } else if (userCurrentHealth <= 0){
+        //         $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
+        //         $alertButton.show()
+        //         $alertButton.on('click', ()=>{
+        //             checkUserPokemonAvailability()
+        //             $alertButton.hide()
+        //         })
+        //     } else if (enemyCurrentHealth <= 0){
+        //         $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
+        //         $alertButton.show()
+        //         $alertButton.on('click', ()=>{
+        //             checkEnemyPokemonAvailability()
+        //             $alertButton.hide()
+        //         })
+        //     }
+        // }
 
         // function moveUserDeadPokemon(){
         //     userPokemonList.push(userBattlePokemon)
@@ -522,14 +548,28 @@ $(()=>{
                 }
                 hideSkillButtons()
                 updateEnemyHealth()
-                checkPokemonHealth()
+                checkEnemyHealth()
                 $alertBox.text(userBattlePokemon[0].name + ' used ' + userBattlePokemon[0].skills[i].name + '. ' + enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
 
-                $alertButton.on('click', ()=>{
-                    enemyAttack()
-                    showBattleButtons()
-                    $alertButton.hide()
-                })
+                // $alertButton.on('click', (event)=>{
+                //     event.preventDefault()
+
+                //     enemyAttack()
+                //     showBattleButtons()
+                //     $alertButton.hide()
+                // })
+                enemyAttackButton()
+            })
+        }
+
+        function enemyAttackButton(){
+                    
+                $alertButton.on('click', (event)=>{
+                event.preventDefault()
+
+                enemyAttack()
+                showBattleButtons()
+                $alertButton.hide()
             })
         }
 
