@@ -369,6 +369,14 @@ $(()=>{
 
         // display image for user pokemon, need to add function to change image when pokemon changes
 
+        function setHealth(){
+            userFullHealth = userBattlePokemon[0].health
+            userCurrentHealth = userBattlePokemon[0].health
+            enemyFullHealth = enemyBattlePokemon[0].health
+            enemyCurrentHealth = enemyBattlePokemon[0].health
+        }
+        setHealth()
+
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             console.log(userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
@@ -422,7 +430,7 @@ $(()=>{
             // debugger;
             if (userPokemonList.length === 0){
                 $alertBox.text('You have no pokemon left!')
-                goToPokeCentre()
+                loseBattle()
             } else {
                 $alertBox.text('Please choose a new Pokemon.')
             }
@@ -448,9 +456,15 @@ $(()=>{
             // debugger;
             console.log(enemyBattlePokemon)
             $alertBox.text('Gary chose ' + enemyBattlePokemon[0].name)
+            setHealth()
             displayEnemyInfo()
         }
         
+
+        function loseBattle(){
+
+        }
+
         function winBattle(){
             $alertBox.text(enemyName + ' has no pokemon left!')
         }
@@ -502,20 +516,26 @@ $(()=>{
             hideBattleButtons()
             showSkillButtons()
 
-            for (let i = 0; i < userPokemonSkillsArray.length; i++){
-                $('#skill'+i).on('click', ()=>{
-                    enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
-                    if (enemyCurrentHealth <= 0){
-                        enemyCurrentHealth = 0;
-                    }
-                    updateEnemyHealth()
-                    checkPokemonHealth()
-                    hideSkillButtons()
-                    setTimeout(enemyAttack(), 2000)
-                })
-            }
+
         })
         
+        for (let i = 0; i < userPokemonSkillsArray.length; i++){
+            $('#skill'+i).on('click', (event)=>{
+                event.preventDefault()
+
+                enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
+                if (enemyCurrentHealth <= 0){
+                    enemyCurrentHealth = 0;
+                }
+
+                updateEnemyHealth()
+                checkPokemonHealth()
+                hideSkillButtons()
+                setTimeout(enemyAttack(), 2000)
+            })
+        }
+
+
 
 
         // let $itemButton = $('.itemButton')
