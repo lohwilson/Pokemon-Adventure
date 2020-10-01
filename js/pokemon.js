@@ -7,8 +7,7 @@ let pokemonHealth = []
 let pokemonLevel = []
 let pokemonImage = []
 
-
-
+trainingPokemon = []
 
 
 let garyPokemonList = []
@@ -153,3 +152,6 @@ const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/
 
 garyPokemonList.push(ratata)
 garyPokemonList.push(caterpie)
+
+trainingPokemon.push(caterpie, ratata, pidgey, weedle)
+

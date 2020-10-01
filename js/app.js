@@ -3,13 +3,15 @@ console.log('hello world')
 let pages = ['mainPage', '2ndPage', '3rdPage', '4thPage']
 let pagesArray = []
 
+let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
+let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
+
+let mainTownButtons = ['pokeCentre', 'training', 'shop', 'gym']
+
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
 let battleButtonsArray = []
 let battleContainerArray = ['enemyInfoDisplay', 'enemyPicture', 'userPicture', 'userInfoDisplay', 'alertBox', 'battleCommandsDisplay']
-
-let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
-let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
 let userPokemonList = []
 let enemyPokemonList = []
@@ -88,12 +90,18 @@ $(()=>{
         }
     }
 
+    // const choosePokemonPage = {
+
+    // }
+
     // this should lead to the choose pokemon page
     function choosePokemonPage(){
         $choosePokemonPage.show()
 
         $professorOak = $('<div>').addClass('professorOak')
-        $('.choosePokemonPage').append($professorOak)
+        $choosePokemonPage.append($professorOak)
+
+        // try to set to open modal
 
         $professorOak.one('click', ()=>{
             // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
@@ -104,7 +112,6 @@ $(()=>{
             // alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
             choosePokemonButtons()
         })
-
 
         // setTimeout(showAlert(), 10000)
 
@@ -126,7 +133,7 @@ $(()=>{
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
-            $('.choosePokemonPage').append($button)
+            $choosePokemonPage.append($button)
         }
 
         // let $modal = $('<div>').attr('id', choosePokemonArray[i]+'Modal').text(choosePokemonText[i])
@@ -154,21 +161,24 @@ $(()=>{
 
     // this should leave the choosing pokemon page, and run maintown function
     function newJourneyBegins(){
-        $('.choosePokemonPage').hide()
+        $choosePokemonPage.hide()
         mainTown()
     }
 
     // maintown function
     function mainTown(){
-        // $mainTown = $('<div>').addClass('mainTown')
-        // $layout.append($mainTown)
         $mainTown.show()
 
-        $practise = $('<button>').addClass('practise').text('Practise')
-        $mainTown.append($practise)
+        for (let i = 0; i < mainTownButtons.length; i++){
+            let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownButtons[i])
+            $mainTown.append($mainTownButton)
+        }
 
-        $practise.on('click', ()=>{
-            // enemyPokemonList.push(ratata)
+
+        // $practise = $('<button>').addClass('practise').text('Practise')
+        // $mainTown.append($practise)
+
+        $training.on('click', ()=>{
             $mainTown.hide()
             battle()
         })
@@ -178,10 +188,8 @@ $(()=>{
 
     }
 
-
-
     function leavePage(){
-        
+
     }
 
     // const battleButtons = {
