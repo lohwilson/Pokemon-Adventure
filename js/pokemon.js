@@ -150,8 +150,6 @@ const pidgey = new Pokemon('Pidgey', '100', pidgeySkill, 5, 'css/images/pokemon/
 const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.jpg')
 
 
-garyPokemonList.push(ratata)
-garyPokemonList.push(caterpie)
-
+garyPokemonList.push(ratata, caterpie)
 trainingPokemon.push(caterpie, ratata, pidgey, weedle)
 

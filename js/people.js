@@ -13,3 +13,4 @@ console.log(player)
 
 const gary = new People('Gary', 'Male', garyPokemonList)
 console.log(gary)
+
