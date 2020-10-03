@@ -118,15 +118,6 @@
 
 
 
-
-.container4 {
-    background-color: yellow;
-}
-
-.container5 {
-    background-color: purple;
-}
-
 /*//////////////////////////////////////////////////// BUTTONS ///////////////////////////////////////// */
 
  .mainPageButton { 
@@ -144,6 +135,29 @@
     cursor: pointer;
   }
 
+
+  .enterTown {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.explore {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .training {
     background-color: yellow;
     border: none;
@@ -155,7 +169,7 @@
     cursor: pointer;
 }
 
-.pokeCentre {
+.enterPokeCentre {
     background-color: yellow;
     border: none;
     color: black;
@@ -166,7 +180,7 @@
     cursor: pointer;
 }
 
-.shop {
+.enterShop {
     background-color: yellow;
     border: none;
     color: black;
@@ -188,6 +202,61 @@
     cursor: pointer;
 }
 
+.enterForest {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.enterMeadow {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.enterMainTown {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.enterBeach {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.enterDeepForest {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .journey {
     background-color: yellow;
     border: none;
@@ -199,7 +268,7 @@
     cursor: pointer;
 }
 
-.alertButton {
+.journey {
     background-color: yellow;
     border: none;
     color: black;
@@ -210,57 +279,12 @@
     cursor: pointer;
 }
 
-.fightButton {
-    background-color: yellow;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
 
-.itemButton {
-    background-color: yellow;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+/*//////////////////////////////////////////////////// BUTTONS //////////////////////////////////////////// */
 
-.changePokemonButton {
-    background-color: yellow;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
 
-.runButton {
-    background-color: yellow;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+
+/*//////////////////////////////////////////////////// CHOOSE POKEMON //////////////////////////////////////////// */
 
 .charmander {
     background-color: yellow;
@@ -295,10 +319,7 @@
     cursor: pointer;
 }
 
-
-
-
-/*//////////////////////////////////////////////////// BUTTONS //////////////////////////////////////////// */
+/*//////////////////////////////////////////////////// CHOOSE POKEMON //////////////////////////////////////////// */
 
 
 
@@ -393,8 +414,71 @@
     height: 200px;
 }
 
+.alertButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.fightButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.itemButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.changePokemonButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.runButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
+
 
 
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */

@@ -6,8 +6,8 @@ let itemList = []
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
-let mainTownButtons = ['enterPokeCentre', 'training', 'enterShop', 'gym', 'enterForest']
-let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Forest']
+let mainTownButtons = ['enterPokeCentre', 'training', 'enterShop', 'gym', 'enterForest', 'enterMeadow']
+let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Forest', 'Meadow']
 
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
@@ -177,7 +177,7 @@ $(()=>{
         
         $townButton.on('click', ()=>{
             $meadow.hide()
-            mainTown()
+            $mainTown.show()
         })
 
         $exploreButton.on('click', ()=>{
@@ -187,60 +187,48 @@ $(()=>{
         })
     }
 
-
-
-
-
     function battleGary (){
         battleOpponent.push(rival)
     }
 
-    // maintown function
-    function mainTown(){
-        $mainTown.show()
-
-        for (let i = 0; i < mainTownButtons.length; i++){
-            let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
-            $mainTown.append($mainTownButton)
-
-            // $mainTownButton.on('click', ()=>{
-            //     mainTown.hide()
-            //     $mainTownButton.show()
-            // })
-        }
-
-        $training = $('.training')
-        $enterPokeCentre = $('.enterPokeCentre')
-        $enterShop = $('.enterShop')
-        $gym = $('.gym')
-        $enterForest = $('.enterForest')
-
-        // for (let i = 0; i < mainTownButtons.length; i++){
-
-        // }
-
-        $training.on('click', ()=>{
-            $mainTown.hide()
-            battleGary()
-            console.log(battleOpponent)
-            battle()
-        })
-        $enterShop.on('click', ()=>{
-            // $mainTown.hide()
-            // $shop.show()
-        })
-        $enterPokeCentre.on('click', ()=>{
-            // $mainTown.hide()
-            // $pokeCentre.show()
-        })
-        $gym.on('click', ()=>{
-            alert('The Gym is closed at this moment')
-        })
-        $enterForest.on('click', ()=>{
-            $mainTown.hide()
-            $forest.show()
-        })
+    for (let i = 0; i < mainTownButtons.length; i++){
+        let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
+        $mainTown.append($mainTownButton)
     }
+
+    $training = $('.training')
+    $enterPokeCentre = $('.enterPokeCentre')
+    $enterShop = $('.enterShop')
+    $gym = $('.gym')
+    $enterForest = $('.enterForest')
+    $enterMeadow = $('.enterMeadow')
+
+    $training.on('click', ()=>{
+        $mainTown.hide()
+        battleGary()
+        console.log(battleOpponent)
+        battle()
+    })
+    $enterShop.on('click', ()=>{
+        // $mainTown.hide()
+        // $shop.show()
+    })
+    $enterPokeCentre.on('click', ()=>{
+        // $mainTown.hide()
+        // $pokeCentre.show()
+    })
+    $gym.on('click', ()=>{
+        alert('The Gym is closed at this moment')
+    })
+    $enterForest.on('click', ()=>{
+        $mainTown.hide()
+        $forest.show()
+    })
+    $enterMeadow.on('click', ()=>{
+            $mainTown.hide()
+            $meadow.show()
+        })
+    
 
 
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
