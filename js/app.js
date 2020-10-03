@@ -6,8 +6,8 @@ let pagesArray = []
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
-let mainTownButtons = ['pokeCentre', 'training', 'shop', 'gym']
-let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym']
+let mainTownButtons = ['pokeCentre', 'training', 'shop', 'gym', 'journey']
+let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Journey']
 
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
@@ -192,6 +192,7 @@ $(()=>{
         $pokeCentre = $('.pokeCentre')
         $shop = $('.shop')
         $gym = $('.gym')
+        $journey = $('.journey')
 
         // for (let i = 0; i < mainTownButtons.length; i++){
 
@@ -204,15 +205,20 @@ $(()=>{
             battle()
         })
         $shop.on('click', ()=>{
-            $mainTown.hide()
-            $shop.show()
+            // $mainTown.hide()
+            // $shop.show()
         })
         $pokeCentre.on('click', ()=>{
-            $mainTown.hide()
-            $pokeCentre.show()
+            // $mainTown.hide()
+            // $pokeCentre.show()
         })
         $gym.on('click', ()=>{
             alert('The Gym is closed at this moment')
+        })
+        $journey.on('click', ()=>{
+            $mainTown.hide()
+            randomEncounter()
+            randomBattle()
         })
     }
 
@@ -445,7 +451,6 @@ $(()=>{
         }
 
         function checkEnemyHealth(){
-            // debugger;
             if (enemyCurrentHealth <= 0){
                 $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
 
@@ -467,18 +472,7 @@ $(()=>{
             }
         }
 
-        // function moveUserDeadPokemon(){
-        //     userPokemonList.push(userBattlePokemon)
-        //     userBattlePokemon.pop()
-        // }
-        
-        // function moveEnemyDeadPokemon(){
-        //     enemyPokemonList.push(enemyBattlePokemon)
-        //     enemyBattlePokemon.pop()
-        // }
-
         function checkUserPokemonAvailability(){
-            // debugger;
             if (userPokemonList.length === 0){
                 $alertBox.text('You have no pokemon left!')
                 loseBattle()
@@ -489,7 +483,6 @@ $(()=>{
         }
 
         function checkEnemyPokemonAvailability(){
-            // debugger;
             console.log(enemyPokemonList.length)
             console.log(enemyBattlePokemon[0])
             console.log(enemyBattlePokemon)
@@ -592,8 +585,6 @@ $(()=>{
         $alertBox.text(enemyName + ' would like to battle')
         $enemyPicture.css('background-image', `url(${battleOpponent[0].backgroundImg})`)
 
-
-
 //////////////////////////////////      EVENT LISTENERS     /////////////////////////////////////
         $alertButton0.show()
         $alertButton0.on('click', ()=>{
@@ -609,7 +600,6 @@ $(()=>{
 
         $fightButton.on('click', ()=>{
             console.log('fight')
-            // $('.battleCommandsDisplay').empty()
             hideBattleButtons()
             showSkillButtons()
         })
@@ -631,46 +621,8 @@ $(()=>{
                     updateEnemyHealth()
                     checkEnemyHealth()
                 })
-
-                // $alertButton.on('click', (event)=>{
-                //     event.preventDefault()
-
-                //     enemyAttack()
-                //     showBattleButtons()
-                //     $alertButton.hide()
-                // })
             })
         }
-
-        async function clickSkill (){
-            let enemyAlive = await useSkillOnEnemy()
-            let newVariable = await anotherFunction(enemyAlive)
-            let nextVariable = await lastFunction(newVariable)
-
-            if (nextVariable === true){
-                runSomeFunction()
-            } else {
-                runAnotherFunction()
-            }
-        }
-
-        function someClickFunction(){
-            return new Promise((resolve, reject) =>{
-                //some function which has a resolve or reject, can return string, boolean etc
-
-            })
-        }
-        
-
-
-
-
-
-
-
-
-
-
         
         // async function clickSkill (){
         //     let skillClicked = await someClickFunction()
@@ -693,20 +645,19 @@ $(()=>{
         
 
 
-
-        function executeSkill(){
+        // function executeSkill(){
             
-        }
+        // }
         
-        function enemyAttackButton(){
-                $alertButton.on('click', (event)=>{
-                event.preventDefault()
+        // function enemyAttackButton(){
+        //         $alertButton.on('click', (event)=>{
+        //         event.preventDefault()
 
-                enemyAttack()
-                showBattleButtons()
-                $alertButton.hide()
-            })
-        }
+        //         enemyAttack()
+        //         showBattleButtons()
+        //         $alertButton.hide()
+        //     })
+        // }
 
 
         // let $itemButton = $('.itemButton')

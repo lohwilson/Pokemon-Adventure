@@ -7,8 +7,8 @@ let pokemonHealth = []
 let pokemonLevel = []
 let pokemonImage = []
 
-trainingPokemon = []
-
+let trainingPokemon = []
+let randomPokemon = []
 
 let garyPokemonList = []
 
@@ -24,18 +24,6 @@ class Pokemon {
         this.image = image;
     }
 }
-
-// const pokemonSkills = [
-//     {
-//         pikachuSkill: [{
-//             QuickAttack: 5, 
-//             Thundershock: 10,
-//             }]
-//     },
-//     {
-
-//     }
-// ]
 
 
 let pikachuSkill = [
@@ -128,16 +116,27 @@ let ratataSkill = [
     }
 ]
 
+let pidgeySkill = [
+    {
+        name: 'Gust',
+        damage: 5
+    },
+    {
+        name: 'Wing Attack',
+        damage: 10
+    }
+]
 
-let pidgeySkill = [{
-    Tackle: 5, 
-    LeechSeed: 10,
-}]
-
-let weedleSkill = [{
-    Tackle: 5, 
-    LeechSeed: 10,
-}]
+let weedleSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
 
 const pikachu = new Pokemon('Pikachu', '100', pikachuSkill, 5)
 const charmander = new Pokemon('Charmander', '100', charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
@@ -152,4 +151,5 @@ const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/
 
 garyPokemonList.push(ratata, caterpie)
 trainingPokemon.push(caterpie, ratata, pidgey, weedle)
+randomPokemon.push(caterpie, ratata, pidgey, weedle)
 

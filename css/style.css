@@ -122,6 +122,17 @@
     cursor: pointer;
 }
 
+.journey {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .alertButton {
     background-color: yellow;
     border: none;
@@ -249,7 +260,7 @@
 .enemyPicture{
     border: 2px solid red;
     width: 400px;
-    height: 400px;
+    height: 200px;
     margin: 10px;
     background-repeat: no-repeat, repeat;
 }
@@ -257,7 +268,7 @@
 .userPicture{
     border: 2px solid red;
     width: 400px;
-    height: 400px;
+    height: 200px;
     margin: 10px;
     background-repeat: no-repeat, repeat;
     justify-content: center;
