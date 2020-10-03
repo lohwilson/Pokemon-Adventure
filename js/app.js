@@ -47,9 +47,9 @@ $(()=>{
     $layout.append($deepCave)
     $deepCave.hide()
 
-    let $choosePokemonPage = $('<div>').addClass('choosePokemonPage')
-    $layout.append($choosePokemonPage)
-    $choosePokemonPage.hide()
+    let $professorOaksLab = $('<div>').addClass('professorOaksLab')
+    $layout.append($professorOaksLab)
+    $professorOaksLab.hide()
     let $mainTown = $('<div>').addClass('mainTown')
     $layout.append($mainTown)
     $mainTown.hide()
@@ -75,14 +75,20 @@ $(()=>{
 
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
 
-    let $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
+    $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
     $mainPage.append($mainPageButton)
 
-    let $professorOak1 = $('<div>').addClass('professorOak1')
-    $choosePokemonPage.append($professorOak1)
-    let $professorOak2 = $('<div>').addClass('professorOak2')
-    $choosePokemonPage.append($professorOak2)
+    $professorOak1 = $('<div>').addClass('professorOak1')
+    $professorOaksLab.append($professorOak1)
+    $professorOak2 = $('<div>').addClass('professorOak2')
+    $professorOaksLab.append($professorOak2)
     $professorOak2.hide()
+    $professorOak3 = $('<div>').addClass('professorOak3')
+    $professorOaksLab.append($professorOak3)
+    $professorOak3.hide()
+    $exitLab = $('<button>').addClass('exitLab').text('Exit')
+    $professorOaksLab.append($exitLab)
+    $exitLab.hide()
 
     // create battle buttons 
     for (let i = 0; i < battleCommands.length; i++){
@@ -101,7 +107,7 @@ $(()=>{
     $mainPageButton.on('click', ()=>{
         $mainPage.hide()
         alerts.beginJourney()
-        $choosePokemonPage.show()
+        $professorOaksLab.show()
     })
 
     // try to set to open modal
@@ -119,8 +125,23 @@ $(()=>{
 
     $professorOak2.on('click', ()=>{
         alert('Please come back when you have the item.')
-        newJourneyBegins()
+        $exitLab.show()
     })
+
+    $professorOak3.on('click', ()=>{
+        alert('Thank you for collecting this item for me')
+        alert('I hope it wasn\'t too much of a hassle')
+        alert('I\'m sure you will be a great Pokemon Trainer in the future')
+        endGame()
+    })
+
+
+
+    $exitLab.on('click', ()=>{
+        $professorOaksLab.hide()
+        $meadow.show()
+    })
+
 
     const alerts = {
         beginJourney: ()=>{
@@ -134,11 +155,8 @@ $(()=>{
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
-            $choosePokemonPage.append($button)
+            $professorOaksLab.append($button)
         }
-        // let $modal = $('<div>').attr('id', choosePokemonArray[i]+'Modal').text(choosePokemonText[i])
-        // $modal.css('background-image', 'url(css/images/pokemon/pikachu.jpg)').css('opacity', 0.5)
-        // $(choosePokemonArray[i]).append($modal)
 
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
@@ -160,32 +178,29 @@ $(()=>{
         })  
     }
 
-    // this should leave the choosing pokemon page, and run maintown function
-    function newJourneyBegins(){
-        $choosePokemonPage.hide()
-        enterMeadow()
-    }
+    $townButton = $('<button>').addClass('enterTown').text('Town')
+    $meadow.append($townButton)
+    $exploreButton = $('<button>').addClass('explore').text('Explore')
+    $meadow.append($exploreButton)
+    $enterLab = $('<button>').addClass('enterLab').text('Enter Lab')
+    $meadow.append($enterLab)
+    
+    $townButton.on('click', ()=>{
+        $meadow.hide()
+        $mainTown.show()
+    })
 
-    function enterMeadow(){
-        $meadow.show()
+    $exploreButton.on('click', ()=>{
+        $meadow.hide()
+        randomEncounter()
+        randomBattle()
+    })
 
-        $townButton = $('<button>').addClass('enterTown').text('Town')
-        $meadow.append($townButton)
+    $enterLab.on('click', ()=>{
+        $meadow.hide()
+        $professorOaksLab.show()
+    })
 
-        $exploreButton = $('<button>').addClass('explore').text('Explore')
-        $meadow.append($exploreButton)
-        
-        $townButton.on('click', ()=>{
-            $meadow.hide()
-            $mainTown.show()
-        })
-
-        $exploreButton.on('click', ()=>{
-            $meadow.hide()
-            randomEncounter()
-            randomBattle()
-        })
-    }
 
     function battleGary (){
         battleOpponent.push(rival)
@@ -229,8 +244,6 @@ $(()=>{
             $meadow.show()
         })
     
-
-
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
     // $enterBeach.hide()
@@ -242,8 +255,13 @@ $(()=>{
     $suspiciousTree = $('<div>').addClass('suspiciousTree')
     $forest.append($suspiciousTree)
 
+    $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
+    $forest.append($enterCave)
+    // $enterCave.hide()
+
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
     $forest.append($enterMainTown)
+
     $enterMainTown.on('click', ()=>{
         $forest.hide()
         $mainTown.show()
@@ -280,8 +298,6 @@ $(()=>{
         teamRocketAppears()
     })
 
-
-
     function teamRocketAppears(){
         alert('Prepare for trouble, and make it double')
 
@@ -289,8 +305,36 @@ $(()=>{
     }
 
 
+    $enterCave.on('click', ()=>{
+        $forest.hide()
+        $cave.show()
+    })
 
+    $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
+    $cave.append($caveToForest)
+    // $caveToForest.hide()
 
+    $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
+    $cave.append($caveToDeepCave)
+    // $caveToDeepCave.hide()
+
+    $caveToForest.on('click', ()=>{
+        $cave.hide()
+        $forest.show()
+    })
+
+    $caveToDeepCave.on('click', ()=>{
+        $cave.hide()
+        $deepCave.show()
+    })
+
+    $deepCaveToCave = $('<button>').addClass('deepCaveToCave').text('Cave')
+    $deepCave.append($deepCaveToCave)
+
+    $deepCaveToCave.on('click', ()=>{
+        $deepCave.hide()
+        $cave.show()
+    })
 
 
 
