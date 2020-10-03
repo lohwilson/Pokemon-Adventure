@@ -1,13 +1,13 @@
 console.log('hello world')
 
-let pages = ['mainPage', '2ndPage', '3rdPage', '4thPage']
-let pagesArray = []
+let keyItem = []
+let itemList = []
 
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
-let mainTownButtons = ['pokeCentre', 'training', 'shop', 'gym', 'journey']
-let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Journey']
+let mainTownButtons = ['enterPokeCentre', 'training', 'enterShop', 'gym', 'enterForest']
+let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Forest']
 
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
@@ -28,15 +28,24 @@ $(()=>{
     let $mainPage = $('<div>').addClass('mainPage')
     $layout.append($mainPage)
     $mainPage.hide()
-    let $2ndPage = $('<div>').addClass('2ndPage')
-    $layout.append($2ndPage)
-    $2ndPage.hide()
-    let $3rdPage = $('<div>').addClass('3rdPage')
-    $layout.append($3rdPage)
-    $3rdPage.hide()
-    let $4thPage = $('<div>').addClass('4thPage')
-    $layout.append($4thPage)
-    $4thPage.hide()
+    let $meadow = $('<div>').addClass('meadow')
+    $layout.append($meadow)
+    $meadow.hide()
+    let $forest = $('<div>').addClass('forest')
+    $layout.append($forest)
+    $forest.hide()
+    let $beach = $('<div>').addClass('beach')
+    $layout.append($beach)
+    $beach.hide()
+    let $deepForest = $('<div>').addClass('deepForest')
+    $layout.append($deepForest)
+    $deepForest.hide()
+    let $cave = $('<div>').addClass('cave')
+    $layout.append($cave)
+    $cave.hide()
+    let $deepCave = $('<div>').addClass('deepCave')
+    $layout.append($deepCave)
+    $deepCave.hide()
 
     let $choosePokemonPage = $('<div>').addClass('choosePokemonPage')
     $layout.append($choosePokemonPage)
@@ -51,8 +60,6 @@ $(()=>{
     $layout.append($pokeCentre)
     $pokeCentre.hide()
 
-
-
     // create pages array with page classes
     // for (let i = 0; i < pages.length; i++){
     //     let $page = $('<div>').addClass(pages[i])
@@ -64,7 +71,6 @@ $(()=>{
     // let $mainPage = ('.mainPage')
     // $($mainPage).show()
 
-
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
 
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
@@ -72,8 +78,11 @@ $(()=>{
     let $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
     $mainPage.append($mainPageButton)
 
-    let $professorOak = $('<div>').addClass('professorOak')
-    $choosePokemonPage.append($professorOak)
+    let $professorOak1 = $('<div>').addClass('professorOak1')
+    $choosePokemonPage.append($professorOak1)
+    let $professorOak2 = $('<div>').addClass('professorOak2')
+    $choosePokemonPage.append($professorOak2)
+    $professorOak2.hide()
 
     // create battle buttons 
     for (let i = 0; i < battleCommands.length; i++){
@@ -92,12 +101,13 @@ $(()=>{
     $mainPageButton.on('click', ()=>{
         $mainPage.hide()
         alerts.beginJourney()
-        choosePokemonPage()
+        $choosePokemonPage.show()
     })
 
     // try to set to open modal
 
-    $professorOak.one('click', ()=>{
+    $professorOak1.on('click', ()=>{
+        $professorOak1.hide()
         // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
         // alert('You look very excited to begin your journey, so i\'ll get right to it.')
         // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
@@ -107,29 +117,15 @@ $(()=>{
         choosePokemonButtons()
     })
 
+    $professorOak2.on('click', ()=>{
+        alert('Please come back when you have the item.')
+        newJourneyBegins()
+    })
+
     const alerts = {
         beginJourney: ()=>{
             alert('Your Pokemon Adventure Begins')
         }
-    }
-
-    // this should lead to the choose pokemon page
-    function choosePokemonPage(){
-        $choosePokemonPage.show()
-
-        // setTimeout(showAlert(), 10000)
-
-        // alert('Welcome to Professor Oak\'s lab')
-        // alert('You will begin your journey')
-        // let input = prompt('Are you ready?')
-        // if(input.toLowerCase() === 'yes'){
-        //     alert('Let\'s begin')
-        // } else if (input == null || input == ""){
-        //     alert('No one is born ready! let\'s go')
-        // } else {
-        //     alert('No one is born ready! let\'s go')
-        // }
-
     }
 
     function choosePokemonButtons(){
@@ -147,31 +143,56 @@ $(()=>{
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
             if (event.currentTarget.classList[0] === 'charmander'){
-                console.log('i got charmander')
+                alert('You got charmander')
                 userPokemonList.push(charmander)
-                console.log(userPokemonList)
+                rivalPokemonList.push(squirtle)
             } else if (event.currentTarget.classList[0] === 'squirtle'){
-                console.log('i got squirtle')
+                alert('You got squirtle')
                 userPokemonList.push(squirtle)
-                console.log(userPokemonList)
+                rivalPokemonList.push(bulbasaur)
             } else if (event.currentTarget.classList[0] === 'bulbasaur'){
-                console.log('i got bulbasaur')
+                alert('You got bulbasaur')
                 userPokemonList.push(bulbasaur)
-                console.log(userPokemonList)
+                rivalPokemonList.push(charmander)
             }
-            newJourneyBegins()
+            $('.choosePokemonButton').hide()
+            $professorOak2.show()
         })  
     }
 
     // this should leave the choosing pokemon page, and run maintown function
     function newJourneyBegins(){
         $choosePokemonPage.hide()
-        mainTown()
+        enterMeadow()
+    }
+
+    function enterMeadow(){
+        $meadow.show()
+
+        $townButton = $('<button>').attr('id', 'enterTown').text('Town')
+        $meadow.append($townButton)
+
+        $exploreButton = $('<button>').addClass('explore').text('Explore')
+        $meadow.append($exploreButton)
+        
+        $townButton.on('click', ()=>{
+            $meadow.hide()
+            mainTown()
+        })
+
+        $exploreButton.on('click', ()=>{
+            $meadow.hide()
+            randomEncounter()
+            randomBattle()
+        })
     }
 
 
+
+
+
     function battleGary (){
-        battleOpponent.push(gary)
+        battleOpponent.push(rival)
     }
 
     // maintown function
@@ -189,10 +210,10 @@ $(()=>{
         }
 
         $training = $('.training')
-        $pokeCentre = $('.pokeCentre')
-        $shop = $('.shop')
+        $enterPokeCentre = $('.enterPokeCentre')
+        $enterShop = $('.enterShop')
         $gym = $('.gym')
-        $journey = $('.journey')
+        $enterForest = $('.enterForest')
 
         // for (let i = 0; i < mainTownButtons.length; i++){
 
@@ -204,23 +225,34 @@ $(()=>{
             console.log(battleOpponent)
             battle()
         })
-        $shop.on('click', ()=>{
+        $enterShop.on('click', ()=>{
             // $mainTown.hide()
             // $shop.show()
         })
-        $pokeCentre.on('click', ()=>{
+        $enterPokeCentre.on('click', ()=>{
             // $mainTown.hide()
             // $pokeCentre.show()
         })
         $gym.on('click', ()=>{
             alert('The Gym is closed at this moment')
         })
-        $journey.on('click', ()=>{
+        $enterForest.on('click', ()=>{
             $mainTown.hide()
-            randomEncounter()
-            randomBattle()
+            $forest.show()
         })
     }
+
+
+    $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
+    $forest.append($enterBeach)
+    $enterBeach.hide()
+    $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
+    $forest.append($enterDeepForest)
+    $enterDeepForest.hide()
+
+    //need css animation and mouse hover to make it clickable
+    $suspiciousTree = $('<div>').addClass('suspiciousTree')
+    $forest.append($suspiciousTree)
 
 
 
@@ -231,24 +263,6 @@ $(()=>{
     function leavePage(){
 
     }
-
-    // const battleButtons = {
-        
-    //     setBattleOptions: ()=>{
-    //         for (let i = 0; i < battleButtonsArray.length; i++){
-    //             $('.battleCommandsDisplay').append(battleButtonsArray[i])
-    //         }
-    //     },
-
-    //     setAlertButton: ()=>{
-    //         let $alertBoxButton = $('<button>').addClass('alertBoxButton').text('Next')
-    //         $('.alertBox').append($alertBoxButton)
-    //     },
-
-    // }
-
-    // let enemyName = gary.name
-    // let enemyPokemonList = garyPokemonList
 
     let battleOpponent = []
 
@@ -484,6 +498,7 @@ $(()=>{
 
         function checkEnemyPokemonAvailability(){
             console.log(enemyPokemonList.length)
+
             console.log(enemyBattlePokemon[0])
             console.log(enemyBattlePokemon)
             console.log(enemyPokemonList)
@@ -493,10 +508,14 @@ $(()=>{
                 $alertBox.text(enemyName + ' has no pokemon left!')
                 winBattle()
             } else {
-                $alertBox.text(battleOpponent[0].name + ' chose ' + enemyBattlePokemon[0].name + '.')
                 enemyBattlePokemon.pop()
                 enemyBattlePokemon.push(enemyPokemonList[0])
+                $alertBox.text(battleOpponent[0].name + ' chose ' + enemyBattlePokemon[0].name + '.')
+
+                console.log(enemyPokemonList)
                 enemyPokemonList.shift()
+                console.log(enemyPokemonList)
+
                 setHealth()
                 displayEnemyInfo()
 
@@ -590,6 +609,10 @@ $(()=>{
         $alertButton0.on('click', ()=>{
             enemyBattlePokemon.push(enemyPokemonList[0])
             enemyPokemonList.shift()
+
+            console.log(enemyPokemonList)
+            console.log(enemyBattlePokemon)
+
             setEnemyHealth()
             displayEnemyInfo()
 
@@ -643,40 +666,20 @@ $(()=>{
         //     })
         // }
         
+        $itemButton.on('click', (event)=>{
+            console.log('item')
+            console.log($(event.eventListener))
+        })
 
+        $changePokemonButton.on('click', (event)=>{
+            console.log('change')
+            console.log($(event.eventListener))
+        })
 
-        // function executeSkill(){
-            
-        // }
-        
-        // function enemyAttackButton(){
-        //         $alertButton.on('click', (event)=>{
-        //         event.preventDefault()
-
-        //         enemyAttack()
-        //         showBattleButtons()
-        //         $alertButton.hide()
-        //     })
-        // }
-
-
-        // let $itemButton = $('.itemButton')
-        // $itemButton.on('click', (event)=>{
-        //     console.log('item')
-        //     console.log($(event.eventListener))
-        // })
-
-        // let $changePokemonButton = $('.changePokemonButton')
-        // $changePokemonButton.on('click', (event)=>{
-        //     console.log('change')
-        //     console.log($(event.eventListener))
-        // })
-
-        // let $runButton = $('.runButton')
-        // $runButton.on('click', (event)=>{
-        //     console.log('run')
-        //     console.log($(event.eventListener))
-        // })
+        $runButton.on('click', (event)=>{
+            console.log('run')
+            console.log($(event.eventListener))
+        })
     }
 
     //////////////////////////////////      EVENT LISTENERS     /////////////////////////////////////

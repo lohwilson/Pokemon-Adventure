@@ -10,7 +10,16 @@ let pokemonImage = []
 let trainingPokemon = []
 let randomPokemon = []
 
-let garyPokemonList = []
+let rivalPokemonList = []
+let trainer1PokemonList = []
+let trainer2PokemonList = []
+let trainer3PokemonList = []
+let trainer4PokemonList = []
+let trainer5PokemonList = []
+let trainer6PokemonList = []
+let trainer7PokemonList = []
+let trainer8PokemonList = []
+
 
 class Pokemon {
     constructor(name, health, skills, level, image){
@@ -24,7 +33,6 @@ class Pokemon {
         this.image = image;
     }
 }
-
 
 let pikachuSkill = [
     {
@@ -138,7 +146,7 @@ let weedleSkill = [
     }
 ]
 
-const pikachu = new Pokemon('Pikachu', '100', pikachuSkill, 5)
+const pikachu = new Pokemon('Pikachu', '100', pikachuSkill, 5, 'css/images/pokemon/pikachu.jpg')
 const charmander = new Pokemon('Charmander', '100', charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
 const squirtle = new Pokemon('Squirtle', '100', squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
 const bulbasaur = new Pokemon('Bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
@@ -146,10 +154,13 @@ const bulbasaur = new Pokemon('Bulbasaur', '100', bulbasaurSkill, 5, 'css/images
 const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
 const caterpie = new Pokemon('Caterpie', '100', caterpieSkill, 5, 'css/images/pokemon/caterpie.jpg')
 const pidgey = new Pokemon('Pidgey', '100', pidgeySkill, 5, 'css/images/pokemon/pidgey.jpg')
-const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.jpg')
+const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.png')
 
-
-garyPokemonList.push(ratata, caterpie)
 trainingPokemon.push(caterpie, ratata, pidgey, weedle)
 randomPokemon.push(caterpie, ratata, pidgey, weedle)
+
+rivalPokemonList.push(ratata, caterpie)
+trainer1PokemonList.push(ratata)
+trainer2PokemonList.push(ratata)
+trainer1PokemonList.push(ratata)
 

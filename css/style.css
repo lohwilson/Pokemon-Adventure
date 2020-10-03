@@ -47,6 +47,72 @@
     align-content: center;
 }
 
+.meadow {
+    background-image: url('images/meadow.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
+.forest {
+    background-image: url('images/forest.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
+.beach {
+    background-image: url('images/beach.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
+.deepForest {
+    background-image: url('images/deep_forest.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
+.cave {
+    background-image: url('images/cave.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
+.deepCave {
+    background-image: url('images/deep_cave.png');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
 /*//////////////////////////////////////////////////// PAGES ///////////////////////////////////////// */
 
 
@@ -333,13 +399,19 @@
 
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */
 
-.professorOak {
+.professorOak1 {
     width: 300px;
     height: 300px;
     margin: 75px;
     cursor: pointer;
 }
 
+.professorOak2 {
+    width: 300px;
+    height: 300px;
+    margin: 75px;
+    cursor: pointer;
+}
 
 
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */
