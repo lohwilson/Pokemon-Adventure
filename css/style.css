@@ -36,6 +36,17 @@
     flex-direction: column-reverse;
 }
 
+.meadow {
+    background-image: url('images/meadow.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-content: center;
+}
+
 .mainTown {
     background-image: url('images/img1.PNG');
     opacity: 0.5;
@@ -47,8 +58,8 @@
     align-content: center;
 }
 
-.meadow {
-    background-image: url('images/meadow.jpg');
+.pokeCentre {
+    background-image: url('images/pokemon\ centre.jpg');
     opacity: 0.5;
     background-repeat: no-repeat, repeat;
     width: 100%;
@@ -57,6 +68,7 @@
     display: flex;
     align-content: center;
 }
+
 
 .forest {
     background-image: url('images/forest.jpg');
@@ -202,6 +214,50 @@
 }
 
 .enterShop {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.gym {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.pokeCentreToTown {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.healPokemon {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.leaveButton {
     background-color: yellow;
     border: none;
     color: black;

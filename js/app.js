@@ -110,6 +110,11 @@ $(()=>{
         $professorOaksLab.show()
     })
 
+    const alerts = {
+        beginJourney: ()=>{
+            alert('Your Pokemon Adventure Begins')
+        }
+    }
     // try to set to open modal
 
     $professorOak1.on('click', ()=>{
@@ -135,19 +140,10 @@ $(()=>{
         endGame()
     })
 
-
-
     $exitLab.on('click', ()=>{
         $professorOaksLab.hide()
         $meadow.show()
     })
-
-
-    const alerts = {
-        beginJourney: ()=>{
-            alert('Your Pokemon Adventure Begins')
-        }
-    }
 
     function choosePokemonButtons(){
 
@@ -201,7 +197,6 @@ $(()=>{
         $professorOaksLab.show()
     })
 
-
     function battleGary (){
         battleOpponent.push(rival)
     }
@@ -229,8 +224,8 @@ $(()=>{
         // $shop.show()
     })
     $enterPokeCentre.on('click', ()=>{
-        // $mainTown.hide()
-        // $pokeCentre.show()
+        $mainTown.hide()
+        $pokeCentre.show()
     })
     $gym.on('click', ()=>{
         alert('The Gym is closed at this moment')
@@ -244,6 +239,51 @@ $(()=>{
             $meadow.show()
         })
     
+    $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
+    $pokeCentre.append($pokeCentreNurse)
+    $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
+    $pokeCentre.append($pokeCentreToTown)
+
+    $pokeCentreNurse.on('click', ()=>{
+        $pokeCentreNurse.hide()
+        $pokeCentreToTown.hide()
+        $healButton.show()
+        $leaveButton.show()
+        alert('Hi, I am Nurse Joy. How may I assist you today?')
+    })
+
+    
+    $healButton = $('<button>').text('Heal Pokemon').addClass('healPokemon')
+    $pokeCentre.append($healButton)
+    $healButton.hide()
+    $leaveButton = $('<button>').text('Leave').addClass('leaveButton')
+    $pokeCentre.append($leaveButton)
+    $leaveButton.hide()
+
+    $healButton.on('click', ()=>{
+        if (userPokemonList.every(health => health = 100)){
+            alert('Your pokemon are fully healed.')
+        } else {
+            for (let i = 0; i < userPokemonList.length; i++){
+                userPokemonList[i].health = 100
+            }
+            alert('Your pokemon are fully healed')
+            alert('Please come again')
+        }
+    })
+
+    $leaveButton.on('click', ()=>{
+        $healButton.hide()
+        $leaveButton.hide()
+        $pokeCentreNurse.show()
+        $pokeCentreToTown.show()
+    })
+
+    $pokeCentreToTown.on('click', ()=>{
+        $pokeCentre.hide()
+        $mainTown.show()
+    })
+
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
     // $enterBeach.hide()
