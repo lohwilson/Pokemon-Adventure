@@ -59,6 +59,9 @@ $(()=>{
     let $pokeCentre = $('<div>').addClass('pokeCentre')
     $layout.append($pokeCentre)
     $pokeCentre.hide()
+    let $shop = $('<div>').addClass('shop')
+    $layout.append($shop)
+    $shop.hide()
 
     // create pages array with page classes
     // for (let i = 0; i < pages.length; i++){
@@ -220,8 +223,8 @@ $(()=>{
         battle()
     })
     $enterShop.on('click', ()=>{
-        // $mainTown.hide()
-        // $shop.show()
+        $mainTown.hide()
+        $shop.show()
     })
     $enterPokeCentre.on('click', ()=>{
         $mainTown.hide()
@@ -239,6 +242,50 @@ $(()=>{
             $meadow.show()
         })
     
+    ////////////////////////  SHOP  //////////////////////////////////////////
+
+    $shopkeeper = $('<div>').addClass('shopkeeper').text('Shopkeeper')
+    $shop.append($shopkeeper)
+    $shopToTown = $('<button>').addClass('shopToTown').text('Exit')
+    $shop.append($shopToTown)
+
+    $shopToTown.on('click', ()=>{
+        $shop.hide()
+        $mainTown.show()
+    })
+
+    $buyItems = $('<button>').addClass('buyItems').text('Buy')
+    $shop.append($buyItems)
+    $buyItems.hide()
+    $sellItems = $('<button>').addClass('sellItems').text('Sell')
+    $shop.append($sellItems)
+    $sellItems.hide()
+    $leaveShop = $('<button>').addClass('leaveShop').text('Leave')
+    $shop.append($leaveShop)
+    $leaveShop.hide()
+
+    $leaveShop.on('click', ()=>{
+        $buyItems.hide()
+        $sellItems.hide()
+        $leaveShop.hide()
+        $shopkeeper.show()
+        $shopToTown.show()
+    })
+
+    $shopkeeper.on('click', ()=>{
+        $shopToTown.hide()
+        $shopkeeper.hide()
+        $buyItems.show()
+        $sellItems.show()
+        $leaveShop.show()
+    })
+
+
+    ////////////////////////  SHOP  //////////////////////////////////////////
+
+
+    ///////////////////////// POKECENTRE ////////////////////////////////////
+
     $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
     $pokeCentre.append($pokeCentreNurse)
     $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
@@ -252,7 +299,6 @@ $(()=>{
         alert('Hi, I am Nurse Joy. How may I assist you today?')
     })
 
-    
     $healButton = $('<button>').text('Heal Pokemon').addClass('healPokemon')
     $pokeCentre.append($healButton)
     $healButton.hide()
@@ -283,7 +329,13 @@ $(()=>{
         $pokeCentre.hide()
         $mainTown.show()
     })
+    
+    ///////////////////////// POKECENTRE ////////////////////////////////////
 
+
+
+
+    
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
     // $enterBeach.hide()
