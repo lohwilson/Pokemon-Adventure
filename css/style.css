@@ -413,6 +413,12 @@
     cursor: pointer;
 }
 
+.suspiciousTree {
+    width: 300px;
+    height: 300px;
+    margin: 75px;
+    cursor: pointer;
+}
 
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */
 

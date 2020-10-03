@@ -169,7 +169,7 @@ $(()=>{
     function enterMeadow(){
         $meadow.show()
 
-        $townButton = $('<button>').attr('id', 'enterTown').text('Town')
+        $townButton = $('<button>').addClass('enterTown').text('Town')
         $meadow.append($townButton)
 
         $exploreButton = $('<button>').addClass('explore').text('Explore')
@@ -245,14 +245,66 @@ $(()=>{
 
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
-    $enterBeach.hide()
+    // $enterBeach.hide()
     $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
     $forest.append($enterDeepForest)
-    $enterDeepForest.hide()
+    // $enterDeepForest.hide()
 
     //need css animation and mouse hover to make it clickable
     $suspiciousTree = $('<div>').addClass('suspiciousTree')
     $forest.append($suspiciousTree)
+
+    $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
+    $forest.append($enterMainTown)
+    $enterMainTown.on('click', ()=>{
+        $forest.hide()
+        $mainTown.show()
+    })
+
+    $enterBeach.on('click', ()=>{
+        $forest.hide()
+        $beach.show()
+    })
+
+    $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $beach.append($beachButton1)
+
+    $beachButton1.on('click', ()=>{
+        $beach.hide()
+        $forest.show()
+    })
+
+    $enterDeepForest.on('click', ()=>{
+        $forest.hide()
+        $deepForest.show()
+    })
+
+    $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $deepForest.append($deepForestButton1)
+
+    $deepForestButton1.on('click', ()=>{
+        $deepForest.hide()
+        $forest.show()
+    })
+
+    $suspiciousTree.on('click', ()=>{
+        $suspiciousTree.hide()
+        teamRocketAppears()
+    })
+
+
+
+    function teamRocketAppears(){
+        alert('Prepare for trouble, and make it double')
+
+
+    }
+
+
+
+
+
+
 
 
 
