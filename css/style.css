@@ -277,6 +277,17 @@
     cursor: pointer;
 }
 
+.respawnButton {
+    background-color: yellow;
+    border: none;
+    color: black;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 .shopToTown {
     background-color: yellow;
     border: none;

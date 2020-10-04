@@ -286,6 +286,14 @@ $(()=>{
 
     $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
     $pokeCentre.append($pokeCentreNurse)
+    // $pokeCentreText = $('<div>').addClass('pokeCentreText').text('')
+    // $pokeCentre.append($pokeCentreText)
+
+    // for (let i = 0; i < 2; i++){
+    //     $splitDisplay = $('<div>').addClass('pokeCentreDisplay').attr('id', 'pokeCentreDisplay'+i)
+    //     $pokeCentreText.append($splitDisplay)
+    // }
+
     $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
     $pokeCentre.append($pokeCentreToTown)
 
@@ -303,6 +311,9 @@ $(()=>{
     $leaveButton = $('<button>').text('Leave').addClass('leaveButton')
     $pokeCentre.append($leaveButton)
     $leaveButton.hide()
+    $respawnButton = $('<button>').text('Respawn').addClass('respawnButton')
+    $pokeCentre.append($respawnButton)
+    $respawnButton.hide()
 
     $healButton.on('click', ()=>{
         if (userPokemonList.every(health => health = 100)){
@@ -328,6 +339,17 @@ $(()=>{
         $mainTown.show()
     })
     
+    $respawnButton.on('click', ()=>{
+        $respawnButton.hide()
+        alert('Looks like your pokemon ran out of hp!')
+        alert('I have healed your pokemon back to full health.')
+        alert('Please treat your pokemon with more care in the future.')
+        $pokeCentreNurse.show()
+        $pokeCentreToTown.show()
+    })
+    
+
+
     ///////////////////////// POKECENTRE ////////////////////////////////////
 
 
@@ -433,6 +455,15 @@ $(()=>{
         $mainTown.show()
     }
 
+    function goToPokeCentre(){
+        $battle.hide()
+        $pokeCentre.show()
+        $pokeCentreNurse.hide()
+        $pokeCentreToTown.hide()
+        $respawnButton.show()
+    }
+
+    
     // this should lead to the battle page
 
     function battle(){
@@ -582,7 +613,7 @@ $(()=>{
         $alertButton7.on('click', ()=>{
             $alertButton7.hide()
             $battle.empty()
-            goToMainTown()
+            goToPokeCentre()
         })
 
         $alertButton8.on('click', ()=>{
@@ -598,7 +629,7 @@ $(()=>{
 
         $alertButton10.on('click', ()=>{
             $alertButton10.hide()
-
+            
         })
 
         $fightButton.on('click', (event)=>{
@@ -669,20 +700,6 @@ $(()=>{
             $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
         }
         displayUserInfo()
-        // displayEnemyInfo()
-
-        // display image for user pokemon, need to add function to change image when pokemon changes
-
-        // function setUserHealth(){
-        //     userFullHealth = currentPokemon.health
-        //     userCurrentHealth = currentPokemon.health
-        // }
-        // // setHealth()
-
-        // function setEnemyHealth(){
-        //     enemyFullHealth = enemyBattlePokemon[0].health
-        //     enemyCurrentHealth = enemyBattlePokemon[0].health
-        // }
 
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
@@ -725,14 +742,18 @@ $(()=>{
             }
         }
 
+        // currently only have 1 pokemon, so automatically lose if pokemon dies
         function checkUserPokemonAvailability(){
-            if (userPokemonList.length === 0){
                 $alertBox.text('You have no pokemon left!')
                 loseBattle()
-            } else {
-                $alertBox.text('Please choose a new Pokemon.')
-                userChooseNewPokemon()
-            }
+
+            // if (userPokemonList.length === 0){
+            //     $alertBox.text('You have no pokemon left!')
+            //     loseBattle()
+            // } else {
+            //     $alertBox.text('Please choose a new Pokemon.')
+            //     userChooseNewPokemon()
+            // }
         }
 
         function checkEnemyPokemonAvailability(){
@@ -774,7 +795,7 @@ $(()=>{
         // }
         
         function loseBattle(){
-            $alertBox.text(player.name + ' have no pokemon left!')
+            $alertBox.text(player.name + ' has no pokemon left!')
             hideBattleButtons()
             $alertButton7.show()
         }

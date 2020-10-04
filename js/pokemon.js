@@ -8,7 +8,8 @@ let pokemonLevel = []
 let pokemonImage = []
 
 let trainingPokemon = []
-let randomPokemon = []
+let randomPokemon1 = []
+let randomPokemon2 = []
 
 let rivalPokemonList = []
 let trainer1PokemonList = []
@@ -146,6 +147,94 @@ let weedleSkill = [
     }
 ]
 
+let spearowSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let ekansSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let sandshrewSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let nidoranSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let geodudeSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let zubatSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let koffingSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
+let diglettSkill = [
+    {
+        name: 'Sting',
+        damage: 5
+    },
+    {
+        name: 'Poison Attack',
+        damage: 10
+    }
+]
+
 const pikachu = new Pokemon('Pikachu', '100', pikachuSkill, 5, 'css/images/pokemon/pikachu.jpg')
 const charmander = new Pokemon('Charmander', '100', charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
 const squirtle = new Pokemon('Squirtle', '100', squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
@@ -155,9 +244,21 @@ const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/
 const caterpie = new Pokemon('Caterpie', '100', caterpieSkill, 5, 'css/images/pokemon/caterpie.jpg')
 const pidgey = new Pokemon('Pidgey', '100', pidgeySkill, 5, 'css/images/pokemon/pidgey.jpg')
 const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.png')
+const spearow = new Pokemon('Spearow', '100', spearowSkill, 5, 'css/images/pokemon/weedle.png')
+const ekans = new Pokemon('Ekans', '100', ekansSkill, 5, 'css/images/pokemon/ekans.png')
+const sandshrew = new Pokemon('Sandshrew', '100', sandshrewSkill, 5, 'css/images/pokemon/sandshrew.png')
+const nidoran = new Pokemon('Nidoran', '100', nidoranSkill, 5, 'css/images/pokemon/nidoran.png')
+const geodude = new Pokemon('Geodude', '100', geodudeSkill, 5, 'css/images/pokemon/geodude.png')
+const zubat = new Pokemon('Zubat', '100', zubatSkill, 5, 'css/images/pokemon/zubat.png')
+const koffing = new Pokemon('Koffing', '100', koffingSkill, 5, 'css/images/pokemon/koffing.png')
+const diglett = new Pokemon('Diglett', '100', diglettSkill, 5, 'css/images/pokemon/diglett.png')
+
+
+
 
 trainingPokemon.push(caterpie, ratata, pidgey, weedle)
-randomPokemon.push(caterpie, ratata, pidgey, weedle)
+randomPokemon1.push(caterpie, ratata, pidgey, weedle)
+
 
 rivalPokemonList.push(ratata, caterpie)
 trainer1PokemonList.push(ratata)
