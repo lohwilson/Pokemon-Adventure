@@ -448,7 +448,6 @@ $(()=>{
             let $display = $('<div>').addClass(battleContainerArray[i])
             $('.battle').append($display)
         }
-
         // create battle buttons
         for (let i = 0; i < battleButtonsArray.length; i++){
             $('.battleCommandsDisplay').append(battleButtonsArray[i])
@@ -467,7 +466,8 @@ $(()=>{
         let $runButton = $('.runButton')
 
         // choose the current pokemon for battle for both user and enemy
-        userBattlePokemon.push(userPokemonList[0])
+        userBattlePokemon = userPokemonList[0]
+        // userBattlePokemon.push(userPokemonList[0])
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -673,13 +673,16 @@ $(()=>{
 
         // display image for user pokemon, need to add function to change image when pokemon changes
 
-        function setHealth(){
-            userFullHealth = currentPokemon.health
-            userCurrentHealth = currentPokemon.health
-            enemyFullHealth = enemyBattlePokemon[0].health
-            enemyCurrentHealth = enemyBattlePokemon[0].health
-        }
-        // setHealth()
+        // function setUserHealth(){
+        //     userFullHealth = currentPokemon.health
+        //     userCurrentHealth = currentPokemon.health
+        // }
+        // // setHealth()
+
+        // function setEnemyHealth(){
+        //     enemyFullHealth = enemyBattlePokemon[0].health
+        //     enemyCurrentHealth = enemyBattlePokemon[0].health
+        // }
 
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
@@ -733,13 +736,6 @@ $(()=>{
         }
 
         function checkEnemyPokemonAvailability(){
-            console.log(enemyPokemonList.length)
-
-            console.log(enemyBattlePokemon[0])
-            console.log(enemyBattlePokemon)
-            console.log(enemyPokemonList)
-            console.log(enemyPokemonList[0])
-
             if (enemyPokemonList.length === 0){
                 $alertBox.text(enemyName + ' has no pokemon left!')
                 winBattle()
@@ -747,16 +743,15 @@ $(()=>{
                 enemyBattlePokemon.pop()
                 enemyBattlePokemon.push(enemyPokemonList[0])
                 $alertBox.text(battleOpponent[0].name + ' chose ' + enemyBattlePokemon[0].name + '.')
-
-                console.log(enemyPokemonList)
                 enemyPokemonList.shift()
-                console.log(enemyPokemonList)
 
-                setHealth()
+                console.log(userCurrentHealth)
+                setEnemyHealth()
+                console.log(userCurrentHealth)
+
                 displayEnemyInfo()
 
                 $alertButton9.show()
-
             }
         }
 
@@ -834,7 +829,6 @@ $(()=>{
                 $alertBox.text(currentPokemon.name + ' used ' + currentPokemon.skills[i].name + '.')
                 
                 $alertButton1.show()
-
             })
         }
     }
