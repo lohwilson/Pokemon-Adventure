@@ -27,7 +27,6 @@ $(()=>{
     ////////////////////////////////////        PAGES       //////////////////////////////////////////
     let $mainPage = $('<div>').addClass('mainPage')
     $layout.append($mainPage)
-    $mainPage.hide()
     let $meadow = $('<div>').addClass('meadow')
     $layout.append($meadow)
     $meadow.hide()
@@ -101,9 +100,8 @@ $(()=>{
 
 
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
-    // create start game button
-    $mainPage.show()
-   
+
+
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
 
     // click event listener on main page button
@@ -335,7 +333,7 @@ $(()=>{
 
 
 
-    
+
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
     // $enterBeach.hide()
@@ -428,18 +426,6 @@ $(()=>{
         $cave.show()
     })
 
-
-
-
-
-    function goToPokeCentre(){
-
-    }
-
-    function leavePage(){
-
-    }
-
     let battleOpponent = []
 
     function goToMainTown(){
@@ -451,6 +437,8 @@ $(()=>{
 
     function battle(){
         $battle.show()
+
+        let currentPokemon = userPokemonList[0]
 
         let enemyName = battleOpponent[0].name
         let enemyPokemonList = battleOpponent[0].pokemonList
@@ -490,8 +478,8 @@ $(()=>{
         // console.log('Enemy Pokemon List: ' + enemyPokemonList)
 
         function setUserHealth(){
-            userFullHealth = userBattlePokemon[0].health
-            userCurrentHealth = userBattlePokemon[0].health
+            userFullHealth = currentPokemon.health
+            userCurrentHealth = currentPokemon.health
         }
 
         setUserHealth()
@@ -500,8 +488,6 @@ $(()=>{
             enemyFullHealth = enemyBattlePokemon[0].health
             enemyCurrentHealth = enemyBattlePokemon[0].health
         }
-
-
 
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
@@ -537,7 +523,6 @@ $(()=>{
         let $alertButton9 = $('.alertButton9')
         let $alertButton10 = $('.alertButton10')
 
-        
         $alertButton0.hide()
         $alertButton1.hide()
         $alertButton2.hide()
@@ -550,18 +535,11 @@ $(()=>{
         $alertButton9.hide()
         $alertButton10.hide()
 
-
-        // function updateAlertBox(){
-        //     $alertBoxButton.on('click', (alertText)=>{
-        //         return alertText
-        //     })
-        // }
-
         // create skill buttons
-        let userPokemonSkillsArray = Object.keys(userBattlePokemon[0].skills)
+        let userPokemonSkillsArray = Object.keys(currentPokemon.skills)
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
             $pokemonSkill = $('<button>').attr('id', 'skill'+i)
-            $pokemonSkill.text(userBattlePokemon[0].skills[i].name)
+            $pokemonSkill.text(currentPokemon.skills[i].name)
             $('.battleCommandsDisplay').append($pokemonSkill)
         }
         hideSkillButtons()
@@ -569,9 +547,9 @@ $(()=>{
 ////////////////////////////////    FUNCTIONS    ////////////////////////////////////
 
         function displayUserInfo(){
-            $('#userDisplay0').text('Level '+ userBattlePokemon[0].level + ' ' + userBattlePokemon[0].name)
+            $('#userDisplay0').text('Level '+ currentPokemon.level + ' ' + currentPokemon.name)
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
-            $userPicture.css('background-image', `url(${userBattlePokemon[0].image})`)
+            $userPicture.css('background-image', `url(${currentPokemon.image})`)
         }
         function displayEnemyInfo(){
             $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
@@ -584,8 +562,8 @@ $(()=>{
         // display image for user pokemon, need to add function to change image when pokemon changes
 
         function setHealth(){
-            userFullHealth = userBattlePokemon[0].health
-            userCurrentHealth = userBattlePokemon[0].health
+            userFullHealth = currentPokemon.health
+            userCurrentHealth = currentPokemon.health
             enemyFullHealth = enemyBattlePokemon[0].health
             enemyCurrentHealth = enemyBattlePokemon[0].health
         }
@@ -593,7 +571,7 @@ $(()=>{
 
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
-            console.log(userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
+            console.log(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
         }
 
         function updateEnemyHealth () {
@@ -620,7 +598,7 @@ $(()=>{
 
         function checkUserHealth(){
             if (userCurrentHealth <= 0){
-                $alertBox.text(userBattlePokemon[0].name + ' has fainted.')
+                $alertBox.text(currentPokemon.name + ' has fainted.')
                 $alertButton6.show()
                 $alertButton6.on('click', (event)=>{
                     event.preventDefault()
@@ -628,7 +606,7 @@ $(()=>{
                     checkUserPokemonAvailability()
                 })
             } else {
-                $alertBox.text(userBattlePokemon[0].name + ' has ' + userCurrentHealth + ' hitpoints left.')
+                $alertBox.text(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
                 $alertButton5.show()
                 $alertButton5.on('click', (event)=>{
                     event.preventDefault()
@@ -797,7 +775,8 @@ $(()=>{
             $alertButton0.hide()
         })
 
-        $fightButton.on('click', ()=>{
+        $fightButton.on('click', (event)=>{
+            event.preventDefault()
             console.log('fight')
             hideBattleButtons()
             showSkillButtons()
@@ -807,12 +786,12 @@ $(()=>{
             $('#skill'+i).on('click', (event)=>{
                 event.preventDefault()
 
-                enemyCurrentHealth = enemyCurrentHealth - userBattlePokemon[0].skills[i].damage
+                enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
                 }
                 hideSkillButtons()
-                $alertBox.text(userBattlePokemon[0].name + ' used ' + userBattlePokemon[0].skills[i].name + '.')
+                $alertBox.text(currentPokemon.name + ' used ' + currentPokemon.skills[i].name + '.')
                 
                 $alertButton1.show()
                 $alertButton1.on('click', ()=>{
@@ -823,28 +802,22 @@ $(()=>{
             })
         }
         
-        // async function clickSkill (){
-        //     let skillClicked = await someClickFunction()
-        //     let newVariable = await anotherFunction(skillClicked)
-        //     let nextVariable = await lastFunction(newVariable)
-
-        //     if (nextVariable === true){
-        //         runSomeFunction()
-        //     } else {
-        //         runAnotherFunction()
-        //     }
-        // }
-
-        // function someClickFunction(){
-        //     return new Promise((resolve, reject) =>{
-        //         //some function which has a resolve or reject, can return string, boolean etc
-                
-        //     })
-        // }
-        
         $itemButton.on('click', (event)=>{
+            event.preventDefault()
             console.log('item')
+            hideBattleButtons()
+
+            items()
+            $alertBox.text('You do not have any items!')
             console.log($(event.eventListener))
+        })
+
+        $cancelItem = $('<button>').addClass('cancelItem').text('Cancel')
+        $('.battleCommandsDisplay').append($cancelItem)
+        $cancelItem.hide()
+        $cancelItem.on('click', ()=>{
+            items.hide()
+            showBattleButtons()
         })
 
         $changePokemonButton.on('click', (event)=>{
