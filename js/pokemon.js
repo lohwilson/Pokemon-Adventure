@@ -20,8 +20,8 @@ let trainer5PokemonList = []
 let trainer6PokemonList = []
 let trainer7PokemonList = []
 let trainer8PokemonList = []
-let teamRocket1PokemonList
-let teamRocket2PokemonList
+let teamRocket1PokemonList = []
+let teamRocket2PokemonList = []
 
 
 class Pokemon {

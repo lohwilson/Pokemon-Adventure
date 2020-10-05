@@ -408,8 +408,7 @@ $(()=>{
 
     function teamRocketAppears(){
         alert('Prepare for trouble, and make it double')
-
-
+        battleTeamRocket1()
     }
 
 
@@ -444,7 +443,6 @@ $(()=>{
         $cave.show()
     })
 
-    let battleOpponent = []
 
     function goToMainTown(){
         $battle.hide()
@@ -458,6 +456,24 @@ $(()=>{
         $pokeCentreToTown.hide()
         $respawnButton.show()
     }
+
+
+
+
+    let battleOpponent = []
+
+    function battleGary (){
+        battleOpponent.push(rival)
+    }
+    function battleTeamRocket1(){
+        $forest.hide()
+        battleOpponent.push(teamRocket1)
+        battle()
+    }
+
+
+
+
 
     
     // this should lead to the battle page

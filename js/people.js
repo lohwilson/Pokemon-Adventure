@@ -26,6 +26,10 @@ const teamRocket1 = new People('Team Rocket', 'Male', teamRocket1PokemonList, 'c
 const teamRocket2 = new People('Team Rocket', 'Male', teamRocket2PokemonList, 'css/images/pokemon/team_rocket.jpg')
 
 
+
+let battleOpponent = []
+
+
 function battleGary (){
     battleOpponent.push(rival)
 }
@@ -72,3 +76,5 @@ function battleTeamRocket2(){
     battleOpponent.push(teamRocket1)
     battle()
 }
+
+
