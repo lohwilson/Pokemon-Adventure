@@ -10,6 +10,7 @@ let randomEncounterIndex
 function randomEncounter(){
     randomEncounterIndex = Math.floor(Math.random()*randomPokemon1.length)
     enemyBattlePokemon.push(randomPokemon1[randomEncounterIndex])
+    console.log(randomEncounterIndex)
 }
 
 
@@ -71,8 +72,8 @@ function randomBattle(){
     // let $alertButton = $('<button>').addClass('alertButton').text('Next')
     // $('.battle').append($alertButton)
 
-    for (let i = 0; i < 11; i++){
-        let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i)
+    for (let i = 0; i < 12; i++){
+        let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons')
         $('#alertDisplay1').append($alertButton)
     }
 
@@ -87,6 +88,7 @@ function randomBattle(){
     let $alertButton8 = $('.alertButton8')
     let $alertButton9 = $('.alertButton9')
     let $alertButton10 = $('.alertButton10')
+    let $alertButton11 = $('.alertButton11')
 
     $alertButton0.hide()
     $alertButton1.hide()
@@ -99,6 +101,7 @@ function randomBattle(){
     $alertButton8.hide()
     $alertButton9.hide()
     $alertButton10.hide()
+    $alertButton11.hide()
 
     // create skill buttons
     let userPokemonSkillsArray = Object.keys(currentPokemon.skills)
@@ -110,14 +113,15 @@ function randomBattle(){
     hideSkillButtons()
 
 
-
-
-
 ////////////////////////////////    EVENT LISTENERS    ////////////////////////////////////
 
     $alertButton0.on('click', ()=>{
         $alertButton0.hide()
-        showBattleButtons()
+        $('#alertDisplay0').text('Player chose '+ currentPokemon.name)
+        displayUserInfo()
+
+
+        $alertButton11.show()
     })
 
     $alertButton1.on('click', ()=>{
@@ -173,31 +177,32 @@ function randomBattle(){
 
     $alertButton10.on('click', ()=>{
         $alertButton10.hide()
-        
     })
 
-    $fightButton.on('click', (event)=>{
-        event.preventDefault()
+    $alertButton11.on('click', ()=>{
+        $alertButton11.hide()
+        showBattleButtons()
+    })
+
+
+    $fightButton.on('click', ()=>{
         console.log('fight')
         hideBattleButtons()
         showSkillButtons()
     })
 
-    $itemButton.on('click', (event)=>{
-        event.preventDefault()
+    $itemButton.on('click', ()=>{
         console.log('item')
         hideBattleButtons()
-
-        items()
         $('#alertDisplay0').text('You do not have any items!')
-        console.log($(event.eventListener))
+        $cancelItem.show()
     })
 
     $cancelItem = $('<button>').addClass('cancelItem').text('Cancel')
     $('.battleCommandsDisplay').append($cancelItem)
     $cancelItem.hide()
     $cancelItem.on('click', ()=>{
-        items.hide()
+        $cancelItem.hide()
         showBattleButtons()
     })
 
@@ -243,7 +248,6 @@ function randomBattle(){
         $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
         $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
     }
-    displayUserInfo()
 
     function updateUserHealth () {
         $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
@@ -344,9 +348,11 @@ function randomBattle(){
 //////////////////////////////////      FUNCTIONS       ///////////////////////////////////////
 
     $('#alertDisplay0').text('A wild '+ enemyBattlePokemon[0].name + ' appeared.')
-    // $('#alertDisplay0').text('A wild '+ enemyBattlePokemon[0].name + ' appeared.')
     setEnemyHealth()
     displayEnemyInfo()
+
+    $('#userDisplay0').text(player.name)
+    $userPicture.css('background-image', `url(${player.backgroundImg})`)
 
     $alertButton0.show()
 
@@ -365,3 +371,5 @@ function randomBattle(){
         })
     }
 }
+
+

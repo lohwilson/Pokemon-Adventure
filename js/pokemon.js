@@ -240,24 +240,24 @@ const charmander = new Pokemon('Charmander', '100', charmanderSkill, 5, 'css/ima
 const squirtle = new Pokemon('Squirtle', '100', squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
 const bulbasaur = new Pokemon('Bulbasaur', '100', bulbasaurSkill, 5, 'css/images/pokemon/bulbasaur.png')
 
-const ratata = new Pokemon('Ratata', '100', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
-const caterpie = new Pokemon('Caterpie', '100', caterpieSkill, 5, 'css/images/pokemon/caterpie.jpg')
-const pidgey = new Pokemon('Pidgey', '100', pidgeySkill, 5, 'css/images/pokemon/pidgey.jpg')
-const weedle = new Pokemon('Weedle', '100', weedleSkill, 5, 'css/images/pokemon/weedle.png')
-const spearow = new Pokemon('Spearow', '100', spearowSkill, 5, 'css/images/pokemon/weedle.png')
-const ekans = new Pokemon('Ekans', '100', ekansSkill, 5, 'css/images/pokemon/ekans.png')
-const sandshrew = new Pokemon('Sandshrew', '100', sandshrewSkill, 5, 'css/images/pokemon/sandshrew.png')
-const nidoran = new Pokemon('Nidoran', '100', nidoranSkill, 5, 'css/images/pokemon/nidoran.png')
-const geodude = new Pokemon('Geodude', '100', geodudeSkill, 5, 'css/images/pokemon/geodude.png')
-const zubat = new Pokemon('Zubat', '100', zubatSkill, 5, 'css/images/pokemon/zubat.png')
-const koffing = new Pokemon('Koffing', '100', koffingSkill, 5, 'css/images/pokemon/koffing.png')
-const diglett = new Pokemon('Diglett', '100', diglettSkill, 5, 'css/images/pokemon/diglett.png')
+const ratata = new Pokemon('Ratata', '40', ratataSkill, 5, 'css/images/pokemon/ratata.jpg')
+const caterpie = new Pokemon('Caterpie', '40', caterpieSkill, 5, 'css/images/pokemon/caterpie.jpg')
+const pidgey = new Pokemon('Pidgey', '40', pidgeySkill, 5, 'css/images/pokemon/pidgey.jpg')
+const weedle = new Pokemon('Weedle', '40', weedleSkill, 5, 'css/images/pokemon/weedle.png')
+const spearow = new Pokemon('Spearow', '40', spearowSkill, 5, 'css/images/pokemon/spearow.png')
+const ekans = new Pokemon('Ekans', '40', ekansSkill, 5, 'css/images/pokemon/ekans.png')
+const sandshrew = new Pokemon('Sandshrew', '40', sandshrewSkill, 5, 'css/images/pokemon/sandshrew.png')
+const nidoran = new Pokemon('Nidoran', '40', nidoranSkill, 5, 'css/images/pokemon/nidoran.png')
+const geodude = new Pokemon('Geodude', '40', geodudeSkill, 5, 'css/images/pokemon/geodude.png')
+const zubat = new Pokemon('Zubat', '40', zubatSkill, 5, 'css/images/pokemon/zubat.jpg')
+const koffing = new Pokemon('Koffing', '40', koffingSkill, 5, 'css/images/pokemon/koffing.png')
+const diglett = new Pokemon('Diglett', '40', diglettSkill, 5, 'css/images/pokemon/diglett.jpg')
 
 
 
 
 trainingPokemon.push(caterpie, ratata, pidgey, weedle)
-randomPokemon1.push(caterpie, ratata, pidgey, weedle)
+randomPokemon1.push(caterpie, ratata, pidgey, weedle, spearow, ekans, sandshrew, nidoran, geodude, zubat)
 
 
 rivalPokemonList.push(ratata, caterpie)

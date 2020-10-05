@@ -522,8 +522,8 @@ $(()=>{
         // let $alertButton = $('<button>').addClass('alertButton').text('Next')
         // $('.battle').append($alertButton)
 
-        for (let i = 0; i < 11; i++){
-            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i)
+        for (let i = 0; i < 12; i++){
+            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons')
             $('#alertDisplay1').append($alertButton)
         }
 
@@ -538,6 +538,7 @@ $(()=>{
         let $alertButton8 = $('.alertButton8')
         let $alertButton9 = $('.alertButton9')
         let $alertButton10 = $('.alertButton10')
+        let $alertButton11 = $('.alertButton11')
 
         $alertButton0.hide()
         $alertButton1.hide()
@@ -550,6 +551,7 @@ $(()=>{
         $alertButton8.hide()
         $alertButton9.hide()
         $alertButton10.hide()
+        $alertButton11.hide()
 
         // create skill buttons
         let userPokemonSkillsArray = Object.keys(currentPokemon.skills)
@@ -567,18 +569,11 @@ $(()=>{
 ////////////////////////////////    EVENT LISTENERS    ////////////////////////////////////
 
         $alertButton0.on('click', ()=>{
-            enemyBattlePokemon.push(enemyPokemonList[0])
-            enemyPokemonList.shift()
-
-            console.log(enemyPokemonList)
-            console.log(enemyBattlePokemon)
-
-            setEnemyHealth()
-            displayEnemyInfo()
-
-            $('#alertDisplay0').text(enemyName + ' choose ' + enemyBattlePokemon[0].name)
-            showBattleButtons()
             $alertButton0.hide()
+            $('#alertDisplay0').text('Player chose '+ currentPokemon.name)
+            displayUserInfo()
+    
+            $alertButton11.show()
         })
 
         $alertButton1.on('click', ()=>{
@@ -636,6 +631,23 @@ $(()=>{
             $alertButton10.hide()
             
         })
+
+        $alertButton11.on('click', ()=>{
+            $alertButton11.hide()
+            enemyBattlePokemon.push(enemyPokemonList[0])
+            enemyPokemonList.shift()
+
+            console.log(enemyPokemonList)
+            console.log(enemyBattlePokemon)
+
+            setEnemyHealth()
+            displayEnemyInfo()
+
+            $('#alertDisplay0').text(enemyName + ' choose ' + enemyBattlePokemon[0].name)
+            showBattleButtons()
+        })
+    
+
 
         $fightButton.on('click', (event)=>{
             event.preventDefault()
@@ -704,7 +716,6 @@ $(()=>{
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
             $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
         }
-        displayUserInfo()
 
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
@@ -841,6 +852,9 @@ $(()=>{
         $('#alertDisplay0').text(enemyName + ' would like to battle')
         // $('#alertDisplay0').text(enemyName + ' would like to battle')
         $enemyPicture.css('background-image', `url(${battleOpponent[0].backgroundImg})`)
+
+        $('#userDisplay0').text(player.name)
+        $userPicture.css('background-image', `url(${player.backgroundImg})`)
 
         $alertButton0.show()
 
