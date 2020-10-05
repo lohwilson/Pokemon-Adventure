@@ -27,54 +27,54 @@ const teamRocket2 = new People('Team Rocket', 'Male', teamRocket2PokemonList, 'c
 
 
 
-let battleOpponent = []
+// let battleOpponent = []
 
 
-function battleRival (){
-    battleOpponent.push(rival)
-}
+// function battleRival (){
+//     battleOpponent.push(rival)
+// }
 
-function battleTrainer1(){
-    //location.hide()
-    battleOpponent.push(trainer1)
-    battle()
-}
+// function battleTrainer1(){
+//     //location.hide()
+//     battleOpponent.push(trainer1)
+//     battle()
+// }
 
-function battleTrainer2(){
-        //location.hide()
-    battleOpponent.push(trainer2)
-    battle()
-}
+// function battleTrainer2(){
+//         //location.hide()
+//     battleOpponent.push(trainer2)
+//     battle()
+// }
 
-function battleTrainer3(){
-        //location.hide()
-    battleOpponent.push(trainer3)
-    battle()
-}
+// function battleTrainer3(){
+//         //location.hide()
+//     battleOpponent.push(trainer3)
+//     battle()
+// }
 
-function battleTrainer4(){
-        //location.hide()
-    battleOpponent.push(trainer4)
-    battle()
-}
+// function battleTrainer4(){
+//         //location.hide()
+//     battleOpponent.push(trainer4)
+//     battle()
+// }
 
-function battleTrainer5(){
-    battleOpponent.push(trainer5)
-}
+// function battleTrainer5(){
+//     battleOpponent.push(trainer5)
+// }
 
-function battleTrainer6(){
-    battleOpponent.push(trainer6)
-}
+// function battleTrainer6(){
+//     battleOpponent.push(trainer6)
+// }
 
-function battleTeamRocket1(){
-    //location.hide()
-    battleOpponent.push(teamRocket1)
-    battle()
-}
-function battleTeamRocket2(){
-    //location.hide()
-    battleOpponent.push(teamRocket1)
-    battle()
-}
+// function battleTeamRocket1(){
+//     //location.hide()
+//     battleOpponent.push(teamRocket1)
+//     battle()
+// }
+// function battleTeamRocket2(){
+//     //location.hide()
+//     battleOpponent.push(teamRocket1)
+//     battle()
+// }
 
 

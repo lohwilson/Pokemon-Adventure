@@ -20,6 +20,10 @@ let enemyPokemonList = []
 let userBattlePokemon = []
 let enemyBattlePokemon = []
 
+let currentLocation
+let battleOpponent = []
+let gymClickCounter = 0
+
 $(()=>{
 
     let $layout = $('#layout')
@@ -211,7 +215,7 @@ $(()=>{
     $enterMeadow = $('.enterMeadow')
 
     $training.on('click', ()=>{
-        alert('The training dojo is closed')
+        alert('The training grounds is closed.')
     })
     $enterShop.on('click', ()=>{
         $mainTown.hide()
@@ -328,13 +332,19 @@ $(()=>{
     $respawnButton.hide()
 
     $healButton.on('click', ()=>{
-        if (userPokemonList.every(health => health = 100)){
+        if (userPokemonList[0].health === 100){
+            console.log(userPokemonList)
+            console.log(userPokemonList[0])
+            console.log('aaaaaaaaaaaaaaaa')
             alert('Your pokemon are fully healed.')
         } else {
             for (let i = 0; i < userPokemonList.length; i++){
                 userPokemonList[i].health = 100
             }
-            alert('Your pokemon are fully healed')
+            console.log(userPokemonList)
+            console.log(userPokemonList[0])
+
+            alert('I have healed your pokemon!')
             alert('Please come again')
         }
     })
@@ -473,9 +483,7 @@ $(()=>{
         $respawnButton.show()
     }
 
-    let currentLocation
-    let battleOpponent = []
-    let gymClickCounter = 0
+
 
 
 
