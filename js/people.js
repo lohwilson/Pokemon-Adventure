@@ -7,7 +7,7 @@ class People {
     }
 }
 
-const player = new People('Player', 'Male', userPokemonList, 'css/images/trainer/male_player.png')
+const player = new People('Player', 'Male', userPokemonList, 'css/images/trainer/female_player.jpg')
 
 console.log(player)
 
