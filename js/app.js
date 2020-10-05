@@ -696,13 +696,13 @@ $(()=>{
 
         
         function setUserHealth(){
-            userFullHealth = currentPokemon.health
+            userFullHealth = currentPokemon.fullHealth
             userCurrentHealth = currentPokemon.health
         }
         setUserHealth()
 
         function setEnemyHealth(){
-            enemyFullHealth = enemyBattlePokemon[0].health
+            enemyFullHealth = enemyBattlePokemon[0].fullHealth
             enemyCurrentHealth = enemyBattlePokemon[0].health
         }
 
@@ -819,6 +819,7 @@ $(()=>{
         function winBattle(){
             $('#alertDisplay0').text(enemyName + ' has no pokemon left!')
             hideBattleButtons()
+            currentPokemon.health = userCurrentHealth
             $alertButton8.show()
             console.log(currentPokemon)
         }

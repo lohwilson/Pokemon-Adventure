@@ -21,8 +21,6 @@ function randomBattle(){
 
     let currentPokemon = userPokemonList[0]
 
-    let enemyPokemonList = enemyBattlePokemon
-
     // create battle containers
     for (let i = 0; i < battleContainerArray.length; i++){
         let $display = $('<div>').addClass(battleContainerArray[i])
@@ -228,13 +226,13 @@ function randomBattle(){
 
     
     function setUserHealth(){
-        userFullHealth = currentPokemon.health
+        userFullHealth = currentPokemon.fullHealth
         userCurrentHealth = currentPokemon.health
     }
     setUserHealth()
 
     function setEnemyHealth(){
-        enemyFullHealth = enemyBattlePokemon[0].health
+        enemyFullHealth = enemyBattlePokemon[0].fullHealth
         enemyCurrentHealth = enemyBattlePokemon[0].health
     }
 
@@ -317,6 +315,7 @@ function randomBattle(){
 
     function winBattle(){
         hideBattleButtons()
+        currentPokemon.health = userCurrentHealth
         $alertButton8.show()
     }
     
