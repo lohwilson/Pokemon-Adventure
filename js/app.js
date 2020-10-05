@@ -444,9 +444,9 @@ $(()=>{
     })
 
 
-    function goToMainTown(){
+    function exitBattle(){
         $battle.hide()
-        $mainTown.show()
+        currentLocation.show()
     }
 
     function goToPokeCentre(){
@@ -459,18 +459,19 @@ $(()=>{
 
 
 
-
+    let currentLocation
     let battleOpponent = []
 
     function battleGary (){
         battleOpponent.push(rival)
+        currentLocation = $mainTown
     }
     function battleTeamRocket1(){
         $forest.hide()
         battleOpponent.push(teamRocket1)
         battle()
+        currentLocation = $forest
     }
-
 
     
     // this should lead to the battle page
@@ -478,10 +479,11 @@ $(()=>{
     function battle(){
         $battle.show()
 
-        let currentPokemon = userPokemonList[0]
+        currentPokemon = userPokemonList[0]
         userBattlePokemon = userPokemonList[0]
-        let enemyName = battleOpponent[0].name
-        let enemyPokemonList = battleOpponent[0].pokemonList
+        enemyName = battleOpponent[0].name
+        enemyPokemonList = battleOpponent[0].pokemonList
+        console.log(enemyPokemonList)
 
         // create battle containers
         for (let i = 0; i < battleContainerArray.length; i++){
@@ -599,12 +601,19 @@ $(()=>{
             $alertButton7.hide()
             $battle.empty()
             goToPokeCentre()
+            battleOpponent.pop()
+            enemyPokemonList.length = 0
+            enemyBattlePokemon.length = 0
+            userCurrentHealth = userFullHealth
         })
 
         $alertButton8.on('click', ()=>{
             $alertButton8.hide()
             $battle.empty()
-            goToMainTown()
+            battleOpponent.pop()
+            enemyPokemonList.length = 0
+            enemyBattlePokemon.length = 0
+            exitBattle()
         })
 
         $alertButton9.on('click', ()=>{
@@ -619,6 +628,7 @@ $(()=>{
 
         $alertButton11.on('click', ()=>{
             $alertButton11.hide()
+
             enemyBattlePokemon.push(enemyPokemonList[0])
             enemyPokemonList.shift()
 

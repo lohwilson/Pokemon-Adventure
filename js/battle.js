@@ -71,7 +71,7 @@ function randomBattle(){
     // $('.battle').append($alertButton)
 
     for (let i = 0; i < 12; i++){
-        let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons')
+        let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons').hide()
         $('#alertDisplay1').append($alertButton)
     }
 
@@ -87,19 +87,6 @@ function randomBattle(){
     let $alertButton9 = $('.alertButton9')
     let $alertButton10 = $('.alertButton10')
     let $alertButton11 = $('.alertButton11')
-
-    $alertButton0.hide()
-    $alertButton1.hide()
-    $alertButton2.hide()
-    $alertButton3.hide()
-    $alertButton4.hide()
-    $alertButton5.hide()
-    $alertButton6.hide()
-    $alertButton7.hide()
-    $alertButton8.hide()
-    $alertButton9.hide()
-    $alertButton10.hide()
-    $alertButton11.hide()
 
     // create skill buttons
     let userPokemonSkillsArray = Object.keys(currentPokemon.skills)
