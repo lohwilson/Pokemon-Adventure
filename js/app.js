@@ -820,6 +820,7 @@ $(()=>{
             $('#alertDisplay0').text(enemyName + ' has no pokemon left!')
             hideBattleButtons()
             $alertButton8.show()
+            console.log(currentPokemon)
         }
         
         function hideBattleButtons (){

@@ -1,8 +1,7 @@
 
 
 # Fixes
-- remove battle event listeners from functions
-- battle health needs to be checked
+- make sure user pokemon health is updated correctly. currently resets to full hp after battle
 - tidy up code
 - css UI
 

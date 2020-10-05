@@ -23,9 +23,10 @@ let trainer8PokemonList = []
 
 
 class Pokemon {
-    constructor(name, health, skills, level, image){
+    constructor(name, health, fullHealth, skills, level, image){
         this.name = name;
         this.health = health;
+        this.fullHealth = fullHealth;
         // this.attack = attack;
         // this.defense = defense;
         // this.speed = speed;
@@ -230,8 +231,8 @@ let diglettSkill = [
         damage: 5
     },
     {
-        name: 'Poison Attack',
-        damage: 10
+        name: 'Dig',
+        damage: 20
     }
 ]
 
