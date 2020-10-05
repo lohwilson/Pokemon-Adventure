@@ -30,7 +30,7 @@ const teamRocket2 = new People('Team Rocket', 'Male', teamRocket2PokemonList, 'c
 let battleOpponent = []
 
 
-function battleGary (){
+function battleRival (){
     battleOpponent.push(rival)
 }
 

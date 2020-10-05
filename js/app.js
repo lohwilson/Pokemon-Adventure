@@ -211,10 +211,7 @@ $(()=>{
     $enterMeadow = $('.enterMeadow')
 
     $training.on('click', ()=>{
-        $mainTown.hide()
-        battleGary()
-        console.log(battleOpponent)
-        battle()
+        alert('The training dojo is closed')
     })
     $enterShop.on('click', ()=>{
         $mainTown.hide()
@@ -226,7 +223,17 @@ $(()=>{
     })
     $gym.on('click', ()=>{
         alert('The Gym is closed at this moment')
+        gymClickCounter++
+
+        if (gymClickCounter === 5){
+            alert('Who do you think you are?')
+            alert('I\'ll teach you a lesson for trying to mess with my gym!')
+            $mainTown.hide()
+            battleRival()
+            battle()
+        }
     })
+
     $enterForest.on('click', ()=>{
         $mainTown.hide()
         $forest.show()
@@ -236,6 +243,15 @@ $(()=>{
             $meadow.show()
         })
     
+    function battleRival (){
+        battleOpponent.push(rival)
+        currentLocation = $mainTown
+    }
+
+
+
+
+
     ////////////////////////  SHOP  //////////////////////////////////////////
 
     $shopkeeper = $('<div>').addClass('shopkeeper').text('Shopkeeper')
@@ -457,15 +473,12 @@ $(()=>{
         $respawnButton.show()
     }
 
-
-
     let currentLocation
     let battleOpponent = []
+    let gymClickCounter = 0
 
-    function battleGary (){
-        battleOpponent.push(rival)
-        currentLocation = $mainTown
-    }
+
+
     function battleTeamRocket1(){
         $forest.hide()
         battleOpponent.push(teamRocket1)
@@ -473,6 +486,32 @@ $(()=>{
         currentLocation = $forest
     }
 
+    function battleTrainer1(){
+        $beach.hide()
+        battleOpponent.push(trainer1)
+        battle()
+        currentLocation = $beach
+    }
+    
+    function battleTrainer2(){
+        $deepForest.hide()
+        battleOpponent.push(trainer2)
+        battle()
+        currentLocation = $deepForest
+    }
+    
+    function battleTrainer3(){
+        $cave.hide()
+        battleOpponent.push(trainer3)
+        battle()
+        currentLocation = $cave
+    }
+    
+    function battleTrainer4(){
+            //location.hide()
+        battleOpponent.push(trainer4)
+        battle()
+    }
     
     // this should lead to the battle page
 
@@ -844,7 +883,7 @@ $(()=>{
 
 //////////////////////////////////      FUNCTIONS       ///////////////////////////////////////
 
-        $('#alertDisplay0').text(enemyName + ' would like to battle')
+        $('#alertDisplay0').text(enemyName + ' challenged you to a battle!')
         // $('#alertDisplay0').text(enemyName + ' would like to battle')
         $enemyPicture.css('background-image', `url(${battleOpponent[0].backgroundImg})`)
 
