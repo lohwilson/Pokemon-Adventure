@@ -505,6 +505,8 @@
     height: 200px;
     margin: 10px;
     background-repeat: no-repeat, repeat;
+    display: flex;
+    justify-content: center;
 }
 
 .userPicture{
@@ -559,13 +561,13 @@
 .alertBox{
     border: 2px solid red;
     width: 400px;
-    height: 200px;
+    height: 100px;
     text-align: center;
 }
 
 #alertDisplay0{
     width: 400px;
-    height: 100px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -573,7 +575,7 @@
 
 #alertDisplay1{
     width: 400px;
-    height: 100px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -590,7 +592,7 @@
     border: none;
     color: black;
     width: 100px;
-    height: 100px;
+    height: 50px;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
@@ -721,6 +723,27 @@
 }
 
 .suspiciousTree {
+    width: 300px;
+    height: 300px;
+    margin: 75px;
+    cursor: pointer;
+}
+
+.suspiciousRock {
+    width: 300px;
+    height: 300px;
+    margin: 75px;
+    cursor: pointer;
+}
+
+.suspiciousMoss {
+    width: 300px;
+    height: 300px;
+    margin: 75px;
+    cursor: pointer;
+}
+
+.suspiciousObject {
     width: 300px;
     height: 300px;
     margin: 75px;

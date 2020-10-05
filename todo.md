@@ -1,7 +1,6 @@
 
 
 # Fixes
-- make sure user pokemon health is updated correctly. currently resets to full hp after battle
 - tidy up code
 - css UI
     background image full screen

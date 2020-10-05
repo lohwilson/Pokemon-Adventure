@@ -275,9 +275,9 @@ randomPokemon1.push(caterpie, ratata, pidgey, weedle, spearow, ekans, sandshrew,
 
 
 rivalPokemonList.push(ratata, caterpie)
-trainer1PokemonList.push(ratata)
-trainer2PokemonList.push(ratata)
-trainer1PokemonList.push(ratata)
+trainer1PokemonList.push(sandshrew, nidoran)
+trainer2PokemonList.push(spearow, ratata)
+trainer3PokemonList.push(geodude,diglett)
 
 teamRocket1PokemonList.push(koffing, ekans)
 teamRocket2PokemonList.push(koffing, ekans, meowth)

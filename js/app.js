@@ -378,6 +378,9 @@ $(()=>{
 
 
 
+
+    ///////////////////////// FOREST ////////////////////////////////////
+
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $forest.append($enterBeach)
     // $enterBeach.hide()
@@ -391,7 +394,7 @@ $(()=>{
 
     $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
     $forest.append($enterCave)
-    // $enterCave.hide()
+    $enterCave.hide()
 
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
     $forest.append($enterMainTown)
@@ -406,27 +409,13 @@ $(()=>{
         $beach.show()
     })
 
-    $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $beach.append($beachButton1)
-
-    $beachButton1.on('click', ()=>{
-        $beach.hide()
-        $forest.show()
-    })
-
+   
     $enterDeepForest.on('click', ()=>{
         $forest.hide()
         $deepForest.show()
     })
 
-    $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $deepForest.append($deepForestButton1)
-
-    $deepForestButton1.on('click', ()=>{
-        $deepForest.hide()
-        $forest.show()
-    })
-
+   
     $suspiciousTree.on('click', ()=>{
         $suspiciousTree.hide()
         teamRocketAppears()
@@ -436,12 +425,111 @@ $(()=>{
         alert('Prepare for trouble, and make it double')
         battleTeamRocket1()
     }
-
+    
+    function battleTeamRocket1(){
+        $forest.hide()
+        battleOpponent.push(teamRocket1)
+        battle()
+        currentLocation = $forest
+    }
 
     $enterCave.on('click', ()=>{
         $forest.hide()
         $cave.show()
     })
+
+
+    ///////////////////////// FOREST ////////////////////////////////////
+
+
+
+
+
+
+
+
+    ///////////////////////// BEACH ////////////////////////////////////
+
+    $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $beach.append($beachButton1)
+
+    $beachButton1.on('click', ()=>{
+        $beach.hide()
+        $forest.show()
+    })
+
+    $suspiciousRock = $('<div>').addClass('suspiciousRock')
+    $beach.append($suspiciousRock)
+
+    $suspiciousRock.on('click', ()=>{
+        $suspiciousRock.hide()
+        suspiciousRockMoves()
+    })
+
+    function suspiciousRockMoves(){
+        alert('The suspicious rock starts moving, and someone appears behind it!')
+        battleTrainer1()
+    }
+
+    function battleTrainer1(){
+        $beach.hide()
+        battleOpponent.push(trainer1)
+        battle()
+        currentLocation = $beach
+    }
+
+
+    ///////////////////////// BEACH ////////////////////////////////////
+
+
+
+
+
+
+
+
+
+    ///////////////////////// DEEP FOREST  ////////////////////////////////////
+
+    $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $deepForest.append($deepForestButton1)
+
+    $deepForestButton1.on('click', ()=>{
+        $deepForest.hide()
+        $forest.show()
+    })
+
+    $suspiciousMoss = $('<div>').addClass('suspiciousMoss')
+    $deepForest.append($suspiciousMoss)
+
+    $suspiciousMoss.on('click', ()=>{
+        $suspiciousMoss.hide()
+        suspiciousMossMoves()
+    })
+
+    function suspiciousMossMoves(){
+        alert('The suspicious Moss starts moving, and someone appears behind it!')
+        battleTrainer2()
+    }
+    function battleTrainer2(){
+        $deepForest.hide()
+        battleOpponent.push(trainer2)
+        battle()
+        currentLocation = $deepForest
+    }
+
+
+
+    ///////////////////////// DEEP FOREST  ////////////////////////////////////
+
+
+
+
+
+
+    ///////////////////////// CAVE  ////////////////////////////////////
+
+
 
     $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
     $cave.append($caveToForest)
@@ -451,6 +539,7 @@ $(()=>{
     $cave.append($caveToDeepCave)
     // $caveToDeepCave.hide()
 
+    
     $caveToForest.on('click', ()=>{
         $cave.hide()
         $forest.show()
@@ -461,6 +550,38 @@ $(()=>{
         $deepCave.show()
     })
 
+
+    $suspiciousObject = $('<div>').addClass('suspiciousObject')
+    $cave.append($suspiciousObject)
+    
+    $suspiciousObject.on('click', ()=>{
+        $suspiciousObject.hide()
+        suspiciousObjectMoves()
+    })
+
+    function suspiciousObjectMoves(){
+        alert('The suspicious Object starts moving, and someone appears behind it!')
+        battleTrainer3()
+    }
+
+    function battleTrainer3(){
+        $cave.hide()
+        battleOpponent.push(trainer3)
+        battle()
+        currentLocation = $cave
+    }
+
+    ///////////////////////// CAVE  ////////////////////////////////////
+
+
+
+
+    ///////////////////////// DEEP CAVE  ////////////////////////////////////
+
+
+
+
+
     $deepCaveToCave = $('<button>').addClass('deepCaveToCave').text('Cave')
     $deepCave.append($deepCaveToCave)
 
@@ -468,6 +589,14 @@ $(()=>{
         $deepCave.hide()
         $cave.show()
     })
+
+
+
+    ///////////////////////// DEEP CAVE  ////////////////////////////////////
+
+
+
+
 
 
     function exitBattle(){
@@ -486,34 +615,9 @@ $(()=>{
 
 
 
-
-    function battleTeamRocket1(){
-        $forest.hide()
-        battleOpponent.push(teamRocket1)
-        battle()
-        currentLocation = $forest
-    }
-
-    function battleTrainer1(){
-        $beach.hide()
-        battleOpponent.push(trainer1)
-        battle()
-        currentLocation = $beach
-    }
     
-    function battleTrainer2(){
-        $deepForest.hide()
-        battleOpponent.push(trainer2)
-        battle()
-        currentLocation = $deepForest
-    }
-    
-    function battleTrainer3(){
-        $cave.hide()
-        battleOpponent.push(trainer3)
-        battle()
-        currentLocation = $cave
-    }
+
+
     
     function battleTrainer4(){
             //location.hide()
