@@ -198,10 +198,6 @@ $(()=>{
         $professorOaksLab.show()
     })
 
-    function battleGary (){
-        battleOpponent.push(rival)
-    }
-
     for (let i = 0; i < mainTownButtons.length; i++){
         let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
         $mainTown.append($mainTownButton)
