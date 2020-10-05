@@ -472,9 +472,6 @@ $(()=>{
     }
 
 
-
-
-
     
     // this should lead to the battle page
 
@@ -482,7 +479,7 @@ $(()=>{
         $battle.show()
 
         let currentPokemon = userPokemonList[0]
-
+        userBattlePokemon = userPokemonList[0]
         let enemyName = battleOpponent[0].name
         let enemyPokemonList = battleOpponent[0].pokemonList
 
@@ -508,10 +505,6 @@ $(()=>{
         let $changePokemonButton = $('.changePokemonButton')
         let $runButton = $('.runButton')
 
-        // choose the current pokemon for battle for both user and enemy
-        userBattlePokemon = userPokemonList[0]
-        // userBattlePokemon.push(userPokemonList[0])
-
         // split user display to 2 rows to show level and name on top and HP at the bottom
         for (let i = 0; i < 2; i++){
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'userDisplay'+i)
@@ -528,14 +521,9 @@ $(()=>{
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'alertDisplay'+i)
             $alertBox.append($splitDisplay)
         }
-        // let $alertBoxButton = $('<button>').addClass('alertBoxButton').text('Next')
-        // $('.alertBox').append($alertBoxButton)
-
-        // let $alertButton = $('<button>').addClass('alertButton').text('Next')
-        // $('.battle').append($alertButton)
 
         for (let i = 0; i < 12; i++){
-            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons')
+            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons').hide()
             $('#alertDisplay1').append($alertButton)
         }
 
@@ -552,19 +540,6 @@ $(()=>{
         let $alertButton10 = $('.alertButton10')
         let $alertButton11 = $('.alertButton11')
 
-        $alertButton0.hide()
-        $alertButton1.hide()
-        $alertButton2.hide()
-        $alertButton3.hide()
-        $alertButton4.hide()
-        $alertButton5.hide()
-        $alertButton6.hide()
-        $alertButton7.hide()
-        $alertButton8.hide()
-        $alertButton9.hide()
-        $alertButton10.hide()
-        $alertButton11.hide()
-
         // create skill buttons
         let userPokemonSkillsArray = Object.keys(currentPokemon.skills)
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
@@ -573,8 +548,6 @@ $(()=>{
             $('.battleCommandsDisplay').append($pokemonSkill)
         }
         hideSkillButtons()
-
-
 
 
 
@@ -658,8 +631,6 @@ $(()=>{
             $('#alertDisplay0').text(enemyName + ' choose ' + enemyBattlePokemon[0].name)
             showBattleButtons()
         })
-    
-
 
         $fightButton.on('click', (event)=>{
             event.preventDefault()
