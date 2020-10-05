@@ -59,6 +59,12 @@ function randomBattle(){
         $enemyInfoDisplay.append($splitDisplay)
     }
 
+    // split alert box to 2 divs
+    for (let i = 0; i < 2; i++){
+        $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'alertDisplay'+i)
+        $alertBox.append($splitDisplay)
+    }
+
     // let $alertBoxButton = $('<button>').addClass('alertBoxButton').text('Next')
     // $('.alertBox').append($alertBoxButton)
 
@@ -67,7 +73,7 @@ function randomBattle(){
 
     for (let i = 0; i < 11; i++){
         let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i)
-        $('.battle').append($alertButton)
+        $('#alertDisplay1').append($alertButton)
     }
 
     let $alertButton0 = $('.alertButton0')
@@ -139,7 +145,7 @@ function randomBattle(){
     
     $alertButton5.on('click', ()=>{
         $alertButton5.hide()
-        $alertBox.text('')
+        $('#alertDisplay0').text('')
         showBattleButtons()
     })
 
@@ -183,7 +189,7 @@ function randomBattle(){
         hideBattleButtons()
 
         items()
-        $alertBox.text('You do not have any items!')
+        $('#alertDisplay0').text('You do not have any items!')
         console.log($(event.eventListener))
     })
 
@@ -256,41 +262,41 @@ function randomBattle(){
         if (userCurrentHealth <= 0){
             userCurrentHealth = 0;
         }
-        $alertBox.text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '.')
+        $('#alertDisplay0').text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '.')
         $alertButton4.show()
     }
 
     function checkUserHealth(){
         if (userCurrentHealth <= 0){
-            $alertBox.text(currentPokemon.name + ' has fainted.')
+            $('#alertDisplay0').text(currentPokemon.name + ' has fainted.')
             $alertButton6.show()
         } else {
-            $alertBox.text(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
+            $('#alertDisplay0').text(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
             $alertButton5.show()
         }
     }
 
     function checkEnemyHealth(){
         if (enemyCurrentHealth <= 0){
-            $alertBox.text(enemyBattlePokemon[0].name + ' has fainted.')
+            $('#alertDisplay0').text(enemyBattlePokemon[0].name + ' has fainted.')
             enemyBattlePokemon.pop()
             winBattle()
         } else {
-            $alertBox.text(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
+            $('#alertDisplay0').text(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
             $alertButton3.show()
         }
     }
 
     // currently only have 1 pokemon, so automatically lose if pokemon dies
     function checkUserPokemonAvailability(){
-            $alertBox.text('You have no pokemon left!')
+            $('#alertDisplay0').text('You have no pokemon left!')
             loseBattle()
 
         // if (userPokemonList.length === 0){
-        //     $alertBox.text('You have no pokemon left!')
+        //     $('#alertDisplay0').text('You have no pokemon left!')
         //     loseBattle()
         // } else {
-        //     $alertBox.text('Please choose a new Pokemon.')
+        //     $('#alertDisplay0').text('Please choose a new Pokemon.')
         //     userChooseNewPokemon()
         // }
     }
@@ -300,7 +306,7 @@ function randomBattle(){
     }
     
     function loseBattle(){
-        $alertBox.text(player.name + ' has no pokemon left!')
+        $('#alertDisplay0').text(player.name + ' has no pokemon left!')
         hideBattleButtons()
         $alertButton7.show()
     }
@@ -337,8 +343,8 @@ function randomBattle(){
 
 //////////////////////////////////      FUNCTIONS       ///////////////////////////////////////
 
-    
-    $alertBox.text('A wild '+ enemyBattlePokemon[0].name + ' appeared.')
+    $('#alertDisplay0').text('A wild '+ enemyBattlePokemon[0].name + ' appeared.')
+    // $('#alertDisplay0').text('A wild '+ enemyBattlePokemon[0].name + ' appeared.')
     setEnemyHealth()
     displayEnemyInfo()
 
@@ -353,7 +359,7 @@ function randomBattle(){
                 enemyCurrentHealth = 0;
             }
             hideSkillButtons()
-            $alertBox.text(currentPokemon.name + ' used ' + currentPokemon.skills[i].name + '.')
+            $('#alertDisplay0').text(currentPokemon.name + ' used ' + currentPokemon.skills[i].name + '.')
             
             $alertButton1.show()
         })
