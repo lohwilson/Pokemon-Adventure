@@ -20,6 +20,8 @@ let trainer5PokemonList = []
 let trainer6PokemonList = []
 let trainer7PokemonList = []
 let trainer8PokemonList = []
+let teamRocket1PokemonList
+let teamRocket2PokemonList
 
 
 class Pokemon {
@@ -236,6 +238,17 @@ let diglettSkill = [
     }
 ]
 
+let meowthSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
 const pikachu = new Pokemon('Pikachu', 100, 100, pikachuSkill, 5, 'css/images/pokemon/pikachu.jpg')
 const charmander = new Pokemon('Charmander', 100, 100, charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
 const squirtle = new Pokemon('Squirtle', 100, 100, squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
@@ -253,7 +266,7 @@ const geodude = new Pokemon('Geodude', '40', '40', geodudeSkill, 5, 'css/images/
 const zubat = new Pokemon('Zubat', '40', '40', zubatSkill, 5, 'css/images/pokemon/zubat.jpg')
 const koffing = new Pokemon('Koffing', '40', '40', koffingSkill, 5, 'css/images/pokemon/koffing.png')
 const diglett = new Pokemon('Diglett', '40', '40', diglettSkill, 5, 'css/images/pokemon/diglett.jpg')
-
+const meowth = new Pokemon('Meowth', 100, 100, meowthSkill, 5, 'css/images/pokemon/meowth.jpg')
 
 
 
@@ -266,3 +279,5 @@ trainer1PokemonList.push(ratata)
 trainer2PokemonList.push(ratata)
 trainer1PokemonList.push(ratata)
 
+teamRocket1PokemonList.push(koffing, ekans)
+teamRocket2PokemonList.push(koffing, ekans, meowth)
