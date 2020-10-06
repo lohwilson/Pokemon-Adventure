@@ -23,6 +23,7 @@ let enemyBattlePokemon = []
 let currentLocation
 let battleOpponent = []
 let gymClickCounter = 0
+let caveUnlock = 0
 
 $(()=>{
 
@@ -53,6 +54,16 @@ $(()=>{
     let $professorOaksLab = $('<div>').addClass('professorOaksLab')
     $layout.append($professorOaksLab)
     $professorOaksLab.hide()
+
+    for (let i = 0; i < 3; i++){
+        let $oakLabDiv = $('<div>').addClass('oakLabDiv'+i)
+        $professorOaksLab.append($oakLabDiv)
+    }
+    let $oakLabDiv0 = $('.oakLabDiv0')
+    let $oakLabDiv1 = $('.oakLabDiv1')
+    let $oakLabDiv2 = $('.oakLabDiv2')
+
+
     let $mainTown = $('<div>').addClass('mainTown')
     $layout.append($mainTown)
     $mainTown.hide()
@@ -79,21 +90,26 @@ $(()=>{
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
 
+
+
+
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
 
     $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
     $mainPage.append($mainPageButton)
+    $continueButton = $('<button>').addClass('continueButton').text('Continue')
+    $mainPage.append($continueButton)
 
     $professorOak1 = $('<div>').addClass('professorOak1')
-    $professorOaksLab.append($professorOak1)
+    $oakLabDiv0.append($professorOak1)
     $professorOak2 = $('<div>').addClass('professorOak2')
-    $professorOaksLab.append($professorOak2)
+    $oakLabDiv0.append($professorOak2)
     $professorOak2.hide()
     $professorOak3 = $('<div>').addClass('professorOak3')
-    $professorOaksLab.append($professorOak3)
+    $oakLabDiv0.append($professorOak3)
     $professorOak3.hide()
     $exitLab = $('<button>').addClass('exitLab').text('Exit')
-    $professorOaksLab.append($exitLab)
+    $oakLabDiv2.append($exitLab)
     $exitLab.hide()
 
     // create battle buttons 
@@ -156,7 +172,7 @@ $(()=>{
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
-            $professorOaksLab.append($button)
+            $oakLabDiv1.append($button)
         }
 
         // click button should push chosen pokemon to userpokemonlist
@@ -409,13 +425,11 @@ $(()=>{
         $beach.show()
     })
 
-   
     $enterDeepForest.on('click', ()=>{
         $forest.hide()
         $deepForest.show()
     })
 
-   
     $suspiciousTree.on('click', ()=>{
         $suspiciousTree.hide()
         teamRocketAppears()
@@ -440,6 +454,8 @@ $(()=>{
 
 
     ///////////////////////// FOREST ////////////////////////////////////
+
+
 
 
 
@@ -489,6 +505,8 @@ $(()=>{
 
 
 
+
+
     ///////////////////////// DEEP FOREST  ////////////////////////////////////
 
     $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
@@ -519,6 +537,11 @@ $(()=>{
     }
 
     ///////////////////////// DEEP FOREST  ////////////////////////////////////
+
+
+
+
+
 
 
 
@@ -574,6 +597,19 @@ $(()=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     ///////////////////////// DEEP CAVE  ////////////////////////////////////
 
 
@@ -588,7 +624,25 @@ $(()=>{
         $cave.show()
     })
 
+    $suspiciousThing = $('<div>').addClass('suspiciousThing')
+    $cave.append($suspiciousThing)
 
+    $suspiciousThing.on('click', ()=>{
+        $suspiciousThing.hide()
+        suspiciousThingMoves()
+    })
+
+    function suspiciousThingMoves(){
+        alert('The suspicious Thing starts moving, and someone appears behind it!')
+        battleTeamRocket2()
+    }
+
+    function battleTeamRocket2(){
+        $deepCave.hide()
+        battleOpponent.push(teamRocket2)
+        battle()
+        currentLocation = $deepCave
+    }
 
     ///////////////////////// DEEP CAVE  ////////////////////////////////////
 
