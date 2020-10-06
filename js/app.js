@@ -25,6 +25,8 @@ let battleOpponent = []
 let gymClickCounter = 0
 let caveUnlock = 0
 
+let rustledTrees = 0
+
 $(()=>{
 
     let $layout = $('#layout')
@@ -254,12 +256,14 @@ $(()=>{
 
 
 
-
-
+    for (let i = 0; i < 6; i++){
+        let $mainTownDiv = $('<div>').addClass('mainTownDiv'+i)
+        $mainTown.append($mainTownDiv)
+    }
 
     for (let i = 0; i < mainTownButtons.length; i++){
         let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
-        $mainTown.append($mainTownButton)
+        $('.mainTownDiv'+i).append($mainTownButton)
     }
 
     $training = $('.training')
