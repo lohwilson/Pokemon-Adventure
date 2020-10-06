@@ -195,12 +195,32 @@ $(()=>{
         })  
     }
 
-    $townButton = $('<button>').addClass('enterTown').text('Town')
-    $meadow.append($townButton)
-    $exploreButton = $('<button>').addClass('explore').text('Explore')
-    $meadow.append($exploreButton)
+
+
+
+
+
+
+
+
+//////////////////////////////////////      MEADOWS         /////////////////////////////////////
+
+
+    for (let i = 0; i < 3; i++){
+        let $meadowDiv = $('<div>').addClass('meadowDiv'+i)
+        $meadow.append($meadowDiv)
+    }
+    let $meadowDiv0 = $('.meadowDiv0')
+    let $meadowDiv1 = $('.meadowDiv1')
+    let $meadowDiv2 = $('.meadowDiv2')
+
     $enterLab = $('<button>').addClass('enterLab').text('Enter Lab')
-    $meadow.append($enterLab)
+    $meadowDiv0.append($enterLab)
+    $exploreButton = $('<button>').addClass('explore').text('Explore')
+    $meadowDiv1.append($exploreButton)
+    $townButton = $('<button>').addClass('enterTown').text('Town')
+    $meadowDiv2.append($townButton)
+
     
     $townButton.on('click', ()=>{
         $meadow.hide()
@@ -217,6 +237,25 @@ $(()=>{
         $meadow.hide()
         $professorOaksLab.show()
     })
+
+
+
+
+
+//////////////////////////////////////      MEADOWS         /////////////////////////////////////
+
+
+
+
+
+
+
+//////////////////////////////////////      MAIN TOWN         /////////////////////////////////////
+
+
+
+
+
 
     for (let i = 0; i < mainTownButtons.length; i++){
         let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
@@ -391,6 +430,7 @@ $(()=>{
     ///////////////////////// POKECENTRE ////////////////////////////////////
 
 
+//////////////////////////////////////      MAIN TOWN         /////////////////////////////////////
 
 
 
