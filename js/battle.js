@@ -21,10 +21,20 @@ function randomBattle(){
 
     let currentPokemon = userPokemonList[0]
 
+    let $battleDiv1 = $('<div>').addClass('battleDiv1')
+    $('.battle').append($battleDiv1)
+    let $battleDiv2 = $('<div>').addClass('battleDiv2')
+    $('.battle').append($battleDiv2)
+
     // create battle containers
     for (let i = 0; i < battleContainerArray.length; i++){
         let $display = $('<div>').addClass(battleContainerArray[i])
-        $('.battle').append($display)
+
+        if (i%2 === 0){
+            $battleDiv1.append($display)
+        } else {
+            $battleDiv2.append($display)
+        }
     }
     // create battle buttons
     for (let i = 0; i < battleButtonsArray.length; i++){
@@ -57,6 +67,22 @@ function randomBattle(){
         $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'enemyDisplay'+i)
         $enemyInfoDisplay.append($splitDisplay)
     }
+
+    $progress1 = $('<div>').addClass('progress')
+    $enemyInfoDisplay.append($progress1)
+
+    $progressBar1 = $('<div>').addClass('progress-bar1').text('100%').addClass('bg-success')
+    $progressBar1.attr('style', 'width: 100%').attr('aria-valuenow', '25').attr('aria-valuemin', '0').attr('aria-valuemax', '100')
+    $progress1.append($progressBar1)
+    
+    $progress2 = $('<div>').addClass('progress')
+    $userInfoDisplay.append($progress2)
+
+    $progressBar2 = $('<div>').addClass('progress-bar2').text('100%').addClass('bg-success')
+    $progressBar2.attr('style', 'width: 100%').attr('aria-valuenow', '25').attr('aria-valuemin', '0').attr('aria-valuemax', '200')
+    $progress2.append($progressBar2)
+    $progress2.hide()
+
 
     // split alert box to 2 divs
     for (let i = 0; i < 2; i++){
@@ -104,7 +130,7 @@ function randomBattle(){
         $alertButton0.hide()
         $('#alertDisplay0').text('Player chose '+ currentPokemon.name)
         displayUserInfo()
-
+        $progress2.show()
 
         $alertButton11.show()
     })
@@ -227,21 +253,33 @@ function randomBattle(){
         $('#userDisplay0').text('Level '+ currentPokemon.level + ' ' + currentPokemon.name)
         $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
         $userPicture.css('background-image', `url(${currentPokemon.image})`)
+        userPercentage = userCurrentHealth/userFullHealth*100
+        $progressBar2.text(`${userPercentage}%`)
+        $progressBar2.attr('style', `width: ${userPercentage}%`)
     }
     function displayEnemyInfo(){
         $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
         $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
         $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
+        enemyPercentage = enemyCurrentHealth/enemyFullHealth*100
+        $progressBar1.text(`${enemyPercentage}%`)
+        $progressBar1.attr('style', `width: ${enemyPercentage}%`)
     }
 
     function updateUserHealth () {
         $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
         console.log(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
+        userPercentage = userCurrentHealth/userFullHealth*100
+        $progressBar2.text(`${userPercentage}%`)
+        $progressBar2.attr('style', `width: ${userPercentage}%`)
     }
 
     function updateEnemyHealth () {
         $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
         console.log(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
+        enemyPercentage = enemyCurrentHealth/enemyFullHealth*100
+        $progressBar1.text(`${enemyPercentage}%`)
+        $progressBar1.attr('style', `width: ${enemyPercentage}%`)
     }
 
     function enemyAttack() {

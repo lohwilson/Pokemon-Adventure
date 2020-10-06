@@ -27,9 +27,20 @@ let caveUnlock = 0
 
 let rustledTrees = 0
 
+
+function lowerVolume(){
+    let backgroundMusic = document.getElementById("bgm");
+    backgroundMusic.volume = 0.3;
+}
+
+
 $(()=>{
 
     let $layout = $('#layout')
+
+    // $audioImg = $('<img>').addClass('toggleAudio').attr('src', 'css/images/audio on.png')
+    // $mainPage.append($audioImg)
+
 
     ////////////////////////////////////        PAGES       //////////////////////////////////////////
     let $mainPage = $('<div>').addClass('mainPage')
@@ -126,12 +137,24 @@ $(()=>{
 
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
 
+
+    function playButtonSound(){
+        // let $sound = $('<source>').attr('src', 'sounds/click1.mp3').attr('type', 'audio')
+        sound = new Audio('sounds/click1.mp3')
+        sound.play()
+    }
+
     // click event listener on main page button
     $mainPageButton.on('click', ()=>{
         $mainPage.hide()
-        alerts.beginJourney()
+        playButtonSound()
+        // alerts.beginJourney()
         $professorOaksLab.show()
     })
+
+
+
+
 
     const alerts = {
         beginJourney: ()=>{
@@ -142,6 +165,7 @@ $(()=>{
 
     $professorOak1.on('click', ()=>{
         $professorOak1.hide()
+        playButtonSound()
         // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
         // alert('You look very excited to begin your journey, so i\'ll get right to it.')
         // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
@@ -152,11 +176,13 @@ $(()=>{
     })
 
     $professorOak2.on('click', ()=>{
+        playButtonSound()
         alert('Please come back when you have the item.')
         $exitLab.show()
     })
 
     $professorOak3.on('click', ()=>{
+        playButtonSound()
         alert('Thank you for collecting this item for me')
         alert('I hope it wasn\'t too much of a hassle')
         alert('I\'m sure you will be a great Pokemon Trainer in the future')
@@ -164,6 +190,7 @@ $(()=>{
     })
 
     $exitLab.on('click', ()=>{
+        playButtonSound()
         $professorOaksLab.hide()
         $meadow.show()
     })
@@ -179,6 +206,7 @@ $(()=>{
 
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
+            playButtonSound()
             if (event.currentTarget.classList[0] === 'charmander'){
                 alert('You got charmander')
                 userPokemonList.push(charmander)
@@ -225,17 +253,25 @@ $(()=>{
 
     
     $townButton.on('click', ()=>{
+        playButtonSound()
         $meadow.hide()
         $mainTown.show()
     })
 
     $exploreButton.on('click', ()=>{
-        $meadow.hide()
-        randomEncounter()
-        randomBattle()
+        playButtonSound()
+        alert('Player rustled the bushes')
+        rustledTrees++
+        if (rustledTrees%3 === 0){
+            alert('The bushes are shaking vigorously')
+            $meadow.hide()
+            randomEncounter()
+            randomBattle()
+        }
     })
 
     $enterLab.on('click', ()=>{
+        playButtonSound()
         $meadow.hide()
         $professorOaksLab.show()
     })
@@ -274,17 +310,21 @@ $(()=>{
     $enterMeadow = $('.enterMeadow')
 
     $training.on('click', ()=>{
+        playButtonSound()
         alert('The training grounds is closed.')
     })
     $enterShop.on('click', ()=>{
+        playButtonSound()
         $mainTown.hide()
         $shop.show()
     })
     $enterPokeCentre.on('click', ()=>{
+        playButtonSound()
         $mainTown.hide()
         $pokeCentre.show()
     })
     $gym.on('click', ()=>{
+        playButtonSound()
         alert('The Gym is closed at this moment')
         gymClickCounter++
 
@@ -298,10 +338,12 @@ $(()=>{
     })
 
     $enterForest.on('click', ()=>{
+        playButtonSound()
         $mainTown.hide()
         $forest.show()
     })
     $enterMeadow.on('click', ()=>{
+        playButtonSound()
             $mainTown.hide()
             $meadow.show()
         })
@@ -323,6 +365,7 @@ $(()=>{
     $shop.append($shopToTown)
 
     $shopToTown.on('click', ()=>{
+        playButtonSound()
         $shop.hide()
         $mainTown.show()
     })
@@ -338,6 +381,7 @@ $(()=>{
     $leaveShop.hide()
 
     $leaveShop.on('click', ()=>{
+        playButtonSound()
         $buyItems.hide()
         $sellItems.hide()
         $leaveShop.hide()
@@ -346,6 +390,7 @@ $(()=>{
     })
 
     $shopkeeper.on('click', ()=>{
+        playButtonSound()
         $shopToTown.hide()
         $shopkeeper.hide()
         $buyItems.show()
@@ -373,6 +418,7 @@ $(()=>{
     $pokeCentre.append($pokeCentreToTown)
 
     $pokeCentreNurse.on('click', ()=>{
+        playButtonSound()
         $pokeCentreNurse.hide()
         $pokeCentreToTown.hide()
         $healButton.show()
@@ -391,6 +437,7 @@ $(()=>{
     $respawnButton.hide()
 
     $healButton.on('click', ()=>{
+        playButtonSound()
         if (userPokemonList[0].health === 100){
             console.log(userPokemonList)
             console.log(userPokemonList[0])
@@ -409,6 +456,7 @@ $(()=>{
     })
 
     $leaveButton.on('click', ()=>{
+        playButtonSound()
         $healButton.hide()
         $leaveButton.hide()
         $pokeCentreNurse.show()
@@ -416,11 +464,13 @@ $(()=>{
     })
 
     $pokeCentreToTown.on('click', ()=>{
+        playButtonSound()
         $pokeCentre.hide()
         $mainTown.show()
     })
     
     $respawnButton.on('click', ()=>{
+        playButtonSound()
         $respawnButton.hide()
         alert('Looks like your pokemon ran out of hp!')
         alert('I have healed your pokemon back to full health.')
@@ -441,40 +491,50 @@ $(()=>{
 
     ///////////////////////// FOREST ////////////////////////////////////
 
+   
+    for (let i = 0; i < 5; i++){
+        let $forestDiv = $('<div>').addClass('forestDiv'+i)
+        $forest.append($forestDiv)
+    }
+
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
-    $forest.append($enterBeach)
+    $('.forestDiv4').append($enterBeach)
     // $enterBeach.hide()
     $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
-    $forest.append($enterDeepForest)
+    $('.forestDiv3').append($enterDeepForest)
     // $enterDeepForest.hide()
 
     //need css animation and mouse hover to make it clickable
     $suspiciousTree = $('<div>').addClass('suspiciousTree')
-    $forest.append($suspiciousTree)
+    $('.forestDiv1').append($suspiciousTree)
 
     $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
-    $forest.append($enterCave)
-    $enterCave.hide()
+    $('.forestDiv2').append($enterCave)
+    // $enterCave.hide()
 
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
-    $forest.append($enterMainTown)
+    $('.forestDiv0').append($enterMainTown)
 
     $enterMainTown.on('click', ()=>{
+        playButtonSound()
         $forest.hide()
         $mainTown.show()
     })
 
     $enterBeach.on('click', ()=>{
+        playButtonSound()
         $forest.hide()
         $beach.show()
     })
 
     $enterDeepForest.on('click', ()=>{
+        playButtonSound()
         $forest.hide()
         $deepForest.show()
     })
 
     $suspiciousTree.on('click', ()=>{
+        playButtonSound()
         $suspiciousTree.hide()
         teamRocketAppears()
     })
@@ -492,6 +552,7 @@ $(()=>{
     }
 
     $enterCave.on('click', ()=>{
+        playButtonSound()
         $forest.hide()
         $cave.show()
     })
@@ -514,6 +575,7 @@ $(()=>{
     $beach.append($beachButton1)
 
     $beachButton1.on('click', ()=>{
+        playButtonSound()
         $beach.hide()
         $forest.show()
     })
@@ -522,6 +584,7 @@ $(()=>{
     $beach.append($suspiciousRock)
 
     $suspiciousRock.on('click', ()=>{
+        playButtonSound()
         $suspiciousRock.hide()
         suspiciousRockMoves()
     })
@@ -557,6 +620,7 @@ $(()=>{
     $deepForest.append($deepForestButton1)
 
     $deepForestButton1.on('click', ()=>{
+        playButtonSound()
         $deepForest.hide()
         $forest.show()
     })
@@ -565,6 +629,7 @@ $(()=>{
     $deepForest.append($suspiciousMoss)
 
     $suspiciousMoss.on('click', ()=>{
+        playButtonSound()
         $suspiciousMoss.hide()
         suspiciousMossMoves()
     })
@@ -599,27 +664,28 @@ $(()=>{
     $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
     $cave.append($caveToForest)
     // $caveToForest.hide()
-
+    
+    $suspiciousObject = $('<div>').addClass('suspiciousObject')
+    $cave.append($suspiciousObject)
+    
     $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
     $cave.append($caveToDeepCave)
     // $caveToDeepCave.hide()
 
-    
     $caveToForest.on('click', ()=>{
+        playButtonSound()
         $cave.hide()
         $forest.show()
     })
 
     $caveToDeepCave.on('click', ()=>{
+        playButtonSound()
         $cave.hide()
         $deepCave.show()
     })
 
-
-    $suspiciousObject = $('<div>').addClass('suspiciousObject')
-    $cave.append($suspiciousObject)
-    
     $suspiciousObject.on('click', ()=>{
+        playButtonSound()
         $suspiciousObject.hide()
         suspiciousObjectMoves()
     })
@@ -664,14 +730,16 @@ $(()=>{
     $deepCave.append($deepCaveToCave)
 
     $deepCaveToCave.on('click', ()=>{
+        playButtonSound()
         $deepCave.hide()
         $cave.show()
     })
 
     $suspiciousThing = $('<div>').addClass('suspiciousThing')
-    $cave.append($suspiciousThing)
+    $deepCave.append($suspiciousThing)
 
     $suspiciousThing.on('click', ()=>{
+        playButtonSound()
         $suspiciousThing.hide()
         suspiciousThingMoves()
     })

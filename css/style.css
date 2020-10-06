@@ -223,6 +223,50 @@
     background-size: cover;
 }
 
+.forestDiv0 {
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.forestDiv1 {
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+.forestDiv2 {
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
+.forestDiv3 {
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forestDiv4 {
+    width: 20%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+
 .beach {
     background-image: url('images/beach.jpg');
     opacity: 0.5;
@@ -231,7 +275,8 @@
     height: 100%;
     border: 2px solid black;
     display: flex;
-    align-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
     background-size: cover;
 }
 
@@ -243,7 +288,8 @@
     height: 100%;
     border: 2px solid black;
     display: flex;
-    align-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
     background-size: cover;
 }
 
@@ -255,7 +301,8 @@
     height: 100%;
     border: 2px solid black;
     display: flex;
-    align-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
     background-size: cover;
 }
 
@@ -267,7 +314,8 @@
     height: 100%;
     border: 2px solid black;
     display: flex;
-    align-content: center;
+    align-items: flex-end;
+    justify-content: space-between;
     background-size: cover;
 }
 
@@ -387,9 +435,6 @@
     margin: 5px;
     cursor: pointer;
 }
-
-
-
 
 .training {
     background-color: yellow;
@@ -883,11 +928,12 @@
     background-color: yellow;
     border: none;
     color: black;
-    margin: 0px 20px 0px 0px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 10px;
+    margin: 4px 2px;
     cursor: pointer;
     width: 45%;
     height: 45%;
@@ -911,10 +957,9 @@
     background-color: yellow;
     border: none;
     color: black;
-    margin: 0px 20px 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    /* text-align: center; */
+    /* text-decoration: none; */
+    /* display: inline-block; */
     font-size: 10px;
     cursor: pointer;
     width: 45%;
@@ -922,6 +967,10 @@
 }
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
+
+
+
+
 
 
 
@@ -941,41 +990,38 @@
 }
 
 .suspiciousTree {
-    width: 300px;
-    height: 300px;
-    margin: 75px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border: 2px solid red;
 }
 
 .suspiciousRock {
-    width: 300px;
-    height: 300px;
-    margin: 75px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border: 2px solid red;
 }
 
 .suspiciousMoss {
-    width: 300px;
-    height: 300px;
-    margin: 75px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border: 2px solid red;
+    align-self: flex-start;
 }
 
 .suspiciousObject {
-    width: 300px;
-    height: 300px;
-    margin: 75px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border: 2px solid red;
+    align-self: flex-start;
 }
 
 .suspiciousThing {
-    width: 300px;
-    height: 300px;
-    margin: 75px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border: 2px solid red;
 }
