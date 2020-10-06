@@ -732,11 +732,22 @@ $(()=>{
         enemyPokemonList = battleOpponent[0].pokemonList
         console.log(enemyPokemonList)
 
+        let $battleDiv1 = $('<div>').addClass('battleDiv1')
+        $battle.append($battleDiv1)
+        let $battleDiv2 = $('<div>').addClass('battleDiv2')
+        $battle.append($battleDiv2)
+
         // create battle containers
         for (let i = 0; i < battleContainerArray.length; i++){
             let $display = $('<div>').addClass(battleContainerArray[i])
-            $('.battle').append($display)
+
+            if (i%2 === 0){
+                $battleDiv1.append($display)
+            } else {
+                $battleDiv2.append($display)
+            }
         }
+
         // create battle buttons
         for (let i = 0; i < battleButtonsArray.length; i++){
             $('.battleCommandsDisplay').append(battleButtonsArray[i])

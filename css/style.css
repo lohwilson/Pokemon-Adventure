@@ -683,46 +683,65 @@
     flex-wrap: wrap;
 }
 
+.battleDiv1 {
+    width: 49%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.battleDiv2 {
+    width: 49%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+
 .enemyInfoDisplay{
     border: 2px solid red;
     width: 300px;
-    height: 100px;
+    height: 50px;
 }
 
 .enemyPicture{
     border: 2px solid red;
-    width: 400px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     margin: 10px;
     background-repeat: no-repeat, repeat;
     display: flex;
     justify-content: center;
     background-size: contain;
-
+    align-self: flex-start;
 }
 
 .userPicture{
     border: 2px solid red;
-    width: 400px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     margin: 10px;
     background-repeat: no-repeat, repeat;
     justify-content: center;
     align-content: center;
     background-size: contain;
-
+    align-self: flex-end;
 }
 
 .userInfoDisplay{
     border: 2px solid red;
     width: 300px;
-    height: 100px;
+    height: 50px;
     align-items: center;
 }
 
 #userDisplay0{
     width: 300px;
-    height: 50px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -730,7 +749,7 @@
 
 #userDisplay1{
     width: 300px;
-    height: 50px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -738,7 +757,7 @@
 
 #enemyDisplay0{
     width: 300px;
-    height: 50px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -746,7 +765,7 @@
 
 #enemyDisplay1{
     width: 300px;
-    height: 50px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -778,7 +797,7 @@
 .battleCommandsDisplay{
     border: 2px solid red;
     width: 300px;
-    height: 200px;
+    height: 100px;
 }
 
 .alertButtons {
@@ -796,13 +815,14 @@
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 .itemButton {
@@ -813,35 +833,38 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 10px;
     margin: 4px 2px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 .changePokemonButton {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 .runButton {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 #skill0 {
