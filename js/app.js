@@ -776,6 +776,18 @@ $(()=>{
             $enemyInfoDisplay.append($splitDisplay)
         }
 
+        $progress1 = $('<div>').addClass('progress')
+        $enemyInfoDisplay.append($progress1)
+
+        $progressBar1 = $('<div>').addClass('progress-bar1').text('25%').addClass('bg-success')
+        $progressBar1.attr('style', 'width: 50%').attr('aria-valuenow', '25').attr('aria-valuemin', '0').attr('aria-valuemax', '100')
+        $progress1.append($progressBar1)
+
+        $progressBar1.text(`${percentage}%`)
+        $progressBar1.attr('style', `width: ${percentage}%`)
+
+
+
         // split alert box to 2 divs
         for (let i = 0; i < 2; i++){
             $splitDisplay = $('<div>').addClass('splitDisplay').attr('id', 'alertDisplay'+i)
