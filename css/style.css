@@ -869,52 +869,56 @@
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 #skill1 {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 #skill2 {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 #skill3 {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
+    margin: 0px 20px 0px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 10px;
     cursor: pointer;
+    width: 45%;
+    height: 45%;
 }
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */

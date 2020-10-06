@@ -987,6 +987,9 @@ $(()=>{
             $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
             $enemyPicture.css('background-image', `url(${enemyBattlePokemon[0].image})`)
+            enemyPercentage = enemyCurrentHealth/enemyFullHealth*100
+            $progressBar1.text(`${enemyPercentage}%`)
+            $progressBar1.attr('style', `width: ${enemyPercentage}%`)
         }
 
         function updateUserHealth () {
