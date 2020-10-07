@@ -425,6 +425,7 @@ $(()=>{
             $meadow.hide()
             randomEncounter(randomPokemon1)
             randomBattle()
+            $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
         }
     })
 
@@ -917,6 +918,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $cave
+        $battle.css('background-image', 'url("css/images/cavebattle.png")')
     }
 
     // setInterval(randomBattle5, 30000)
@@ -982,6 +984,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $deepCave
+        $battle.css('background-image', 'url("css/images/cavebattle.png")')
     }
 
     ///////////////////////// DEEP CAVE  ////////////////////////////////////
