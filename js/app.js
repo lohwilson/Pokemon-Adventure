@@ -6,8 +6,8 @@ let itemList = []
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
-let mainTownButtons = ['enterPokeCentre', 'training', 'enterShop', 'gym', 'enterForest', 'enterMeadow']
-let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Shop', 'Gym', 'Forest', 'Meadow']
+let mainTownButtons = ['enterPokeCentre', 'training', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
+let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Forest', 'Meadow', 'Shop', 'Gym']
 
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
@@ -90,20 +90,9 @@ $(()=>{
     $layout.append($shop)
     $shop.hide()
 
-    // create pages array with page classes
-    // for (let i = 0; i < pages.length; i++){
-    //     let $page = $('<div>').addClass(pages[i])
-    //     pagesArray.push($page)
-    //     $layout.append($page)
-    //     $page.hide()
-    // }
 
-    // let $mainPage = ('.mainPage')
-    // $($mainPage).show()
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
-
-
 
 
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
@@ -135,6 +124,51 @@ $(()=>{
     //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
 
 
+
+    //////////////////////////////////////////      MODAL       ///////////////////////////////////////
+
+
+
+
+
+
+    // Grabbing About the Game button
+    const $openBtn = $('.mainPageButton');
+
+    // Grabbing modal element
+    const $modal = $('#modal');
+
+    // Grabbing close button
+    const $closeBtn = $('#close');
+
+    // Event handler to open the modal
+    const openModal = () => {
+        $modal.css('display', 'block');
+    }
+
+    // Event handler to close the modal
+    const closeModal = () => {
+        $modal.css('display', 'none');
+    }
+
+    //Add event listener to About the Game button
+    $openBtn.on('click', openModal);
+
+    //Add event listener to Close button
+    $closeBtn.on('click', closeModal);
+
+    
+        //////////////////////////////////////////      MODAL       ///////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
 
 
@@ -151,10 +185,6 @@ $(()=>{
         // alerts.beginJourney()
         $professorOaksLab.show()
     })
-
-
-
-
 
     const alerts = {
         beginJourney: ()=>{
@@ -201,6 +231,7 @@ $(()=>{
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
             let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
+            $button.addClass('alert-success')
             $oakLabDiv1.append($button)
         }
 

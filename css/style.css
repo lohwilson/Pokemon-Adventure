@@ -677,7 +677,7 @@
 /*//////////////////////////////////////////////////// CHOOSE POKEMON //////////////////////////////////////////// */
 
 .charmander {
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 100px;
     height: 100px;
     text-align: center;
