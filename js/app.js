@@ -134,6 +134,8 @@ $(()=>{
     $createModal.append($createModalText)
     $createModalFooter = $('<div>').attr('id', 'modal-footer')
     $createModalText.append($createModalFooter)
+    $createBeginJourneyButton = $('<button>').attr('id', 'beginJourney').attr('href', '#').text('Begin Journey')
+    $createModalFooter.append($createBeginJourneyButton)
     $createModalFooterButton = $('<button>').attr('id', 'close').attr('href', '#').text('Close')
     $createModalFooter.append($createModalFooterButton)
 
@@ -147,6 +149,7 @@ $(()=>{
     $modal.hide()
 
     // Grabbing close button
+    const $beginJourney = $('#beginJourney')
     const $closeBtn = $('#close');
 
     // Event handler to open the modal
@@ -159,10 +162,17 @@ $(()=>{
         $modal.css('display', 'none');
     }
 
+    const beginJourey = () =>{
+        $mainPage.hide()
+        playButtonSound()
+        $professorOaksLab.show()
+    }
+
     //Add event listener to About the Game button
     $openBtn.on('click', openModal);
 
     //Add event listener to Close button
+    $beginJourney.on('click', beginJourey)
     $closeBtn.on('click', closeModal);
 
     
