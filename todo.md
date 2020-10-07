@@ -2,7 +2,9 @@
 
 # Fixes
 - tidy up code
+- swap enemyinfo display to useinfo display
 - css UI
+
     arrange buttons in order
     change button styles accordingly
     loop bgm
