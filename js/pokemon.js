@@ -249,6 +249,74 @@ let meowthSkill = [
     }
 ]
 
+let magikarpSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+let krabbySkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+let poliwagSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+let oddishSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+let parasSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+let venonatSkill = [
+    {
+        name: 'Scratch',
+        damage: 10
+    },
+    {
+        name: 'Payday',
+        damage: 15
+    }
+]
+
+
+
 const pikachu = new Pokemon('Pikachu', 100, 100, pikachuSkill, 5, 'css/images/pokemon/pikachu.jpg')
 const charmander = new Pokemon('Charmander', 100, 100, charmanderSkill, 5, 'css/images/pokemon/charmander.jpg')
 const squirtle = new Pokemon('Squirtle', 100, 100, squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
@@ -267,17 +335,25 @@ const zubat = new Pokemon('Zubat', 40, 40, zubatSkill, 5, 'css/images/pokemon/zu
 const koffing = new Pokemon('Koffing', 40, 40, koffingSkill, 5, 'css/images/pokemon/koffing.png')
 const diglett = new Pokemon('Diglett', 40, 40, diglettSkill, 5, 'css/images/pokemon/diglett.jpg')
 const meowth = new Pokemon('Meowth', 100, 100, meowthSkill, 5, 'css/images/pokemon/meowth.jpg')
+const magikarp = new Pokemon('Magikarp', 100, 100, magikarpSkill, 5, 'css/images/pokemon/magikarp.jpg')
+const krabby = new Pokemon('Krabby', 100, 100, krabbySkill, 5, 'css/images/pokemon/krabby.jpg')
+const poliwag = new Pokemon('Poliwag', 100, 100, poliwagSkill, 5, 'css/images/pokemon/poliwag.jpg')
+const oddish = new Pokemon('Oddish', 100, 100, oddishSkill, 5, 'css/images/pokemon/oddish.jpg')
+const paras = new Pokemon('Paras', 100, 100, parasSkill, 5, 'css/images/pokemon/paras.jpg')
+const venonat = new Pokemon('Venonat', 100, 100, venonatSkill, 5, 'css/images/pokemon/venonat.jpg')
 
 
-
-trainingPokemon.push(caterpie, ratata, pidgey, weedle)
-randomPokemon1.push(caterpie, ratata, pidgey, weedle, spearow, ekans, sandshrew, nidoran, geodude, zubat)
+randomPokemon1.push(caterpie, ratata, pidgey, weedle) // meadow poke
+randomPokemon2.push(spearow, sandshrew, nidoran) // forest poke
+randomPokemon3.push(magikarp ,krabby, poliwag) // beach poke
+randomPokemon4.push(oddish, paras, venonat) // deep forest poke
+randomPokemon5.push(geodude, diglett, zubat) // cave poke
 
 
 rivalPokemonList.push(ratata, caterpie)
-trainer1PokemonList.push(sandshrew, nidoran)
-trainer2PokemonList.push(spearow, ratata)
-trainer3PokemonList.push(geodude,diglett)
+trainer1PokemonList.push(magikarp, krabby, poliwag)
+trainer2PokemonList.push(oddish, paras, venonat)
+trainer3PokemonList.push(geodude,diglett, zubat)
 
 teamRocket1PokemonList.push(koffing, ekans)
 teamRocket2PokemonList.push(koffing, ekans, meowth)

@@ -56,8 +56,8 @@ $(()=>{
     $layout.append($audio)
     $audio.loop = true;
 
-    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
-    // $audio.append($source)
+    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    $audio.append($source)
 
     $('audio')[0].play();
 
@@ -69,39 +69,39 @@ $(()=>{
     lowerVolume()
 
     function oakBgm(){
-        // $source.attr('src', 'sounds/oak.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/oak.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function meadowBgm(){
-        // $source.attr('src', 'sounds/meadow.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/meadow.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function townBgm(){
-        // $source.attr('src', 'sounds/town.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/town.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function battleBgm(){
-        // $source.attr('src', 'sounds/battle.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/battle.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function battle2Bgm(){
-        // $source.attr('src', 'sounds/battle2.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/battle2.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function forestBgm(){
-        // $source.attr('src', 'sounds/forest.mp3')
-        // $('audio')[0].load();
-        // $('audio')[0].play();
+        $source.attr('src', 'sounds/forest.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
     }
 
     function playCurrentBgm(){
@@ -423,7 +423,7 @@ $(()=>{
             currentLocation = $meadow
             battleBgm()
             $meadow.hide()
-            randomEncounter()
+            randomEncounter(randomPokemon1)
             randomBattle()
         }
     })
@@ -684,18 +684,21 @@ $(()=>{
         $forest.hide()
         $mainTown.show()
         townBgm()
+        clearInterval(setInterval(randomBattle2, 10000))
     })
 
     $enterBeach.on('click', ()=>{
         playButtonSound()
         $forest.hide()
         $beach.show()
+        clearInterval(setInterval(randomBattle2, 10000))
     })
 
     $enterDeepForest.on('click', ()=>{
         playButtonSound()
         $forest.hide()
         $deepForest.show()
+        clearInterval(setInterval(randomBattle2, 10000))
     })
 
     $suspiciousTree.on('click', ()=>{
@@ -723,10 +726,31 @@ $(()=>{
         $cave.show()
     })
 
-    setInterval(randomBattle2, 30000)
+
+    // var refreshId = setInterval(function() {
+    //     var properID = CheckReload();
+    //     if (properID > 0) {
+    //       clearInterval(refreshId);
+    //     }
+    //   }, 10000);
+
+    // setInterval(randomBattle2, 10000)
+    // clearInterval(setInterval(randomBattle2, 10000))
+
+    //   let intervalBattle2 = setInterval(function(){
+    //       randomBattle2();
+    //       if (a){
+    //           clearInterval(intervalBattle2)
+    //       }
+    //   })
 
     function randomBattle2(){
-
+        currentLocation = $forest
+        battleBgm()
+        $forest.hide()
+        randomEncounter(randomPokemon2)
+        randomBattle()
+        // clearInterval(setInterval(randomBattle2, 10000))
     }
 
     ///////////////////////// FOREST ////////////////////////////////////
@@ -773,11 +797,15 @@ $(()=>{
         currentLocation = $beach
     }
 
-    setInterval(randomBattle3, 30000)
+    // setInterval(randomBattle3, 10000)
 
-    function randomBattle3(){
-
-    }
+    // function randomBattle3(){
+    //     currentLocation = $beach
+    //     battleBgm()
+    //     $beach.hide()
+    //     randomEncounter(randomPokemon3)
+    //     randomBattle()
+    // }
 
     ///////////////////////// BEACH ////////////////////////////////////
 
@@ -823,11 +851,15 @@ $(()=>{
         currentLocation = $deepForest
     }
 
-    setInterval(randomBattle4, 30000)
+    // setInterval(randomBattle4, 30000)
 
-    function randomBattle4(){
-
-    }
+    // function randomBattle4(){
+    //     currentLocation = $deepForest
+    //     battleBgm()
+    //     $deepForest.hide()
+    //     randomEncounter(randomPokemon4)
+    //     randomBattle()
+    // }
 
     ///////////////////////// DEEP FOREST  ////////////////////////////////////
 
@@ -887,11 +919,15 @@ $(()=>{
         currentLocation = $cave
     }
 
-    setInterval(randomBattle5, 30000)
+    // setInterval(randomBattle5, 30000)
 
-    function randomBattle5(){
-
-    }
+    // function randomBattle5(){
+    //     currentLocation = $cave
+    //     battleBgm()
+    //     $cave.hide()
+    //     randomEncounter(randomPokemon5)
+    //     randomBattle()
+    // }
     
     ///////////////////////// CAVE  ////////////////////////////////////
 
@@ -1407,9 +1443,9 @@ $(()=>{
     }
 
 
-    function randomEncounter(){
-        randomEncounterIndex = Math.floor(Math.random()*randomPokemon1.length)
-        enemyBattlePokemon.push(randomPokemon1[randomEncounterIndex])
+    function randomEncounter(pokeArray){
+        randomEncounterIndex = Math.floor(Math.random()*pokeArray.length)
+        enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
         console.log(randomEncounterIndex)
     }
 
