@@ -128,7 +128,14 @@ $(()=>{
     //////////////////////////////////////////      MODAL       ///////////////////////////////////////
 
 
-
+    $createModal = $('<div>').attr('id', 'modal')
+    $mainPage.append($createModal)
+    $createModalText = $('<div>').attr('id', 'modal-textbox').text('aaaaaaaaaaa')
+    $createModal.append($createModalText)
+    $createModalFooter = $('<div>').attr('id', 'modal-footer')
+    $createModalText.append($createModalFooter)
+    $createModalFooterButton = $('<button>').attr('id', 'close').attr('href', '#').text('Close')
+    $createModalFooter.append($createModalFooterButton)
 
 
 
@@ -137,6 +144,7 @@ $(()=>{
 
     // Grabbing modal element
     const $modal = $('#modal');
+    $modal.hide()
 
     // Grabbing close button
     const $closeBtn = $('#close');
@@ -179,12 +187,12 @@ $(()=>{
     }
 
     // click event listener on main page button
-    $mainPageButton.on('click', ()=>{
-        $mainPage.hide()
-        playButtonSound()
-        // alerts.beginJourney()
-        $professorOaksLab.show()
-    })
+    // $mainPageButton.on('click', ()=>{
+    //     $mainPage.hide()
+    //     playButtonSound()
+    //     // alerts.beginJourney()
+    //     $professorOaksLab.show()
+    // })
 
     const alerts = {
         beginJourney: ()=>{
