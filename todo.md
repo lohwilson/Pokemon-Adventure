@@ -3,10 +3,9 @@
 # Fixes
 - tidy up code
 - css UI
-    background image full screen
     arrange buttons in order
     change button styles accordingly
-    
+    loop bgm
 
     background music
     sound effect when pokemon attacks

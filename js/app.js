@@ -494,6 +494,7 @@ $(()=>{
             $mainTown.hide()
             battle2Bgm()
             battleRival()
+            $battle.css('background-image', 'url("css/images/trainerbattle.jpg")')
             battle()
         }
     })
@@ -719,6 +720,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $forest
+        $battle.css('background-image', 'url("css/images/forestbattle.jpg")')
     }
 
     $enterCave.on('click', ()=>{
@@ -796,6 +798,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $beach
+        $battle.css('background-image', 'url("css/images/beachbattle.jpg")')
     }
 
     // setInterval(randomBattle3, 10000)
@@ -850,6 +853,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $deepForest
+        $battle.css('background-image', 'url("css/images/forestbattle.jpg")')
     }
 
     // setInterval(randomBattle4, 30000)
