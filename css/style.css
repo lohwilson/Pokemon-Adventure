@@ -844,14 +844,25 @@
 }
 
 .alertButtons {
-    background-color: yellow;
+    /* background-color: yellow;
     border: none;
     color: black;
     width: 100px;
     height: 50px;
     font-size: 16px;
     margin: 4px 2px;
+    cursor: pointer; */
+
+    background-color: yellow;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
     cursor: pointer;
+    width: 30%;
+    height: 75%;
 }
 
 .fightButton {
@@ -1056,7 +1067,7 @@
 	/*Set this to `none` so that the modal does not show initially on page load.*/
 }
 
-#modal-textbox {
+#modal-textBox {
     background-image: url('images/modal1.jpg');
     background-size: 320px;
 	height: 250px;
