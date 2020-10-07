@@ -33,10 +33,73 @@ function lowerVolume(){
     backgroundMusic.volume = 0.3;
 }
 
-
 $(()=>{
 
     let $layout = $('#layout')
+
+    // <audio id="bgm" autoplay preload='auto' loop onloadeddata="lowerVolume()">
+    // <!-- <source src="sounds/opening.mp3" type="audio/mpeg" > -->
+
+    let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
+    $audio.attr('loop')
+    $audio.attr('onloadeddate', 'lowerVolume()')
+    $layout.append($audio)
+
+    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    // $audio.append($source)
+
+    $('audio')[0].play();
+
+    // lower volume doesnt work
+    function lowerVolume(){
+        let backgroundMusic = $("#bgm");
+        backgroundMusic.volume = 0.1;
+    }
+    lowerVolume()
+
+    function oakBgm(){
+        $source.attr('src', 'sounds/oak.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    function meadowBgm(){
+        $source.attr('src', 'sounds/meadow.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    function townBgm(){
+        $source.attr('src', 'sounds/town.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    function battleBgm(){
+        $source.attr('src', 'sounds/battle.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    function forestBgm(){
+        $source.attr('src', 'sounds/forest.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    // function oakBgm(){
+    //     $source.attr('src', 'sounds/oak.mp3')
+    //     $('audio')[0].load();
+    //     $('audio')[0].play();
+    // }
+
+
+
+
+
+
+
+
 
     // $audioImg = $('<img>').addClass('toggleAudio').attr('src', 'css/images/audio on.png')
     // $mainPage.append($audioImg)
@@ -164,6 +227,7 @@ $(()=>{
 
     const beginJourey = () =>{
         $mainPage.hide()
+        oakBgm()
         playButtonSound()
         $professorOaksLab.show()
     }
@@ -241,6 +305,7 @@ $(()=>{
         playButtonSound()
         $professorOaksLab.hide()
         $meadow.show()
+        meadowBgm()
     })
 
     function choosePokemonButtons(){
@@ -305,6 +370,7 @@ $(()=>{
         playButtonSound()
         $meadow.hide()
         $mainTown.show()
+        townBgm()
     })
 
     $exploreButton.on('click', ()=>{
@@ -313,6 +379,7 @@ $(()=>{
         rustledTrees++
         if (rustledTrees%3 === 0){
             alert('The bushes are shaking vigorously')
+            battleBgm()
             $meadow.hide()
             randomEncounter()
             randomBattle()
@@ -323,6 +390,7 @@ $(()=>{
         playButtonSound()
         $meadow.hide()
         $professorOaksLab.show()
+        oakBgm()
     })
 
 
@@ -390,11 +458,13 @@ $(()=>{
         playButtonSound()
         $mainTown.hide()
         $forest.show()
+        forestBgm()
     })
     $enterMeadow.on('click', ()=>{
         playButtonSound()
             $mainTown.hide()
             $meadow.show()
+            meadowBgm()
         })
     
     function battleRival (){
@@ -568,6 +638,7 @@ $(()=>{
         playButtonSound()
         $forest.hide()
         $mainTown.show()
+        townBgm()
     })
 
     $enterBeach.on('click', ()=>{
