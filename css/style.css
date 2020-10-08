@@ -211,6 +211,27 @@
     background-size: cover;
 }
 
+.shopDiv1 {
+    width: 49%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.shopDiv2 {
+    width: 49%;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+
+
+
 .forest {
     background-image: url('images/forest.jpg');
     opacity: 0.5;
@@ -544,6 +565,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 .sellItems {
@@ -555,6 +577,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 .leaveShop {
@@ -566,6 +589,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 .enterForest {
@@ -727,7 +751,21 @@
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    position: relative;
+    animation-name: karolin;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
 }
+
+@keyframes karolin {
+    0% {background: black; transform: rotate(3500deg) scale(.2)}
+    25% {background: crimson;}
+    50% {background: palegreen; transform: rotate(1500deg) scale(.6)}
+    75% {background: rgb(172, 201, 12); transform: rotate(750deg)}
+    90% {background: ghostwhite; transform: rotate(300deg)}
+    100% {background: ghostwhite; transform: rotate(0deg)}
+  }
 
 .battleDiv1 {
     width: 49%;
@@ -764,6 +802,25 @@
     background-size: contain;
 }
 
+.enemyAnimation{
+    position: relative;
+    animation-name: enemymove;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes enemymove {
+    0% {transform: translate(50px)}
+    25% {transform: translate(-50px)}
+    50% {transform: translate(50px)}
+    75% {transform: translate(-50px)}
+    100% {transform: translate(50px)}
+  }
+
+
+
+
 .userPicture{
     border: 2px solid red;
     width: 300px;
@@ -775,6 +832,29 @@
     background-size: contain;
     align-self: flex-end;
 }
+
+.userAnimation{
+    position: relative;
+    animation-name: usermove;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes usermove {
+    0% {transform: translate(50px)}
+    25% {transform: translate(-50px)}
+    50% {transform: translate(50px)}
+    75% {transform: translate(-50px)}
+    100% {transform: translate(50px)}
+  }
+
+
+
+
+
+
+
 
 .userInfoDisplay{
     border: 2px solid red;

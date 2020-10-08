@@ -12,7 +12,7 @@ let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Forest', 'Meadow', 'S
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
 let battleButtonsArray = []
-let battleContainerArray = ['enemyInfoDisplay', 'enemyPicture', 'userPicture', 'userInfoDisplay', 'alertBox', 'battleCommandsDisplay']
+let battleContainerArray = ['userInfoDisplay', 'enemyPicture', 'userPicture', 'enemyInfoDisplay', 'alertBox', 'battleCommandsDisplay']
 
 let userPokemonList = []
 let enemyPokemonList = []
@@ -41,30 +41,27 @@ let currentBgm = 0
 
 function lowerVolume(){
     let backgroundMusic = document.getElementById("bgm");
-    backgroundMusic.volume = 0.3;
+    backgroundMusic.volume = 0.6;
 }
 
 $(()=>{
 
     let $layout = $('#layout')
 
-    // <audio id="bgm" autoplay preload='auto' loop onloadeddata="lowerVolume()">
-    // <!-- <source src="sounds/opening.mp3" type="audio/mpeg" > -->
-
     let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
     $audio.attr('onloadeddate', 'lowerVolume()')
     $layout.append($audio)
     $audio.loop = true;
 
-    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
-    $audio.append($source)
+    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    // $audio.append($source)
 
     $('audio')[0].play();
 
     // lower volume doesnt work
     function lowerVolume(){
         let backgroundMusic = $("#bgm");
-        backgroundMusic.volume = 0.1;
+        backgroundMusic.volume = 0.3;
     }
     lowerVolume()
 
@@ -422,10 +419,11 @@ $(()=>{
             alert('The bushes are shaking vigorously')
             currentLocation = $meadow
             battleBgm()
-            $meadow.hide()
-            randomEncounter(randomPokemon1)
-            randomBattle()
-            $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
+            setTimeout(delayBeforeBattle1, 1000)
+            // $meadow.hide()
+            // randomEncounter(randomPokemon1)
+            // randomBattle()
+            // $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
         }
     })
 
@@ -436,7 +434,12 @@ $(()=>{
         oakBgm()
     })
 
-
+    function delayBeforeBattle1(){
+        $meadow.hide()
+        randomEncounter(randomPokemon1)
+        randomBattle()
+        $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
+    }
 
 
 
@@ -494,7 +497,7 @@ $(()=>{
             $mainTown.hide()
             battle2Bgm()
             battleRival()
-            $battle.css('background-image', 'url("css/images/trainerbattle.jpg")')
+            $battle.css('background-image', 'url("css/images/trainerbattle.png")')
             battle()
         }
     })
@@ -525,10 +528,15 @@ $(()=>{
 
     ////////////////////////  SHOP  //////////////////////////////////////////
 
+    $shopDiv1 = $('<div>').addClass('shopDiv1')
+    $shop.append($shopDiv1)
+    $shopDiv2 = $('<div>').addClass('shopDiv2')
+    $shop.append($shopDiv2)
+
     $shopkeeper = $('<div>').addClass('shopkeeper').text('Shopkeeper')
-    $shop.append($shopkeeper)
+    $shopDiv1.append($shopkeeper)
     $shopToTown = $('<button>').addClass('shopToTown').text('Exit')
-    $shop.append($shopToTown)
+    $shopDiv2.append($shopToTown)
 
     $shopToTown.on('click', ()=>{
         playButtonSound()
@@ -537,13 +545,13 @@ $(()=>{
     })
 
     $buyItems = $('<button>').addClass('buyItems').text('Buy')
-    $shop.append($buyItems)
+    $shopDiv1.append($buyItems)
     $buyItems.hide()
     $sellItems = $('<button>').addClass('sellItems').text('Sell')
-    $shop.append($sellItems)
+    $shopDiv1.append($sellItems)
     $sellItems.hide()
     $leaveShop = $('<button>').addClass('leaveShop').text('Leave')
-    $shop.append($leaveShop)
+    $shopDiv1.append($leaveShop)
     $leaveShop.hide()
 
     $leaveShop.on('click', ()=>{
@@ -798,7 +806,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $beach
-        $battle.css('background-image', 'url("css/images/beachbattle.jpg")')
+        $battle.css('background-image', 'url("css/images/beachbattle.png")')
     }
 
     // setInterval(randomBattle3, 10000)
@@ -853,7 +861,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $deepForest
-        $battle.css('background-image', 'url("css/images/forestbattle.jpg")')
+        $battle.css('background-image', 'url("css/images/forestbattle.png")')
     }
 
     // setInterval(randomBattle4, 30000)
@@ -1010,9 +1018,22 @@ $(()=>{
         $pokeCentreNurse.hide()
         $pokeCentreToTown.hide()
         $respawnButton.show()
+        townBgm()
     }
 
+    function userPokemonAnimation(){
+        $('.userPicture').addClass('userAnimation')
+    }
 
+    function enemyPokemonAnimation(){
+        $('.enemyPicture').addClass('enemyAnimation')
+    }
+
+    function randomEncounter(pokeArray){
+        randomEncounterIndex = Math.floor(Math.random()*pokeArray.length)
+        enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
+        console.log(randomEncounterIndex)
+    }
 
 
     
@@ -1025,6 +1046,13 @@ $(()=>{
         battle()
     }
     
+
+
+
+
+
+    ///////////////////////////////////////////      BATTLE       //////////////////////////////////////
+
     // this should lead to the battle page
 
     function battle(){
@@ -1149,6 +1177,7 @@ $(()=>{
             $alertButton1.hide()
             updateEnemyHealth()
             checkEnemyHealth()
+            $('.userPicture').removeClass('userAnimation')
         })
 
         $alertButton2.on('click', ()=>{
@@ -1166,6 +1195,7 @@ $(()=>{
             $alertButton4.hide()
             checkUserHealth()
             updateUserHealth()
+            $enemyPicture.removeClass('enemyAnimation')
         })
         
         $alertButton5.on('click', ()=>{
@@ -1318,6 +1348,7 @@ $(()=>{
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            enemyPokemonAnimation()
             if (userCurrentHealth <= 0){
                 userCurrentHealth = 0;
             }
@@ -1437,6 +1468,8 @@ $(()=>{
             $('#skill'+i).on('click', (event)=>{
                 event.preventDefault()
 
+                userPokemonAnimation()
+
                 enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
@@ -1450,11 +1483,12 @@ $(()=>{
     }
 
 
-    function randomEncounter(pokeArray){
-        randomEncounterIndex = Math.floor(Math.random()*pokeArray.length)
-        enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
-        console.log(randomEncounterIndex)
-    }
+
+
+
+
+
+///////////////////////////////////////////     RANDOM BATTLE       //////////////////////////////////////
 
     function randomBattle(){
         $('.battle').show()
@@ -1579,6 +1613,7 @@ $(()=>{
             $alertButton1.hide()
             updateEnemyHealth()
             checkEnemyHealth()
+            $('.userPicture').removeClass('userAnimation')
         })
 
         $alertButton2.on('click', ()=>{
@@ -1596,6 +1631,7 @@ $(()=>{
             $alertButton4.hide()
             checkUserHealth()
             updateUserHealth()
+            $enemyPicture.removeClass('enemyAnimation')
         })
         
         $alertButton5.on('click', ()=>{
@@ -1630,10 +1666,6 @@ $(()=>{
         //     enemyBattlePokemon.length = 0
         //     exitBattle()
         // })
-
-
-
-
 
 
         $alertButton9.on('click', ()=>{
@@ -1742,6 +1774,7 @@ $(()=>{
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            enemyPokemonAnimation()
             if (userCurrentHealth <= 0){
                 userCurrentHealth = 0;
             }
@@ -1839,6 +1872,8 @@ $(()=>{
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
             $('#skill'+i).on('click', (event)=>{
                 event.preventDefault()
+
+                userPokemonAnimation()
 
                 enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
                 if (enemyCurrentHealth <= 0){
