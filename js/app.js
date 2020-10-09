@@ -32,8 +32,7 @@ let suspiciousMoss = 0
 let suspiciousRock = 0
 let suspiciousThing = 0
 let $suspiciousObject = 0
-
-let cavemap
+let cavemap = 0
 let randomEncounterIndex
 
 let currentBgm = 0
@@ -113,6 +112,12 @@ $(()=>{
         $('audio')[0].play();
     }
 
+    function endingBgm(){
+        $source.attr('src', 'sounds/ending.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
     function playCurrentBgm(){
         if (currentBgm === 1){
             meadowBgm()
@@ -165,7 +170,9 @@ $(()=>{
     let $deepCave = $('<div>').addClass('deepCave')
     $layout.append($deepCave)
     $deepCave.hide()
-
+    let $endGamePage = $('<div>').addClass('endGamePage')
+    $layout.append($endGamePage)
+    $endGamePage.hide()
     let $professorOaksLab = $('<div>').addClass('professorOaksLab')
     $layout.append($professorOaksLab)
     $professorOaksLab.hide()
@@ -193,6 +200,7 @@ $(()=>{
     $shop.hide()
 
 
+    $endGamePage.append($('<div>').text('Thank you for playing!').addClass('endGameText'))
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
 
@@ -368,6 +376,12 @@ $(()=>{
         alert('I\'m sure you will be a great Pokemon Trainer in the future')
         endGame()
     })
+
+    function endGame(){
+        $professorOaksLab.hide()
+        $endGamePage.show()
+        endingBgm()
+    }
 
 
     $exitLab.on('click', ()=>{
@@ -750,7 +764,7 @@ $(()=>{
 
     $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
     $('.forestDiv2').append($enterCave)
-    $enterCave.hide()
+    // $enterCave.hide()
 
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
     $('.forestDiv0').append($enterMainTown)
@@ -878,6 +892,7 @@ $(()=>{
     })
 
     $suspiciousRock1.on('click', ()=>{
+        $suspiciousRock1.hide()
         alert('You found a half of a map.')
         cavemap++
         unlockCave()
@@ -940,9 +955,11 @@ $(()=>{
         playButtonSound()
         $suspiciousMoss.hide()
         suspiciousMossMoves()
+        $suspiciousMoss1.show()
     })
 
     $suspiciousMoss1.on('click', ()=>{
+        $suspiciousMoss1.hide()
         alert('You found a half of a map.')
         cavemap++
         unlockCave()
@@ -980,6 +997,7 @@ $(()=>{
 
 
     function unlockCave(){
+        console.log(cavemap)
         if (cavemap === 2){
             alert('You joined two pieces of map and found a hidden entrance!')
             $enterCave.show()
@@ -998,10 +1016,13 @@ $(()=>{
     
     $suspiciousObject = $('<div>').addClass('suspiciousObject')
     $cave.append($suspiciousObject)
+    $suspiciousObject1 = $('<div>').addClass('suspiciousObject1')
+    $cave.append($suspiciousObject1)
+    $suspiciousObject1.hide()
     
     $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
     $cave.append($caveToDeepCave)
-    // $caveToDeepCave.hide()
+    $caveToDeepCave.hide()
 
     $caveToForest.on('click', ()=>{
         playButtonSound()
@@ -1019,7 +1040,14 @@ $(()=>{
     $suspiciousObject.on('click', ()=>{
         playButtonSound()
         $suspiciousObject.hide()
+        $suspiciousObject1.show()
         suspiciousObjectMoves()
+    })
+
+    $suspiciousObject1.on('click', ()=>{
+        $suspiciousObject1.hide()
+        alert('You hear some noise from deeper in the cave.')
+        $caveToDeepCave.show()
     })
 
     function suspiciousObjectMoves(){
@@ -1081,25 +1109,35 @@ $(()=>{
 
     $suspiciousThing = $('<div>').addClass('suspiciousThing')
     $deepCave.append($suspiciousThing)
+    $suspiciousThing1 = $('<div>').addClass('suspiciousThing1')
+    $deepCave.append($suspiciousThing1)
+    $suspiciousThing1.hide()
 
     $suspiciousThing.on('click', ()=>{
         playButtonSound()
         $suspiciousThing.hide()
+        $suspiciousThing1.show()
         suspiciousThingMoves()
     })
 
+    $suspiciousThing1.on('click', ()=>{
+        alert('You retrived the stolen package!')
+        $professorOak3.hide()
+        $professorOak4.show()
+    })
+
     function suspiciousThingMoves(){
-        alert('The suspicious Thing starts moving, and someone appears behind it!')
+        alert('The suspicious thing starts moving, and someone appears behind it!')
         battleTeamRocket2()
     }
 
     function battleTeamRocket2(){
         $deepCave.hide()
         battleOpponent.push(teamRocket2)
-        battle2Bgm()
+        lastBattleBgm()
         battle()
         currentLocation = $deepCave
-        $battle.css('background-image', 'url("css/images/cavebattle.png")')
+        $battle.css('background-image', 'url("css/images/deep_cave.png")')
     }
 
     ///////////////////////// DEEP CAVE  ////////////////////////////////////

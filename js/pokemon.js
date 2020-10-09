@@ -337,13 +337,13 @@ const geodude = new Pokemon('Geodude', 40, 40, geodudeSkill, 5, 'css/images/poke
 const zubat = new Pokemon('Zubat', 40, 40, zubatSkill, 5, 'css/images/pokemon/zubat.png')
 const koffing = new Pokemon('Koffing', 40, 40, koffingSkill, 5, 'css/images/pokemon/koffing.png')
 const diglett = new Pokemon('Diglett', 40, 40, diglettSkill, 5, 'css/images/pokemon/diglett.png')
-const meowth = new Pokemon('Meowth', 100, 100, meowthSkill, 5, 'css/images/pokemon/meowth.png')
-const magikarp = new Pokemon('Magikarp', 100, 100, magikarpSkill, 5, 'css/images/pokemon/magikarp.png')
-const krabby = new Pokemon('Krabby', 100, 100, krabbySkill, 5, 'css/images/pokemon/krabby.png')
-const poliwag = new Pokemon('Poliwag', 100, 100, poliwagSkill, 5, 'css/images/pokemon/poliwag.png')
-const oddish = new Pokemon('Oddish', 100, 100, oddishSkill, 5, 'css/images/pokemon/oddish.png')
-const paras = new Pokemon('Paras', 100, 100, parasSkill, 5, 'css/images/pokemon/paras.png')
-const venonat = new Pokemon('Venonat', 100, 100, venonatSkill, 5, 'css/images/pokemon/venonat.png')
+const meowth = new Pokemon('Meowth', 40, 40, meowthSkill, 5, 'css/images/pokemon/meowth.png')
+const magikarp = new Pokemon('Magikarp', 40, 40, magikarpSkill, 5, 'css/images/pokemon/magikarp.png')
+const krabby = new Pokemon('Krabby', 40, 40, krabbySkill, 5, 'css/images/pokemon/krabby.png')
+const poliwag = new Pokemon('Poliwag', 40, 40, poliwagSkill, 5, 'css/images/pokemon/poliwag.png')
+const oddish = new Pokemon('Oddish', 40, 40, oddishSkill, 5, 'css/images/pokemon/oddish.png')
+const paras = new Pokemon('Paras', 40, 40, parasSkill, 5, 'css/images/pokemon/paras.png')
+const venonat = new Pokemon('Venonat', 40, 40, venonatSkill, 5, 'css/images/pokemon/venonat.png')
 
 
 randomPokemon1.push(caterpie, ratata, pidgey, weedle) // meadow poke

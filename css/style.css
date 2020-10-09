@@ -25,6 +25,27 @@
     flex-direction: column;
 }
 
+.endGamePage {
+    background-image: url('images/endgame.jpg');
+    opacity: 0.5;
+    background-repeat: no-repeat, repeat;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+.endGameText {
+    width: 200px;
+    height: 30px;
+    font-weight: 900;
+    background-color: aliceblue;
+}
+
 .professorOaksLab {
     background-image: url('images/pokemon-professor-oak-facts-trivia.jpg');
     opacity: 0.5;
