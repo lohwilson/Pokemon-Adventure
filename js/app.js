@@ -6,8 +6,9 @@ let itemList = []
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
-let mainTownButtons = ['enterPokeCentre', 'training', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
-let mainTownText = ['Pokemon Centre', 'Training Grounds', 'Forest', 'Meadow', 'Shop', 'Gym']
+
+let mainTownButtons = ['training', 'enterPokeCentre', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
+let mainTownText = ['Training Grounds', 'Pokemon Centre', 'Forest', 'Meadow', 'Shop', 'Gym']
 
 let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
@@ -34,15 +35,7 @@ let $suspiciousObject = 0
 
 let randomEncounterIndex
 
-
 let currentBgm = 0
-
-
-
-function lowerVolume(){
-    let backgroundMusic = document.getElementById("bgm");
-    backgroundMusic.volume = 0.6;
-}
 
 $(()=>{
 
@@ -53,8 +46,8 @@ $(()=>{
     $layout.append($audio)
     $audio.loop = true;
 
-    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
-    // $audio.append($source)
+    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    $audio.append($source)
 
     $('audio')[0].play();
 
@@ -83,6 +76,12 @@ $(()=>{
         $('audio')[0].play();
     }
 
+    function pokecentreBgm(){
+        $source.attr('src', 'sounds/pokecentre.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
     function battleBgm(){
         $source.attr('src', 'sounds/battle.mp3')
         $('audio')[0].load();
@@ -95,8 +94,20 @@ $(()=>{
         $('audio')[0].play();
     }
 
+    function lastBattleBgm(){
+        $source.attr('src', 'sounds/lastBattle.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
     function forestBgm(){
         $source.attr('src', 'sounds/forest.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
+
+    function caveBgm(){
+        $source.attr('src', 'sounds/cave.mp3')
         $('audio')[0].load();
         $('audio')[0].play();
     }
@@ -108,6 +119,8 @@ $(()=>{
             townBgm()
         } else if (currentBgm === 3){
             forestBgm()
+        } else if (currentBgm === 4){
+            caveBgm()
         }
     }
 
@@ -190,12 +203,12 @@ $(()=>{
     $continueButton = $('<button>').addClass('continueButton').text('Continue')
     $mainPage.append($continueButton)
 
-    $professorOak1 = $('<div>').addClass('professorOak1')
+    $professorOak1 = $('<div>').addClass('professorOak1').text('Professor Oak').css('font-weight', '900').css('color', 'black')
     $oakLabDiv0.append($professorOak1)
-    $professorOak2 = $('<div>').addClass('professorOak2')
+    $professorOak2 = $('<div>').addClass('professorOak2').text('Professor Oak').css('font-weight', '900').css('color', 'black')
     $oakLabDiv0.append($professorOak2)
     $professorOak2.hide()
-    $professorOak3 = $('<div>').addClass('professorOak3')
+    $professorOak3 = $('<div>').addClass('professorOak3').text('Professor Oak').css('font-weight', '900').css('color', 'black')
     $oakLabDiv0.append($professorOak3)
     $professorOak3.hide()
     $exitLab = $('<button>').addClass('exitLab').text('Exit')
@@ -219,6 +232,8 @@ $(()=>{
     $mainPage.append($createModal)
     $createModalBox = $('<div>').attr('id', 'modal-textBox')
     $createModal.append($createModalBox)
+    $createText = $('<h1>').text('Please input your name.').css('font-size', '15px').css('font-weight', '750')
+    $createModalBox.append($createText)
     $createInputBox = $('<input>').attr('type', 'text').attr('id', 'inputBox')
     $createModalBox.append($createInputBox)
     $createModalFooter = $('<div>').attr('id', 'modal-footer')
@@ -454,7 +469,6 @@ $(()=>{
 //////////////////////////////////////      MAIN TOWN         /////////////////////////////////////
 
 
-
     for (let i = 0; i < 6; i++){
         let $mainTownDiv = $('<div>').addClass('mainTownDiv'+i)
         $mainTown.append($mainTownDiv)
@@ -485,6 +499,7 @@ $(()=>{
         playButtonSound()
         $mainTown.hide()
         $pokeCentre.show()
+        pokecentreBgm()
     })
     $gym.on('click', ()=>{
         playButtonSound()
@@ -578,8 +593,13 @@ $(()=>{
 
     ///////////////////////// POKECENTRE ////////////////////////////////////
 
+    $pokeCentreDiv1 = $('<div>').addClass('pokeCentreDiv1')
+    $pokeCentre.append($pokeCentreDiv1)
+    $pokeCentreDiv2 = $('<div>').addClass('pokeCentreDiv2')
+    $pokeCentre.append($pokeCentreDiv2)
+
     $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
-    $pokeCentre.append($pokeCentreNurse)
+    $pokeCentreDiv1.append($pokeCentreNurse)
     // $pokeCentreText = $('<div>').addClass('pokeCentreText').text('')
     // $pokeCentre.append($pokeCentreText)
 
@@ -589,7 +609,7 @@ $(()=>{
     // }
 
     $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
-    $pokeCentre.append($pokeCentreToTown)
+    $pokeCentreDiv2.append($pokeCentreToTown)
 
     $pokeCentreNurse.on('click', ()=>{
         playButtonSound()
@@ -601,13 +621,13 @@ $(()=>{
     })
 
     $healButton = $('<button>').text('Heal Pokemon').addClass('healPokemon')
-    $pokeCentre.append($healButton)
+    $pokeCentreDiv1.append($healButton)
     $healButton.hide()
     $leaveButton = $('<button>').text('Leave').addClass('leaveButton')
-    $pokeCentre.append($leaveButton)
+    $pokeCentreDiv2.append($leaveButton)
     $leaveButton.hide()
     $respawnButton = $('<button>').text('Respawn').addClass('respawnButton')
-    $pokeCentre.append($respawnButton)
+    $pokeCentreDiv1.append($respawnButton)
     $respawnButton.hide()
 
     $healButton.on('click', ()=>{
@@ -641,6 +661,7 @@ $(()=>{
         playButtonSound()
         $pokeCentre.hide()
         $mainTown.show()
+        townBgm()
     })
     
     $respawnButton.on('click', ()=>{
@@ -735,6 +756,7 @@ $(()=>{
         playButtonSound()
         $forest.hide()
         $cave.show()
+        caveBgm()
     })
 
 

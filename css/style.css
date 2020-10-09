@@ -105,16 +105,6 @@
     align-items: flex-end;
 }
 
-
-
-
-
-
-
-
-
-
-
 .mainTown {
     background-image: url('images/img1.PNG');
     opacity: 0.5;
@@ -129,43 +119,40 @@
 
 .mainTownDiv0 {
     width: 32%;
-    height: 50%;
+    height: 70%;
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
-    align-items: flex-end;
 }
 
 .mainTownDiv1 {
     width: 32%;
-    height: 50%;
+    height: 70%;
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
-    align-items: flex-end;
 }
 
 .mainTownDiv2 {
     width: 32%;
-    height: 50%;
+    height: 70%;
     border: 2px solid black;
     display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .mainTownDiv3 {
     width: 32%;
-    height: 50%;
+    height: 30%;
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
-    align-items: flex-end;
 }
 
 .mainTownDiv4 {
     width: 32%;
-    height: 50%;
+    height: 30%;
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
@@ -174,18 +161,12 @@
 
 .mainTownDiv5 {
     width: 32%;
-    height: 50%;
+    height: 30%;
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
-}
-
-
-
-
-
-
+} 
 
 .pokeCentre {
     background-image: url('images/pokemon\ centre.jpg');
@@ -195,9 +176,28 @@
     height: 100%;
     border: 2px solid black;
     display: flex;
+    flex-wrap: wrap;
     align-content: center;
     background-size: cover;
 }
+
+.pokeCentreDiv1 {
+    width: 99%;
+    height: 49%;
+    border: 2px solid black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.pokeCentreDiv2 {
+    width: 99%;
+    height: 49%;
+    border: 2px solid black;
+    display: flex;
+    align-items: flex-end;
+}
+
 
 .shop {
     background-image: url('images/shop.jpg');
@@ -227,10 +227,6 @@
     align-items: flex-end;
     justify-content: flex-end;
 }
-
-
-
-
 
 .forest {
     background-image: url('images/forest.jpg');
@@ -391,10 +387,18 @@
     background-color: yellow;
     border: none;
     color: black;
+    border-radius: 15px;
     width: 100px;
-    height: 100px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -444,7 +448,7 @@
     border-radius: 15px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     width: 150px;
-    height: 50px;
+    height: 75px;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -461,10 +465,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 75px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -472,10 +484,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 75px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -483,10 +503,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -494,10 +522,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -505,10 +541,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -516,10 +560,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 75px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -527,10 +579,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -538,10 +598,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -549,10 +617,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -560,46 +636,75 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
-    align-self: flex-start;
 }
 
 .sellItems {
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
-    align-self: flex-start;
 }
 
 .leaveShop {
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
-    align-self: flex-start;
 }
 
 .enterForest {
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -607,10 +712,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -618,10 +731,18 @@
     background-color: yellow;
     border: none;
     color: black;
+    border-radius: 15px;
     width: 100px;
-    height: 100px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -629,10 +750,18 @@
     background-color: yellow;
     border: none;
     color: black;
+    border-radius: 15px;
     width: 100px;
-    height: 100px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -640,10 +769,18 @@
     background-color: yellow;
     border: none;
     color: black;
+    border-radius: 15px;
     width: 100px;
-    height: 100px;
+    height: 75px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -651,10 +788,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 125px;
+    height: 75px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -662,10 +807,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -673,10 +826,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -684,10 +845,18 @@
     background-color: yellow;
     border: none;
     color: black;
-    width: 100px;
-    height: 100px;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
     cursor: pointer;
 }
 
@@ -709,6 +878,7 @@
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .squirtle {
@@ -720,6 +890,7 @@
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .bulbasaur {
@@ -731,6 +902,7 @@
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 /*//////////////////////////////////////////////////// CHOOSE POKEMON //////////////////////////////////////////// */
@@ -818,9 +990,6 @@
     100% {transform: translate(50px)}
   }
 
-
-
-
 .userPicture{
     border: 2px solid red;
     width: 300px;
@@ -848,13 +1017,6 @@
     75% {transform: translate(-50px)}
     100% {transform: translate(50px)}
   }
-
-
-
-
-
-
-
 
 .userInfoDisplay{
     border: 2px solid red;
@@ -929,15 +1091,6 @@
 }
 
 .alertButtons {
-    /* background-color: yellow;
-    border: none;
-    color: black;
-    width: 100px;
-    height: 50px;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer; */
-
     background-color: yellow;
     border: none;
     color: black;
@@ -1053,9 +1206,7 @@
     background-color: yellow;
     border: none;
     color: black;
-    /* text-align: center; */
-    /* text-decoration: none; */
-    /* display: inline-block; */
+
     font-size: 10px;
     cursor: pointer;
     width: 45%;
@@ -1063,9 +1214,6 @@
 }
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
-
-
-
 
 
 
@@ -1083,6 +1231,34 @@
     width: 150px;
     height: 125px;
     cursor: pointer;
+}
+
+.professorOak3 {
+    width: 150px;
+    height: 125px;
+    cursor: pointer;
+}
+
+.shopkeeper {
+    width: 150px;
+    height: 125px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.pokeCentreNurse {
+    width: 150px;
+    height: 125px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 20px;
 }
 
 .suspiciousTree {
@@ -1148,13 +1324,13 @@
 	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
 	overflow: auto;
 	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
-	display: flex;
-	/*Set this to `none` so that the modal does not show initially on page load.*/
+    display: flex;
+    align-items: center;
 }
 
 #modal-textBox {
     background-image: url('images/modal1.jpg');
-    background-size: 320px;
+    background-size: 350px;
 	height: 250px;
 	width: 300px;
 	border-radius: 10px;
@@ -1167,13 +1343,19 @@
 	font-family: Arial, Helvetica, sans-serif;
 }	
 
+#inputBox{
+    margin: 5px 0px 125px 0px;
+}
+
 #modal-footer {
-	text-align: right;
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
 }
 
 #close {
 	padding: 10px 10px;
-	background-color: #677996;
+	background-color: #e41a1a;
 	border: none;
 	outline: none;
 	border-radius: 3px;
@@ -1183,8 +1365,9 @@
 }
 
 #beginJourney {
+    margin: 0px 30px;
 	padding: 10px 10px;
-	background-color: #677996;
+	background-color: #0af33c;
 	border: none;
 	outline: none;
 	border-radius: 3px;
