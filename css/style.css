@@ -1276,6 +1276,13 @@
     border: 2px solid red;
 }
 
+.suspiciousTree1 {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+
 .suspiciousRock {
     width: 100px;
     height: 100px;
@@ -1283,7 +1290,22 @@
     border: 2px solid red;
 }
 
+.suspiciousRock1 {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid red;
+}
+
 .suspiciousMoss {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid red;
+    align-self: flex-start;
+}
+
+.suspiciousMoss1 {
     width: 100px;
     height: 100px;
     cursor: pointer;
@@ -1299,6 +1321,14 @@
     align-self: flex-start;
 }
 
+.suspiciousObject1 {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid red;
+    align-self: flex-start;
+}
+
 .suspiciousThing {
     width: 100px;
     height: 100px;
@@ -1306,7 +1336,12 @@
     border: 2px solid red;
 }
 
-
+.suspiciousThing1 {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border: 2px solid red;
+}
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */
 
 

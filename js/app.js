@@ -33,6 +33,7 @@ let suspiciousRock = 0
 let suspiciousThing = 0
 let $suspiciousObject = 0
 
+let cavemap
 let randomEncounterIndex
 
 let currentBgm = 0
@@ -734,18 +735,22 @@ $(()=>{
 
     $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
     $('.forestDiv4').append($enterBeach)
-    // $enterBeach.hide()
+    $enterBeach.hide()
     $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
     $('.forestDiv3').append($enterDeepForest)
-    // $enterDeepForest.hide()
+    $enterDeepForest.hide()
 
     //need css animation and mouse hover to make it clickable
     $suspiciousTree = $('<div>').addClass('suspiciousTree')
     $('.forestDiv1').append($suspiciousTree)
 
+    $suspiciousTree1 = $('<div>').addClass('suspiciousTree1')
+    $('.forestDiv1').append($suspiciousTree1)
+    $suspiciousTree1.hide()
+
     $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
     $('.forestDiv2').append($enterCave)
-    // $enterCave.hide()
+    $enterCave.hide()
 
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
     $('.forestDiv0').append($enterMainTown)
@@ -776,10 +781,21 @@ $(()=>{
         playButtonSound()
         $suspiciousTree.hide()
         teamRocketAppears()
+        $suspiciousTree1.show()
+    })
+
+    $suspiciousTree1.on('click', ()=>{
+        alert('There\'s no trace of team rocket but you found some footprints leading to the beach and deeper into the forest')
+        $enterBeach.show()
+        $enterDeepForest.show()
     })
 
     function teamRocketAppears(){
-        alert('Prepare for trouble, and make it double')
+        alert('Prepare for trouble! And make it double!')
+        alert('To protect the world from devastation! To unite all peoples within our nation! ')
+        alert('To denounce the evils of truth and love! To extend our reach to the stars above!')
+        alert('Jessie! James!')
+        alert('Team rocket blasts off in the speed of light! Surrender now or prepare to fight!')
         battleTeamRocket1()
     }
     
@@ -850,11 +866,21 @@ $(()=>{
 
     $suspiciousRock = $('<div>').addClass('suspiciousRock')
     $beach.append($suspiciousRock)
+    $suspiciousRock1 = $('<div>').addClass('suspiciousRock1')
+    $beach.append($suspiciousRock1)
+    $suspiciousRock1.hide()
 
     $suspiciousRock.on('click', ()=>{
         playButtonSound()
         $suspiciousRock.hide()
         suspiciousRockMoves()
+        $suspiciousRock1.show()
+    })
+
+    $suspiciousRock1.on('click', ()=>{
+        alert('You found a half of a map.')
+        cavemap++
+        unlockCave()
     })
 
     function suspiciousRockMoves(){
@@ -906,11 +932,20 @@ $(()=>{
 
     $suspiciousMoss = $('<div>').addClass('suspiciousMoss')
     $deepForest.append($suspiciousMoss)
+    $suspiciousMoss1 = $('<div>').addClass('suspiciousMoss1')
+    $deepForest.append($suspiciousMoss1)
+    $suspiciousMoss1.hide()
 
     $suspiciousMoss.on('click', ()=>{
         playButtonSound()
         $suspiciousMoss.hide()
         suspiciousMossMoves()
+    })
+
+    $suspiciousMoss1.on('click', ()=>{
+        alert('You found a half of a map.')
+        cavemap++
+        unlockCave()
     })
 
     function suspiciousMossMoves(){
@@ -944,7 +979,12 @@ $(()=>{
 
 
 
-
+    function unlockCave(){
+        if (cavemap === 2){
+            alert('You joined two pieces of map and found a hidden entrance!')
+            $enterCave.show()
+        }
+    }
 
 
 
@@ -1063,10 +1103,6 @@ $(()=>{
     }
 
     ///////////////////////// DEEP CAVE  ////////////////////////////////////
-
-
-
-
 
 
     function exitBattle(){
@@ -1300,40 +1336,22 @@ $(()=>{
             showBattleButtons()
         })
 
-        $fightButton.on('click', (event)=>{
-            event.preventDefault()
+        $fightButton.on('click', ()=>{
             console.log('fight')
             hideBattleButtons()
             showSkillButtons()
         })
 
-        $itemButton.on('click', (event)=>{
-            event.preventDefault()
-            console.log('item')
-            hideBattleButtons()
-
-            items()
+        $itemButton.on('click', ()=>{
             $('#alertDisplay0').text(player.name + ' do not have any items!')
-            console.log($(event.eventListener))
         })
 
-        $cancelItem = $('<button>').addClass('cancelItem').text('Cancel')
-        $('.battleCommandsDisplay').append($cancelItem)
-        $cancelItem.hide()
-        $cancelItem.on('click', ()=>{
-            items.hide()
-            showBattleButtons()
-        })
-
-        $changePokemonButton.on('click', (event)=>{
-            console.log('change')
-            console.log($(event.eventListener))
+        $changePokemonButton.on('click', ()=>{
             $('#alertDisplay0').text(player.name + ' have only one pokemon now!')
         })
 
-        $runButton.on('click', (event)=>{
-            console.log('run')
-            console.log($(event.eventListener))
+        $runButton.on('click', ()=>{
+            $('#alertDisplay0').text('You can\'t run away!')
         })
 
 ////////////////////////////////    EVENT LISTENERS    ////////////////////////////////////
@@ -1523,9 +1541,7 @@ $(()=>{
 
     function randomBattle(){
         $('.battle').show()
-
         let currentPokemon = userPokemonList[0]
-
         let $battleDiv1 = $('<div>').addClass('battleDiv1')
         $('.battle').append($battleDiv1)
         let $battleDiv2 = $('<div>').addClass('battleDiv2')
@@ -1702,7 +1718,6 @@ $(()=>{
             showBattleButtons()
         })
 
-
         $fightButton.on('click', ()=>{
             console.log('fight')
             hideBattleButtons()
@@ -1710,15 +1725,13 @@ $(()=>{
         })
 
         $itemButton.on('click', ()=>{
-            console.log('item')
-            hideBattleButtons()
             $('#alertDisplay0').text(player.name + ' do not have any items!')
-            $cancelItem.show()
         })
 
         $cancelItem = $('<button>').addClass('cancelItem').text('Cancel')
         $('.battleCommandsDisplay').append($cancelItem)
         $cancelItem.hide()
+
         $cancelItem.on('click', ()=>{
             $cancelItem.hide()
             showBattleButtons()
@@ -1730,9 +1743,8 @@ $(()=>{
             $('#alertDisplay0').text(player.name + ' only have 1 pokemon now.')
         })
 
-        $runButton.on('click', (event)=>{
-            console.log('run')
-            console.log($(event.eventListener))
+        $runButton.on('click', ()=>{
+            $('#alertDisplay0').text('You can\'t run away!')
         })
 
     ////////////////////////////////    EVENT LISTENERS    ////////////////////////////////////
