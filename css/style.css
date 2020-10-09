@@ -131,6 +131,7 @@
     border: 2px solid black;
     display: flex;
     flex-direction: column-reverse;
+    align-items: flex-end;
 }
 
 .mainTownDiv2 {
@@ -198,7 +199,6 @@
     align-items: flex-end;
 }
 
-
 .shop {
     background-image: url('images/shop.jpg');
     opacity: 0.5;
@@ -214,7 +214,6 @@
 .shopDiv1 {
     width: 49%;
     height: 100%;
-    border: 2px solid black;
     display: flex;
     align-items: center;
 }
@@ -222,7 +221,6 @@
 .shopDiv2 {
     width: 49%;
     height: 100%;
-    border: 2px solid black;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
@@ -670,6 +668,26 @@
     cursor: pointer;
 }
 
+.shopTalk1 {
+    background-color: yellow;
+    border: none;
+    color: black;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
+    cursor: pointer;
+}
+
+
 .leaveShop {
     background-color: yellow;
     border: none;
@@ -912,14 +930,10 @@
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
 
 .battle {
-    /* background-image: url('images/pokemonred-e1529430185757.jpg'); */
-    /* opacity: 0.5; */
     background-repeat: no-repeat, repeat;
     background-size: cover;
-    /* background-color: beige; */
     width: 100%;
     height: 100%;
-    border: 2px solid black;
     display: inline-flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -957,14 +971,12 @@
 }
 
 .enemyInfoDisplay{
-    border: 2px solid red;
     width: 300px;
     height: 50px;
     font-weight: 900;
 }
 
 .enemyPicture{
-    border: 2px solid red;
     width: 300px;
     height: 150px;
     margin: 10px;
@@ -991,7 +1003,6 @@
   }
 
 .userPicture{
-    border: 2px solid red;
     width: 300px;
     height: 150px;
     margin: 10px;
@@ -1019,7 +1030,6 @@
   }
 
 .userInfoDisplay{
-    border: 2px solid red;
     width: 300px;
     height: 50px;
     align-items: center;
@@ -1060,7 +1070,6 @@
 }
 
 .alertBox{
-    border: 2px solid red;
     width: 400px;
     height: 100px;
     text-align: center;
@@ -1085,7 +1094,6 @@
 }
 
 .battleCommandsDisplay{
-    border: 2px solid red;
     width: 300px;
     height: 100px;
 }

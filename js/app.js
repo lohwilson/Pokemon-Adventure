@@ -211,6 +211,9 @@ $(()=>{
     $professorOak3 = $('<div>').addClass('professorOak3').text('Professor Oak').css('font-weight', '900').css('color', 'black')
     $oakLabDiv0.append($professorOak3)
     $professorOak3.hide()
+    $professorOak4 = $('<div>').addClass('professorOak4').text('Professor Oak').css('font-weight', '900').css('color', 'black')
+    $oakLabDiv0.append($professorOak4)
+    $professorOak4.hide()
     $exitLab = $('<button>').addClass('exitLab').text('Exit')
     $oakLabDiv2.append($exitLab)
     $exitLab.hide()
@@ -329,28 +332,42 @@ $(()=>{
     $professorOak1.on('click', ()=>{
         $professorOak1.hide()
         playButtonSound()
-        // alert('Hello there, '+ name + '. My name is Professor Oak. Welcome to my lab')
-        // alert('You look very excited to begin your journey, so i\'ll get right to it.')
-        // alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
-        // alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
-        // alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
-        // alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
+        alert('Hello there, '+ player.name + '. My name is Professor Oak. Welcome to my lab')
+        alert('You look very excited to begin your journey, so i\'ll get right to it.')
+        alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
+        alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
+        alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
+        alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
         choosePokemonButtons()
     })
 
     $professorOak2.on('click', ()=>{
+        $professorOak2.hide()
         playButtonSound()
-        alert('Please come back when you have the item.')
+        alert('Great choice! I\'m sure you will treat '+ userPokemonList[0].name + ' well.')
+        alert('I was supposed to introduce you to my grandson today but i\'m not sure where he went.')
+        alert('He did mention that he wanted to check out the gym in town.')
+        alert('But, anyway, i do have a task for you. I need you to get to town and obtain a parcel from the shopkeeper.')
+        alert('The contents of this parcel is very important to me, so please return when you have gotten it.')
+        alert('Oh, and on the way to town, you might want to test out your new Pokemon. I always hear some wild pokemon rustling near the bushes')
+        alert('Please come back when you have my parcel.')
         $exitLab.show()
+        $professorOak3.show()
     })
 
     $professorOak3.on('click', ()=>{
         playButtonSound()
-        alert('Thank you for collecting this item for me')
+        alert('Please come back when you have my parcel.')
+    })
+
+    $professorOak4.on('click', ()=>{
+        playButtonSound()
+        alert('Thank you for bringing back my parcel for me')
         alert('I hope it wasn\'t too much of a hassle')
         alert('I\'m sure you will be a great Pokemon Trainer in the future')
         endGame()
     })
+
 
     $exitLab.on('click', ()=>{
         playButtonSound()
@@ -484,6 +501,7 @@ $(()=>{
     $enterShop = $('.enterShop')
     $gym = $('.gym')
     $enterForest = $('.enterForest')
+    $enterForest.hide()
     $enterMeadow = $('.enterMeadow')
 
     $training.on('click', ()=>{
@@ -507,8 +525,9 @@ $(()=>{
         gymClickCounter++
 
         if (gymClickCounter === 5){
-            alert('Who do you think you are?')
-            alert('I\'ll teach you a lesson for trying to mess with my gym!')
+            alert('Stranger: Well, well, well, look who it is?')
+            alert('Stranger: My gramps did mention about you this morning!')
+            alert('Stranger: Time for me to show you who is the real Pokemon Master!')
             $mainTown.hide()
             battle2Bgm()
             battleRival()
@@ -565,15 +584,34 @@ $(()=>{
     $sellItems = $('<button>').addClass('sellItems').text('Sell')
     $shopDiv1.append($sellItems)
     $sellItems.hide()
+    $shopTalk = $('<button>').addClass('shopTalk1').text('Talk')
+    $shopDiv1.append($shopTalk)
+    $shopTalk.hide()
     $leaveShop = $('<button>').addClass('leaveShop').text('Leave')
     $shopDiv1.append($leaveShop)
     $leaveShop.hide()
+
+
+    $buyItems.on('click', ()=>{
+        alert('I have nothing to sell to you right now!')
+    })
+    $sellItems.on('click', ()=>{
+        alert('You have nothing to sell!')
+    })
+    $shopTalk.on('click', ()=>{
+        alert('Oh, so Professor Oak sent you?')
+        alert('I would love to help you but my shop a suspicious person entered my shop late last night and robbed me.')
+        alert('Last I heard, they were spotted heading towards the forest.')
+        alert('You might be able to track them down and retrieve the package.')
+        $enterForest.show()
+    })
 
     $leaveShop.on('click', ()=>{
         playButtonSound()
         $buyItems.hide()
         $sellItems.hide()
         $leaveShop.hide()
+        $shopTalk.hide()
         $shopkeeper.show()
         $shopToTown.show()
     })
@@ -585,6 +623,7 @@ $(()=>{
         $buyItems.show()
         $sellItems.show()
         $leaveShop.show()
+        $shopTalk.show()
     })
 
 
@@ -667,6 +706,7 @@ $(()=>{
     $respawnButton.on('click', ()=>{
         playButtonSound()
         $respawnButton.hide()
+        userPokemonList[0].health = userPokemonList[0].fullHealth
         alert('Looks like your pokemon ran out of hp!')
         alert('I have healed your pokemon back to full health.')
         alert('Please treat your pokemon with more care in the future.')
@@ -749,7 +789,7 @@ $(()=>{
         battle2Bgm()
         battle()
         currentLocation = $forest
-        $battle.css('background-image', 'url("css/images/forestbattle.jpg")')
+        $battle.css('background-image', 'url("css/images/forestbattle.png")')
     }
 
     $enterCave.on('click', ()=>{
@@ -927,6 +967,7 @@ $(()=>{
         playButtonSound()
         $cave.hide()
         $forest.show()
+        forestBgm()
     })
 
     $caveToDeepCave.on('click', ()=>{
@@ -1040,7 +1081,7 @@ $(()=>{
         $pokeCentreNurse.hide()
         $pokeCentreToTown.hide()
         $respawnButton.show()
-        townBgm()
+        pokecentreBgm()
     }
 
     function userPokemonAnimation(){
@@ -1056,21 +1097,6 @@ $(()=>{
         enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
         console.log(randomEncounterIndex)
     }
-
-
-    
-
-
-    
-    function battleTrainer4(){
-            //location.hide()
-        battleOpponent.push(trainer4)
-        battle()
-    }
-    
-
-
-
 
 
     ///////////////////////////////////////////      BATTLE       //////////////////////////////////////
@@ -1234,7 +1260,6 @@ $(()=>{
         $alertButton7.on('click', ()=>{
             $alertButton7.hide()
             $battle.empty()
-            playCurrentBgm()
             goToPokeCentre()
             battleOpponent.pop()
             enemyPokemonList.length = 0
@@ -1266,9 +1291,6 @@ $(()=>{
 
             enemyBattlePokemon.push(enemyPokemonList[0])
             enemyPokemonList.shift()
-
-            // console.log(enemyPokemonList)
-            // console.log(enemyBattlePokemon)
 
             setEnemyHealth()
             displayEnemyInfo()
@@ -1400,16 +1422,8 @@ $(()=>{
 
         // currently only have 1 pokemon, so automatically lose if pokemon dies
         function checkUserPokemonAvailability(){
-                $('#alertDisplay0').text('You have no pokemon left!')
-                loseBattle()
-
-            // if (userPokemonList.length === 0){
-            //     $('#alertDisplay0').text('You have no pokemon left!')
-            //     loseBattle()
-            // } else {
-            //     $('#alertDisplay0').text('Please choose a new Pokemon.')
-            //     userChooseNewPokemon()
-            // }
+            $('#alertDisplay0').text('You have no pokemon left!')
+            loseBattle()
         }
 
         function checkEnemyPokemonAvailability(){
@@ -1503,11 +1517,6 @@ $(()=>{
             })
         }
     }
-
-
-
-
-
 
 
 ///////////////////////////////////////////     RANDOM BATTLE       //////////////////////////////////////
@@ -1679,17 +1688,6 @@ $(()=>{
             exitBattle()
         })
 
-        
-        // $alertButton8.on('click', ()=>{
-        //     $alertButton8.hide()
-        //     $battle.empty()
-        //     battleOpponent.pop()
-        //     enemyPokemonList.length = 0
-        //     enemyBattlePokemon.length = 0
-        //     exitBattle()
-        // })
-
-
         $alertButton9.on('click', ()=>{
             $alertButton9.hide()
             enemyAttack()
@@ -1829,19 +1827,8 @@ $(()=>{
         function checkUserPokemonAvailability(){
                 $('#alertDisplay0').text(player.name + ' have no pokemon left!')
                 loseBattle()
-
-            // if (userPokemonList.length === 0){
-            //     $('#alertDisplay0').text('You have no pokemon left!')
-            //     loseBattle()
-            // } else {
-            //     $('#alertDisplay0').text('Please choose a new Pokemon.')
-            //     userChooseNewPokemon()
-            // }
         }
 
-        function userChooseNewPokemon(){
-            $alertButton10.show()
-        }
         
         function loseBattle(){
             $('#alertDisplay0').text(player.name + ' has no pokemon left!')
@@ -1908,12 +1895,6 @@ $(()=>{
             })
         }
     }
-
-
-
-
-
-
 
 })
 
