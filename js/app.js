@@ -1,6 +1,7 @@
 console.log('hello world')
 
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
+let starterPokemonName = ['Charmander', 'S']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
 let mainTownButtons = ['training', 'enterPokeCentre', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
@@ -10,6 +11,8 @@ let battleCommands = ['fight', 'item', 'changePokemon', 'run']
 let battleCommandsButton = ['fightButton', 'itemButton', 'changePokemonButton', 'runButton']
 let battleButtonsArray = []
 let battleContainerArray = ['userInfoDisplay', 'enemyPicture', 'userPicture', 'enemyInfoDisplay', 'alertBox', 'battleCommandsDisplay']
+
+let soundsArray = ['Absorb', 'Bite', 'Bubble', 'Bubblebeam', 'Dig', 'DoubleKick', 'Ember', 'FireSpin', 'FuryAttack', 'FurySwipes', 'Gust', 'LeechSeed', 'Payday', 'Peck', 'PoisonGas', 'PoisonPowder', 'PoisonSting', 'QuickAttack', 'RockSlide', 'Scratch', 'Slash', 'SolarBeam', 'Splash', 'StringShot', 'Supersonic', 'Tackle', 'Thunderbolt', 'ThunderShock', 'Toxic', 'ViceGrip', 'VineWhip', 'WaterGun', 'Wrap']
 
 let userPokemonList = []
 let enemyPokemonList = []
@@ -44,8 +47,8 @@ $(()=>{
     $layout.append($audio)
     $audio.loop = true;
 
-    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
-    $audio.append($source)
+    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    // $audio.append($source)
 
     $('audio')[0].play();
 
@@ -135,13 +138,42 @@ $(()=>{
         sound.play()
     }
     
+    function tackleSound(){
+        sound = new Audio('sounds/battlesounds/tackle.mp3')
+        sound.play()
+    }
+
+    // function playEnemySound(){
+    //     for (let i = 0; i < soundsArray.length; i++){
+    //         if (enemyBattlePokemon[0].skills[random] === soundsArray[i]){
+    //             sound = new Audio('sounds/battlesounds/'+i+'.mp3')
+    //             sound.play()
+    //         }
+    //     }
+    // }
+
+    function playUserSound(chosenSkill){
+        sound = new Audio('sounds/battlesounds/'+chosenSkill+'.mp3')
+        sound.play()
+    }
+
+    function playEnemySound(){
+        sound = new Audio('sounds/battlesounds/'+enemyBattlePokemon[0].skills[random].name+'.mp3')
+        sound.play()
+    }
+    
+
+
+
+
+
     /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
 
 
     ////////////////////////////////////        PAGES       //////////////////////////////////////////
 
-    let pagesArray = ['mainPage', 'meadow', 'professorOaksLab', 'mainTown', 'battle', 'pokeCentre', 'shop', 'forest', 'beach', 'deepForest', 'cave', 'deepCave', 'endGamePage']
+    let pagesArray = ['mainPage', 'professorOaksLab', 'meadow', 'mainTown', 'battle', 'pokeCentre', 'shop', 'forest', 'beach', 'deepForest', 'cave', 'deepCave', 'endGamePage']
 
     for (let i = 0; i < pagesArray.length; i++){
         let $page = $('<div>').addClass(pagesArray[i])
@@ -162,46 +194,6 @@ $(()=>{
     let $pokeCentre = $('.pokeCentre')
     let $shop = $('.shop')
     $mainPage.show()
-
-    // let $mainPage = $('<div>').addClass('mainPage')
-    // $layout.append($mainPage)
-    // let $meadow = $('<div>').addClass('meadow')
-    // $layout.append($meadow)
-    // $meadow.hide()
-    // let $forest = $('<div>').addClass('forest')
-    // $layout.append($forest)
-    // $forest.hide()
-    // let $beach = $('<div>').addClass('beach')
-    // $layout.append($beach)
-    // $beach.hide()
-    // let $deepForest = $('<div>').addClass('deepForest')
-    // $layout.append($deepForest)
-    // $deepForest.hide()
-    // let $cave = $('<div>').addClass('cave')
-    // $layout.append($cave)
-    // $cave.hide()
-    // let $deepCave = $('<div>').addClass('deepCave')
-    // $layout.append($deepCave)
-    // $deepCave.hide()
-    // let $endGamePage = $('<div>').addClass('endGamePage')
-    // $layout.append($endGamePage)
-    // $endGamePage.hide()
-    // let $professorOaksLab = $('<div>').addClass('professorOaksLab')
-    // $layout.append($professorOaksLab)
-    // $professorOaksLab.hide()
-
-    // let $mainTown = $('<div>').addClass('mainTown')
-    // $layout.append($mainTown)
-    // $mainTown.hide()
-    // let $battle = $('<div>').addClass('battle')
-    // $layout.append($battle)
-    // $battle.hide()
-    // let $pokeCentre = $('<div>').addClass('pokeCentre')
-    // $layout.append($pokeCentre)
-    // $pokeCentre.hide()
-    // let $shop = $('<div>').addClass('shop')
-    // $layout.append($shop)
-    // $shop.hide()
 
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
@@ -789,8 +781,7 @@ $(()=>{
     function choosePokemonButtons(){
             // create choose pokemon buttons
         for (let i = 0; i < choosePokemonArray.length; i++){
-            let number = i+1
-            let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text('Pokeball '+ number)
+            let $button = $('<button>').addClass(choosePokemonArray[i]).addClass('choosePokemonButton').text(choosePokemonArray[i].charAt(0).toUpperCase()+choosePokemonArray[i].slice(1))
             $button.addClass('alert-success')
             $oakLabDiv1.append($button)
         }
@@ -1235,6 +1226,7 @@ $(()=>{
                 userCurrentHealth = 0;
             }
             $('#alertDisplay0').text(enemyBattlePokemon[0].name + ' used ' + enemyBattlePokemon[0].skills[random].name + '.')
+            playEnemySound()
             $alertButton4.show()
         }
 
@@ -1337,20 +1329,21 @@ $(()=>{
         $userPicture.css('background-image', `url(${player.backgroundImg})`)
 
         $alertButton0.show()
+        let chosenSkill
 
         for (let i = 0; i < userPokemonSkillsArray.length; i++){
             $('#skill'+i).on('click', (event)=>{
                 event.preventDefault()
 
                 userPokemonAnimation()
-
                 enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
                 }
                 hideSkillButtons()
                 $('#alertDisplay0').text(currentPokemon.name + ' used ' + currentPokemon.skills[i].name + '.')
-                
+                chosenSkill = currentPokemon.skills[i].name
+                playUserSound(chosenSkill)
                 $alertButton1.show()
             })
         }
@@ -1622,6 +1615,7 @@ $(()=>{
             let enemyPokemonSkillsArray = Object.keys(enemyBattlePokemon[0].skills)
             random = Math.floor(Math.random()*enemyPokemonSkillsArray.length)
             userCurrentHealth = userCurrentHealth - enemyBattlePokemon[0].skills[random].damage
+            playEnemySound()
             enemyPokemonAnimation()
             if (userCurrentHealth <= 0){
                 userCurrentHealth = 0;
@@ -1711,8 +1705,9 @@ $(()=>{
                 event.preventDefault()
 
                 userPokemonAnimation()
-
+                tackleSound()
                 enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
+                playUserSound()
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
                 }

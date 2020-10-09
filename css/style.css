@@ -933,8 +933,10 @@
 
 .charmander {
     /* background-color: yellow; */
-    width: 100px;
-    height: 100px;
+    background: linear-gradient(to bottom, red 0%,red 50%,#000000 50%,white 50%,white 100%); /* W3C */
+    width: 110px;
+    height: 110px;
+    font-weight: 900;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -944,9 +946,10 @@
 }
 
 .squirtle {
-    background-color: yellow;
-    width: 100px;
-    height: 100px;
+    background: linear-gradient(to bottom, red 0%,red 50%,#000000 50%,white 50%,white 100%); /* W3C */
+    width: 110px;
+    height: 110px;
+    font-weight: 900;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -956,9 +959,10 @@
 }
 
 .bulbasaur {
-    background-color: yellow;
-    width: 100px;
-    height: 100px;
+    background: linear-gradient(to bottom, red 0%,red 50%,#000000 50%,white 50%,white 100%); /* W3C */
+    width: 110px;
+    height: 110px;
+    font-weight: 900;
     text-align: center;
     text-decoration: none;
     display: inline-block;

@@ -43,11 +43,11 @@ class Pokemon {
 
 let pikachuSkill = [
     {
-        name: 'Quick Attack',
+        name: 'QuickAttack',
         damage: 10
     },
     {
-        name: 'Thundershock',
+        name: 'ThunderShock',
         damage: 15
     },
     {
@@ -70,7 +70,7 @@ let charmanderSkill = [
         damage: 20
     },
     {
-        name: 'Fire Spin',
+        name: 'FireSpin',
         damage: 45
     }
 ]
@@ -85,11 +85,11 @@ let squirtleSkill = [
         damage: 10
     },
     {
-        name: 'Water Gun',
+        name: 'WaterGun',
         damage: 20
     },
     {
-        name: 'Hydro Pump',
+        name: 'Bubblebeam',
         damage: 45
     }
 ]
@@ -100,15 +100,15 @@ let bulbasaurSkill = [
         damage: 5
     },
     {
-        name: 'Leech Seed',
+        name: 'LeechSeed',
         damage: 10
     },
     {
-        name: 'Vine Whip',
+        name: 'VineWhip',
         damage: 20
     },
     {
-        name: 'Solar Beam',
+        name: 'SolarBeam',
         damage: 45
     }
 ]
@@ -119,7 +119,7 @@ let caterpieSkill = [
         damage: 5
     },
     {
-        name: 'Bug Bite',
+        name: 'StringShot',
         damage: 10
     }
 ]
@@ -130,7 +130,7 @@ let ratataSkill = [
         damage: 5
     },
     {
-        name: 'Quick Attack',
+        name: 'QuickAttack',
         damage: 10
     }
 ]
@@ -148,11 +148,11 @@ let pidgeySkill = [
 
 let weedleSkill = [
     {
-        name: 'Poison Sting',
+        name: 'PoisonSting',
         damage: 5
     },
     {
-        name: 'Bug Bite',
+        name: 'StringShot',
         damage: 10
     }
 ]
@@ -163,7 +163,7 @@ let spearowSkill = [
         damage: 7
     },
     {
-        name: 'Fury Attack',
+        name: 'FuryAttack',
         damage: 13
     }
 ]
@@ -185,7 +185,7 @@ let sandshrewSkill = [
         damage: 7
     },
     {
-        name: 'Rapid Spin',
+        name: 'QuickAttack',
         damage: 13
     }
 ]
@@ -196,7 +196,7 @@ let nidoranSkill = [
         damage: 7
     },
     {
-        name: 'Poison Sting',
+        name: 'PoisonSting',
         damage: 13
     }
 ]
@@ -207,7 +207,7 @@ let geodudeSkill = [
         damage: 9
     },
     {
-        name: 'Mud Sport',
+        name: 'RockSlide',
         damage: 14
     }
 ]
@@ -225,7 +225,7 @@ let zubatSkill = [
 
 let koffingSkill = [
     {
-        name: 'Poison Gas',
+        name: 'PoisonGas',
         damage: 9
     },
     {
@@ -273,7 +273,7 @@ let krabbySkill = [
         damage: 10
     },
     {
-        name: 'Vice Grip',
+        name: 'ViceGrip',
         damage: 15
     }
 ]
@@ -284,7 +284,7 @@ let poliwagSkill = [
         damage: 10
     },
     {
-        name: 'Water Gun',
+        name: 'Bubble',
         damage: 15
     }
 ]
@@ -295,7 +295,7 @@ let oddishSkill = [
         damage: 10
     },
     {
-        name: 'Poison Powder',
+        name: 'PoisonPowder',
         damage: 15
     }
 ]
@@ -306,7 +306,7 @@ let parasSkill = [
         damage: 10
     },
     {
-        name: 'Fury Swipes',
+        name: 'FurySwipes',
         damage: 15
     }
 ]
@@ -328,7 +328,7 @@ let eeveeSkill = [
         damage: 10
     },
     {
-        name: 'Double Kick',
+        name: 'DoubleKick',
         damage: 15
     }
 ]
