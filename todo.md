@@ -2,19 +2,13 @@
 
 # Fixes
 - tidy up code
-- swap enemyinfo display to useinfo display
 - css UI
 
     arrange buttons in order
     change button styles accordingly
     loop bgm
 
-    background music
     sound effect when pokemon attacks
-
-    animation page close when enter battle
-    different bgm for battle
-
     sound for on clicks?
 
 

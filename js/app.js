@@ -31,8 +31,9 @@ let suspiciousTree = 0
 let suspiciousMoss = 0
 let suspiciousRock = 0
 let suspiciousThing = 0
-let $suspiciousObject = 0
+let suspiciousObject = 0
 let cavemap = 0
+let unlockPikachu = 0
 let randomEncounterIndex
 
 let currentBgm = 0
@@ -184,7 +185,6 @@ $(()=>{
     let $oakLabDiv0 = $('.oakLabDiv0')
     let $oakLabDiv1 = $('.oakLabDiv1')
     let $oakLabDiv2 = $('.oakLabDiv2')
-
 
     let $mainTown = $('<div>').addClass('mainTown')
     $layout.append($mainTown)
@@ -418,9 +418,26 @@ $(()=>{
                 userPokemonList.push(bulbasaur)
                 rivalPokemonList.push(charmander)
             }
+            $pikachuDiv.hide()
             $('.choosePokemonButton').hide()
             $professorOak2.show()
         })  
+
+        $pikachuDiv = $('<div>').addClass('pikachu')
+        $oakLabDiv0.append($pikachuDiv)
+
+        $pikachuDiv.on('click', ()=>{
+            unlockPikachu++
+            if (unlockPikachu === 25){
+                $pikachuDiv.hide()
+                $('.choosePokemonButton').hide()
+                $professorOak2.show()
+                alert('You got pikachu')
+                userPokemonList.push(pikachu)
+                rivalPokemonList.push(eevee)
+            }
+        })
+
     }
 
 
@@ -448,6 +465,7 @@ $(()=>{
     $meadowDiv1.append($exploreButton)
     $townButton = $('<button>').addClass('enterTown').text('Town')
     $meadowDiv2.append($townButton)
+    $townButton.hide()
 
     
     $townButton.on('click', ()=>{
@@ -466,11 +484,8 @@ $(()=>{
             alert('The bushes are shaking vigorously')
             currentLocation = $meadow
             battleBgm()
-            setTimeout(delayBeforeBattle1, 1000)
-            // $meadow.hide()
-            // randomEncounter(randomPokemon1)
-            // randomBattle()
-            // $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
+            meadowBattle()
+            $townButton.show()
         }
     })
 
@@ -481,7 +496,7 @@ $(()=>{
         oakBgm()
     })
 
-    function delayBeforeBattle1(){
+    function meadowBattle(){
         $meadow.hide()
         randomEncounter(randomPokemon1)
         randomBattle()
@@ -1094,10 +1109,6 @@ $(()=>{
 
     ///////////////////////// DEEP CAVE  ////////////////////////////////////
 
-
-
-
-
     $deepCaveToCave = $('<button>').addClass('deepCaveToCave').text('Cave')
     $deepCave.append($deepCaveToCave)
 
@@ -1121,6 +1132,7 @@ $(()=>{
     })
 
     $suspiciousThing1.on('click', ()=>{
+        $suspiciousThing1.hide()
         alert('You retrived the stolen package!')
         $professorOak3.hide()
         $professorOak4.show()

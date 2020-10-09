@@ -34,9 +34,8 @@
     border: 2px solid black;
     background-size: cover;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 .endGameText {
@@ -44,7 +43,28 @@
     height: 30px;
     font-weight: 900;
     background-color: aliceblue;
+    position: relative;
+    animation-name: rainbow-move-change;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
+
+
+@keyframes rainbow-move-change {
+    0% {background: black; left:0%; top:0%;}
+    10% {background: crimson; }
+    25% {background: hotpink; left: 25%; top:0px;}
+    30% {background: coral;}
+    40% {background: lightyellow;}
+    50% {background: palegreen; left: 25%; top: 10em; transform: rotate(600deg); }
+    60% {background: mediumaquamarine; }
+    75% {background: steelblue; left:-25%; top:10em; border-radius: 100%;}
+    80% {background: darkviolet;}
+    90% {background: black; }
+    100% {background: ghostwhite; left:0px; top:0px; }
+  }
+
 
 .professorOaksLab {
     background-image: url('images/pokemon-professor-oak-facts-trivia.jpg');
@@ -944,6 +964,14 @@
     border-radius: 50%;
 }
 
+.pikachu {
+    width: 150px;
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 /*//////////////////////////////////////////////////// CHOOSE POKEMON //////////////////////////////////////////// */
 
 
@@ -960,7 +988,7 @@
     flex-wrap: wrap;
     position: relative;
     animation-name: karolin;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-iteration-count: 1;
     animation-timing-function: linear;
 }
