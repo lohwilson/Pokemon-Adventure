@@ -1,11 +1,7 @@
 console.log('hello world')
 
-let keyItem = []
-let itemList = []
-
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
 let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
-
 
 let mainTownButtons = ['training', 'enterPokeCentre', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
 let mainTownText = ['Training Grounds', 'Pokemon Centre', 'Forest', 'Meadow', 'Shop', 'Gym']
@@ -17,15 +13,13 @@ let battleContainerArray = ['userInfoDisplay', 'enemyPicture', 'userPicture', 'e
 
 let userPokemonList = []
 let enemyPokemonList = []
-
 let userBattlePokemon = []
 let enemyBattlePokemon = []
-
 let currentLocation
 let battleOpponent = []
+
 let gymClickCounter = 0
 let caveUnlock = 0
-
 let rustledTrees = 0
 let suspiciousTree = 0
 let suspiciousMoss = 0
@@ -35,12 +29,15 @@ let suspiciousObject = 0
 let cavemap = 0
 let unlockPikachu = 0
 let randomEncounterIndex
-
 let currentBgm = 0
 
 $(()=>{
 
     let $layout = $('#layout')
+
+
+
+    /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
     let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
     $audio.attr('onloadeddate', 'lowerVolume()')
@@ -132,25 +129,21 @@ $(()=>{
     }
 
 
-    // function oakBgm(){
-    //     $source.attr('src', 'sounds/oak.mp3')
-    //     $('audio')[0].load();
-    //     $('audio')[0].play();
-    // }
+    function playButtonSound(){
+        // let $sound = $('<source>').attr('src', 'sounds/click1.mp3').attr('type', 'audio')
+        sound = new Audio('sounds/click1.mp3')
+        sound.play()
+    }
+    /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-    // $audioImg = $('<img>').addClass('toggleAudio').attr('src', 'css/images/audio on.png')
-    // $mainPage.append($audioImg)
 
 
     ////////////////////////////////////        PAGES       //////////////////////////////////////////
+
+
+    let pagesArray = ['mainPage', 'meadow', 'forest', 'beach', 'deepForest', 'cave', 'deepCave', 'endGamePage', 'professorOaksLab', 'mainTown', 'battle', 'pokeCentre', 'shop']
+
+
     let $mainPage = $('<div>').addClass('mainPage')
     $layout.append($mainPage)
     let $meadow = $('<div>').addClass('meadow')
@@ -178,14 +171,6 @@ $(()=>{
     $layout.append($professorOaksLab)
     $professorOaksLab.hide()
 
-    for (let i = 0; i < 3; i++){
-        let $oakLabDiv = $('<div>').addClass('oakLabDiv'+i)
-        $professorOaksLab.append($oakLabDiv)
-    }
-    let $oakLabDiv0 = $('.oakLabDiv0')
-    let $oakLabDiv1 = $('.oakLabDiv1')
-    let $oakLabDiv2 = $('.oakLabDiv2')
-
     let $mainTown = $('<div>').addClass('mainTown')
     $layout.append($mainTown)
     $mainTown.hide()
@@ -200,18 +185,29 @@ $(()=>{
     $shop.hide()
 
 
-    $endGamePage.append($('<div>').text('Thank you for playing!').addClass('endGameText'))
+
+
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
 
 
-    //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
 
+    //////////////////////////////////////////      DIVS       ///////////////////////////////////////
+
+    // MAIN PAGE DIVS
     $mainPageButton = $('<button>').addClass('mainPageButton').text('Start Game')
     $mainPage.append($mainPageButton)
     $continueButton = $('<button>').addClass('continueButton').text('Continue')
     $mainPage.append($continueButton)
 
+    // OAK LAB DIVS
+    for (let i = 0; i < 3; i++){
+        let $oakLabDiv = $('<div>').addClass('oakLabDiv'+i)
+        $professorOaksLab.append($oakLabDiv)
+    }
+    let $oakLabDiv0 = $('.oakLabDiv0')
+    let $oakLabDiv1 = $('.oakLabDiv1')
+    let $oakLabDiv2 = $('.oakLabDiv2')
     $professorOak1 = $('<div>').addClass('professorOak1').text('Professor Oak').css('font-weight', '900').css('color', 'black')
     $oakLabDiv0.append($professorOak1)
     $professorOak2 = $('<div>').addClass('professorOak2').text('Professor Oak').css('font-weight', '900').css('color', 'black')
@@ -227,14 +223,162 @@ $(()=>{
     $oakLabDiv2.append($exitLab)
     $exitLab.hide()
 
-    // create battle buttons 
+    // MEADOW DIVS
+    for (let i = 0; i < 3; i++){
+        let $meadowDiv = $('<div>').addClass('meadowDiv'+i)
+        $meadow.append($meadowDiv)
+    }
+    let $meadowDiv0 = $('.meadowDiv0')
+    let $meadowDiv1 = $('.meadowDiv1')
+    let $meadowDiv2 = $('.meadowDiv2')
+    $enterLab = $('<button>').addClass('enterLab').text('Enter Lab')
+    $meadowDiv0.append($enterLab)
+    $exploreButton = $('<button>').addClass('explore').text('Shake Bush')
+    $meadowDiv1.append($exploreButton)
+    $townButton = $('<button>').addClass('enterTown').text('Town')
+    $meadowDiv2.append($townButton)
+    $townButton.hide()
+
+    // MAIN TOWN DIVS
+    for (let i = 0; i < 6; i++){
+        let $mainTownDiv = $('<div>').addClass('mainTownDiv'+i)
+        $mainTown.append($mainTownDiv)
+    }
+    for (let i = 0; i < mainTownButtons.length; i++){
+        let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
+        $('.mainTownDiv'+i).append($mainTownButton)
+    }
+    $training = $('.training')
+    $enterPokeCentre = $('.enterPokeCentre')
+    $enterShop = $('.enterShop')
+    $gym = $('.gym')
+    $enterForest = $('.enterForest')
+    $enterForest.hide()
+    $enterMeadow = $('.enterMeadow')
+
+    // SHOP DIVS
+    $shopDiv1 = $('<div>').addClass('shopDiv1')
+    $shop.append($shopDiv1)
+    $shopDiv2 = $('<div>').addClass('shopDiv2')
+    $shop.append($shopDiv2)
+    $shopkeeper = $('<div>').addClass('shopkeeper').text('Shopkeeper')
+    $shopDiv1.append($shopkeeper)
+    $shopToTown = $('<button>').addClass('shopToTown').text('Exit')
+    $shopDiv2.append($shopToTown)
+    $buyItems = $('<button>').addClass('buyItems').text('Buy')
+    $shopDiv1.append($buyItems)
+    $buyItems.hide()
+    $sellItems = $('<button>').addClass('sellItems').text('Sell')
+    $shopDiv1.append($sellItems)
+    $sellItems.hide()
+    $shopTalk = $('<button>').addClass('shopTalk1').text('Talk')
+    $shopDiv1.append($shopTalk)
+    $shopTalk.hide()
+    $leaveShop = $('<button>').addClass('leaveShop').text('Leave')
+    $shopDiv1.append($leaveShop)
+    $leaveShop.hide()
+
+    // POKE CENTRE DIVS
+    $pokeCentreDiv1 = $('<div>').addClass('pokeCentreDiv1')
+    $pokeCentre.append($pokeCentreDiv1)
+    $pokeCentreDiv2 = $('<div>').addClass('pokeCentreDiv2')
+    $pokeCentre.append($pokeCentreDiv2)
+    $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
+    $pokeCentreDiv1.append($pokeCentreNurse)
+    $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
+    $pokeCentreDiv2.append($pokeCentreToTown)
+    $healButton = $('<button>').text('Heal Pokemon').addClass('healPokemon')
+    $pokeCentreDiv1.append($healButton)
+    $healButton.hide()
+    $leaveButton = $('<button>').text('Leave').addClass('leaveButton')
+    $pokeCentreDiv2.append($leaveButton)
+    $leaveButton.hide()
+    $respawnButton = $('<button>').text('Respawn').addClass('respawnButton')
+    $pokeCentreDiv1.append($respawnButton)
+    $respawnButton.hide()
+
+   // FOREST DIVS
+    for (let i = 0; i < 5; i++){
+        let $forestDiv = $('<div>').addClass('forestDiv'+i)
+        $forest.append($forestDiv)
+    }
+    $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
+    $('.forestDiv4').append($enterBeach)
+    $enterBeach.hide()
+    $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
+    $('.forestDiv3').append($enterDeepForest)
+    $enterDeepForest.hide()
+    //need css animation and mouse hover to make it clickable
+    $shakeTrees = $('<div>').addClass('shakeTrees')
+    $('.forestDiv1').append($shakeTrees)
+    $suspiciousTree = $('<div>').addClass('suspiciousTree')
+    $('.forestDiv1').append($suspiciousTree)
+    $suspiciousTree1 = $('<div>').addClass('suspiciousTree1')
+    $('.forestDiv1').append($suspiciousTree1)
+    $suspiciousTree1.hide()
+    $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
+    $('.forestDiv2').append($enterCave)
+    // $enterCave.hide()
+    $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
+    $('.forestDiv0').append($enterMainTown)
+
+    // BEACH DIVS
+    $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $beach.append($beachButton1)
+    $suspiciousRock = $('<div>').addClass('suspiciousRock')
+    $beach.append($suspiciousRock)
+    $suspiciousRock1 = $('<div>').addClass('suspiciousRock1')
+    $beach.append($suspiciousRock1)
+    $suspiciousRock1.hide()
+
+    // DEEP FOREST DIVS
+    $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
+    $deepForest.append($deepForestButton1)
+    $suspiciousMoss = $('<div>').addClass('suspiciousMoss')
+    $deepForest.append($suspiciousMoss)
+    $suspiciousMoss1 = $('<div>').addClass('suspiciousMoss1')
+    $deepForest.append($suspiciousMoss1)
+    $suspiciousMoss1.hide()
+
+    // CAVE DIVS
+    $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
+    $cave.append($caveToForest)
+    // $caveToForest.hide()
+    $suspiciousObject = $('<div>').addClass('suspiciousObject')
+    $cave.append($suspiciousObject)
+    $suspiciousObject1 = $('<div>').addClass('suspiciousObject1')
+    $cave.append($suspiciousObject1)
+    $suspiciousObject1.hide()
+    $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
+    $cave.append($caveToDeepCave)
+    $caveToDeepCave.hide()
+
+    // DEEP CAVE DIVS
+    $deepCaveToCave = $('<button>').addClass('deepCaveToCave').text('Cave')
+    $deepCave.append($deepCaveToCave)
+    $suspiciousThing = $('<div>').addClass('suspiciousThing')
+    $deepCave.append($suspiciousThing)
+    $suspiciousThing1 = $('<div>').addClass('suspiciousThing1')
+    $deepCave.append($suspiciousThing1)
+    $suspiciousThing1.hide()
+
+       // create battle buttons 
     for (let i = 0; i < battleCommands.length; i++){
         let $buttons = $('<button>').addClass(battleCommandsButton[i]).text(battleCommands[i].toUpperCase())
         battleButtonsArray.push($buttons)
     }
 
+    // END GAME PAGE DIV
+    $endGamePage.append($('<div>').text('Thank you for playing!').addClass('endGameText'))
 
-    //////////////////////////////          CREATE BUTTONS              ////////////////////////////////
+    //////////////////////////////////////////      DIVS       ///////////////////////////////////////
+
+
+
+
+
+
+
 
 
 
@@ -255,16 +399,6 @@ $(()=>{
     $createModalFooterButton = $('<button>').attr('id', 'close').attr('href', '#').text('Close')
     $createModalFooter.append($createModalFooterButton)
 
-
-
-
-    // <input type="text" id="myInput">
-    // <button type="button" id="myBtn">Show Value</button>
-    // $("#myBtn").click(function(){
-    //     var str = $("#myInput").val();
-    //     alert(str);
-    // })
-
     // Grabbing About the Game button
     const $openBtn = $('.mainPageButton');
 
@@ -280,12 +414,10 @@ $(()=>{
     const openModal = () => {
         $modal.css('display', 'block');
     }
-
     // Event handler to close the modal
     const closeModal = () => {
         $modal.css('display', 'none');
     }
-
     const beginJourey = () =>{
         $mainPage.hide()
         let userName = $('#inputBox').val()
@@ -297,13 +429,12 @@ $(()=>{
 
     //Add event listener to About the Game button
     $openBtn.on('click', openModal);
-
     //Add event listener to Close button
     $beginJourney.on('click', beginJourey)
     $closeBtn.on('click', closeModal);
 
     
-        //////////////////////////////////////////      MODAL       ///////////////////////////////////////
+    //////////////////////////////////////////      MODAL       ///////////////////////////////////////
 
 
 
@@ -316,28 +447,6 @@ $(()=>{
 
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
 
-
-    function playButtonSound(){
-        // let $sound = $('<source>').attr('src', 'sounds/click1.mp3').attr('type', 'audio')
-        sound = new Audio('sounds/click1.mp3')
-        sound.play()
-    }
-
-    // click event listener on main page button
-    // $mainPageButton.on('click', ()=>{
-    //     $mainPage.hide()
-    //     playButtonSound()
-    //     // alerts.beginJourney()
-    //     $professorOaksLab.show()
-    // })
-
-    const alerts = {
-        beginJourney: ()=>{
-            alert('Your Pokemon Adventure Begins')
-        }
-    }
-    // try to set to open modal
-
     $professorOak1.on('click', ()=>{
         $professorOak1.hide()
         playButtonSound()
@@ -349,7 +458,6 @@ $(()=>{
         alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
         choosePokemonButtons()
     })
-
     $professorOak2.on('click', ()=>{
         $professorOak2.hide()
         playButtonSound()
@@ -363,12 +471,10 @@ $(()=>{
         $exitLab.show()
         $professorOak3.show()
     })
-
     $professorOak3.on('click', ()=>{
         playButtonSound()
         alert('Please come back when you have my parcel.')
     })
-
     $professorOak4.on('click', ()=>{
         playButtonSound()
         alert('Thank you for bringing back my parcel for me')
@@ -376,14 +482,6 @@ $(()=>{
         alert('I\'m sure you will be a great Pokemon Trainer in the future')
         endGame()
     })
-
-    function endGame(){
-        $professorOaksLab.hide()
-        $endGamePage.show()
-        endingBgm()
-    }
-
-
     $exitLab.on('click', ()=>{
         playButtonSound()
         $professorOaksLab.hide()
@@ -392,8 +490,287 @@ $(()=>{
         currentBgm = 1
     })
 
-    function choosePokemonButtons(){
+    $townButton.on('click', ()=>{
+        playButtonSound()
+        $meadow.hide()
+        $mainTown.show()
+        townBgm()
+        currentBgm = 2
+    })
+    $exploreButton.on('click', ()=>{
+        playButtonSound()
+        alert('Player rustled the bushes')
+        rustledTrees++
+        if (rustledTrees%3 === 0){
+            alert('The bushes are shaking vigorously')
+            currentLocation = $meadow
+            battleBgm()
+            meadowBattle()
+            $townButton.show()
+        }
+    })
+    $enterLab.on('click', ()=>{
+        playButtonSound()
+        $meadow.hide()
+        $professorOaksLab.show()
+        oakBgm()
+    })
 
+    $training.on('click', ()=>{
+        playButtonSound()
+        alert('The training grounds is closed.')
+    })
+    $enterShop.on('click', ()=>{
+        playButtonSound()
+        $mainTown.hide()
+        $shop.show()
+    })
+    $enterPokeCentre.on('click', ()=>{
+        playButtonSound()
+        $mainTown.hide()
+        $pokeCentre.show()
+        pokecentreBgm()
+    })
+    $gym.on('click', ()=>{
+        playButtonSound()
+        alert('The Gym is closed at this moment')
+        gymClickCounter++
+
+        if (gymClickCounter === 5){
+            alert('Stranger: Well, well, well, look who it is?')
+            alert('Stranger: My gramps did mention about you this morning!')
+            alert('Stranger: Time for me to show you who is the real Pokemon Master!')
+            $mainTown.hide()
+            battle2Bgm()
+            battleRival()
+            $battle.css('background-image', 'url("css/images/trainerbattle.png")')
+            battle()
+        }
+    })
+    $enterForest.on('click', ()=>{
+        playButtonSound()
+        $mainTown.hide()
+        $forest.show()
+        forestBgm()
+        currentBgm = 3
+    })
+    $enterMeadow.on('click', ()=>{
+        playButtonSound()
+        $mainTown.hide()
+        $meadow.show()
+        meadowBgm()
+        currentBgm = 1
+        })
+
+    $shopToTown.on('click', ()=>{
+        playButtonSound()
+        $shop.hide()
+        $mainTown.show()
+    })
+    $buyItems.on('click', ()=>{
+        alert('I have nothing to sell to you right now!')
+    })
+    $sellItems.on('click', ()=>{
+        alert('You have nothing to sell!')
+    })
+    $shopTalk.on('click', ()=>{
+        alert('Oh, so Professor Oak sent you?')
+        alert('I would love to help you but my shop a suspicious person entered my shop late last night and robbed me.')
+        alert('Last I heard, they were spotted heading towards the forest.')
+        alert('You might be able to track them down and retrieve the package.')
+        $enterForest.show()
+    })
+    $leaveShop.on('click', ()=>{
+        playButtonSound()
+        $buyItems.hide()
+        $sellItems.hide()
+        $leaveShop.hide()
+        $shopTalk.hide()
+        $shopkeeper.show()
+        $shopToTown.show()
+    })
+    $shopkeeper.on('click', ()=>{
+        playButtonSound()
+        $shopToTown.hide()
+        $shopkeeper.hide()
+        $buyItems.show()
+        $sellItems.show()
+        $leaveShop.show()
+        $shopTalk.show()
+    })
+
+    $pokeCentreNurse.on('click', ()=>{
+        playButtonSound()
+        $pokeCentreNurse.hide()
+        $pokeCentreToTown.hide()
+        $healButton.show()
+        $leaveButton.show()
+        alert('Hi, I am Nurse Joy. How may I assist you today?')
+    })
+    $healButton.on('click', ()=>{
+        playButtonSound()
+        if (userPokemonList[0].health === userPokemonList[0].fullHealth){
+            console.log(userPokemonList)
+            console.log(userPokemonList[0])
+            console.log('aaaaaaaaaaaaaaaa')
+            alert('Your pokemon are fully healed.')
+        } else {
+            for (let i = 0; i < userPokemonList.length; i++){
+                userPokemonList[i].health = userPokemonList[0].fullHealth
+            }
+            console.log(userPokemonList)
+            console.log(userPokemonList[0])
+
+            alert('I have healed your pokemon!')
+            alert('Please come again')
+        }
+    })
+    $leaveButton.on('click', ()=>{
+        playButtonSound()
+        $healButton.hide()
+        $leaveButton.hide()
+        $pokeCentreNurse.show()
+        $pokeCentreToTown.show()
+    })
+    $pokeCentreToTown.on('click', ()=>{
+        playButtonSound()
+        $pokeCentre.hide()
+        $mainTown.show()
+        townBgm()
+    })
+    $respawnButton.on('click', ()=>{
+        playButtonSound()
+        $respawnButton.hide()
+        userPokemonList[0].health = userPokemonList[0].fullHealth
+        alert('Looks like your pokemon ran out of hp!')
+        alert('I have healed your pokemon back to full health.')
+        alert('Please treat your pokemon with more care in the future.')
+        $pokeCentreNurse.show()
+        $pokeCentreToTown.show()
+    })
+    
+    $enterMainTown.on('click', ()=>{
+        playButtonSound()
+        $forest.hide()
+        $mainTown.show()
+        townBgm()
+    })
+    $enterBeach.on('click', ()=>{
+        playButtonSound()
+        $forest.hide()
+        $beach.show()
+    })
+    $enterDeepForest.on('click', ()=>{
+        playButtonSound()
+        $forest.hide()
+        $deepForest.show()
+    })
+    $shakeTrees.on('click', ()=>{
+        suspiciousTree++
+        if (suspiciousTree%4 ===0){
+            randomBattle2()
+        }
+    })
+    $suspiciousTree.on('click', ()=>{
+        playButtonSound()
+        $suspiciousTree.hide()
+        teamRocketAppears()
+        $suspiciousTree1.show()
+    })
+    $suspiciousTree1.on('click', ()=>{
+        alert('There\'s no trace of team rocket but you found some footprints leading to the beach and deeper into the forest')
+        $enterBeach.show()
+        $enterDeepForest.show()
+    }) 
+    $enterCave.on('click', ()=>{
+        playButtonSound()
+        $forest.hide()
+        $cave.show()
+        caveBgm()
+    })
+
+    $beachButton1.on('click', ()=>{
+        playButtonSound()
+        $beach.hide()
+        $forest.show()
+    })
+    $suspiciousRock.on('click', ()=>{
+        playButtonSound()
+        $suspiciousRock.hide()
+        suspiciousRockMoves()
+        $suspiciousRock1.show()
+    })
+    $suspiciousRock1.on('click', ()=>{
+        $suspiciousRock1.hide()
+        alert('You found a half of a map.')
+        cavemap++
+        unlockCave()
+    })
+
+    $deepForestButton1.on('click', ()=>{
+        playButtonSound()
+        $deepForest.hide()
+        $forest.show()
+    })
+    $suspiciousMoss.on('click', ()=>{
+        playButtonSound()
+        $suspiciousMoss.hide()
+        suspiciousMossMoves()
+        $suspiciousMoss1.show()
+    })
+    $suspiciousMoss1.on('click', ()=>{
+        $suspiciousMoss1.hide()
+        alert('You found a half of a map.')
+        cavemap++
+        unlockCave()
+    })
+
+    $caveToForest.on('click', ()=>{
+        playButtonSound()
+        $cave.hide()
+        $forest.show()
+        forestBgm()
+    })
+    $caveToDeepCave.on('click', ()=>{
+        playButtonSound()
+        $cave.hide()
+        $deepCave.show()
+    })
+    $suspiciousObject.on('click', ()=>{
+        playButtonSound()
+        $suspiciousObject.hide()
+        $suspiciousObject1.show()
+        suspiciousObjectMoves()
+    })
+    $suspiciousObject1.on('click', ()=>{
+        $suspiciousObject1.hide()
+        alert('You hear some noise from deeper in the cave.')
+        $caveToDeepCave.show()
+    })
+
+    $deepCaveToCave.on('click', ()=>{
+        playButtonSound()
+        $deepCave.hide()
+        $cave.show()
+    })
+    $suspiciousThing.on('click', ()=>{
+        playButtonSound()
+        $suspiciousThing.hide()
+        $suspiciousThing1.show()
+        suspiciousThingMoves()
+    })
+    $suspiciousThing1.on('click', ()=>{
+        $suspiciousThing1.hide()
+        alert('You retrived the stolen package!')
+        $professorOak3.hide()
+        $professorOak4.show()
+    })
+
+
+
+    //////////////////////////////////////      FUNCTIONS         /////////////////////////////////////
+
+    function choosePokemonButtons(){
             // create choose pokemon buttons
         for (let i = 0; i < choosePokemonArray.length; i++){
             let number = i+1
@@ -437,398 +814,17 @@ $(()=>{
                 rivalPokemonList.push(eevee)
             }
         })
-
     }
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////      MEADOWS         /////////////////////////////////////
-
-
-    for (let i = 0; i < 3; i++){
-        let $meadowDiv = $('<div>').addClass('meadowDiv'+i)
-        $meadow.append($meadowDiv)
-    }
-    let $meadowDiv0 = $('.meadowDiv0')
-    let $meadowDiv1 = $('.meadowDiv1')
-    let $meadowDiv2 = $('.meadowDiv2')
-
-    $enterLab = $('<button>').addClass('enterLab').text('Enter Lab')
-    $meadowDiv0.append($enterLab)
-    $exploreButton = $('<button>').addClass('explore').text('Shake Bush')
-    $meadowDiv1.append($exploreButton)
-    $townButton = $('<button>').addClass('enterTown').text('Town')
-    $meadowDiv2.append($townButton)
-    $townButton.hide()
-
-    
-    $townButton.on('click', ()=>{
-        playButtonSound()
-        $meadow.hide()
-        $mainTown.show()
-        townBgm()
-        currentBgm = 2
-    })
-
-    $exploreButton.on('click', ()=>{
-        playButtonSound()
-        alert('Player rustled the bushes')
-        rustledTrees++
-        if (rustledTrees%3 === 0){
-            alert('The bushes are shaking vigorously')
-            currentLocation = $meadow
-            battleBgm()
-            meadowBattle()
-            $townButton.show()
-        }
-    })
-
-    $enterLab.on('click', ()=>{
-        playButtonSound()
-        $meadow.hide()
-        $professorOaksLab.show()
-        oakBgm()
-    })
-
     function meadowBattle(){
         $meadow.hide()
         randomEncounter(randomPokemon1)
         randomBattle()
         $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
     }
-
-
-
-//////////////////////////////////////      MEADOWS         /////////////////////////////////////
-
-
-
-
-
-
-
-//////////////////////////////////////      MAIN TOWN         /////////////////////////////////////
-
-
-    for (let i = 0; i < 6; i++){
-        let $mainTownDiv = $('<div>').addClass('mainTownDiv'+i)
-        $mainTown.append($mainTownDiv)
-    }
-
-    for (let i = 0; i < mainTownButtons.length; i++){
-        let $mainTownButton = $('<button>').addClass(mainTownButtons[i]).text(mainTownText[i])
-        $('.mainTownDiv'+i).append($mainTownButton)
-    }
-
-    $training = $('.training')
-    $enterPokeCentre = $('.enterPokeCentre')
-    $enterShop = $('.enterShop')
-    $gym = $('.gym')
-    $enterForest = $('.enterForest')
-    $enterForest.hide()
-    $enterMeadow = $('.enterMeadow')
-
-    $training.on('click', ()=>{
-        playButtonSound()
-        alert('The training grounds is closed.')
-    })
-    $enterShop.on('click', ()=>{
-        playButtonSound()
-        $mainTown.hide()
-        $shop.show()
-    })
-    $enterPokeCentre.on('click', ()=>{
-        playButtonSound()
-        $mainTown.hide()
-        $pokeCentre.show()
-        pokecentreBgm()
-    })
-    $gym.on('click', ()=>{
-        playButtonSound()
-        alert('The Gym is closed at this moment')
-        gymClickCounter++
-
-        if (gymClickCounter === 5){
-            alert('Stranger: Well, well, well, look who it is?')
-            alert('Stranger: My gramps did mention about you this morning!')
-            alert('Stranger: Time for me to show you who is the real Pokemon Master!')
-            $mainTown.hide()
-            battle2Bgm()
-            battleRival()
-            $battle.css('background-image', 'url("css/images/trainerbattle.png")')
-            battle()
-        }
-    })
-
-    $enterForest.on('click', ()=>{
-        playButtonSound()
-        $mainTown.hide()
-        $forest.show()
-        forestBgm()
-        currentBgm = 3
-    })
-    $enterMeadow.on('click', ()=>{
-        playButtonSound()
-        $mainTown.hide()
-        $meadow.show()
-        meadowBgm()
-        currentBgm = 1
-        })
-    
     function battleRival (){
         battleOpponent.push(rival)
         currentLocation = $mainTown
     }
-
-
-
-
-
-    ////////////////////////  SHOP  //////////////////////////////////////////
-
-    $shopDiv1 = $('<div>').addClass('shopDiv1')
-    $shop.append($shopDiv1)
-    $shopDiv2 = $('<div>').addClass('shopDiv2')
-    $shop.append($shopDiv2)
-
-    $shopkeeper = $('<div>').addClass('shopkeeper').text('Shopkeeper')
-    $shopDiv1.append($shopkeeper)
-    $shopToTown = $('<button>').addClass('shopToTown').text('Exit')
-    $shopDiv2.append($shopToTown)
-
-    $shopToTown.on('click', ()=>{
-        playButtonSound()
-        $shop.hide()
-        $mainTown.show()
-    })
-
-    $buyItems = $('<button>').addClass('buyItems').text('Buy')
-    $shopDiv1.append($buyItems)
-    $buyItems.hide()
-    $sellItems = $('<button>').addClass('sellItems').text('Sell')
-    $shopDiv1.append($sellItems)
-    $sellItems.hide()
-    $shopTalk = $('<button>').addClass('shopTalk1').text('Talk')
-    $shopDiv1.append($shopTalk)
-    $shopTalk.hide()
-    $leaveShop = $('<button>').addClass('leaveShop').text('Leave')
-    $shopDiv1.append($leaveShop)
-    $leaveShop.hide()
-
-
-    $buyItems.on('click', ()=>{
-        alert('I have nothing to sell to you right now!')
-    })
-    $sellItems.on('click', ()=>{
-        alert('You have nothing to sell!')
-    })
-    $shopTalk.on('click', ()=>{
-        alert('Oh, so Professor Oak sent you?')
-        alert('I would love to help you but my shop a suspicious person entered my shop late last night and robbed me.')
-        alert('Last I heard, they were spotted heading towards the forest.')
-        alert('You might be able to track them down and retrieve the package.')
-        $enterForest.show()
-    })
-
-    $leaveShop.on('click', ()=>{
-        playButtonSound()
-        $buyItems.hide()
-        $sellItems.hide()
-        $leaveShop.hide()
-        $shopTalk.hide()
-        $shopkeeper.show()
-        $shopToTown.show()
-    })
-
-    $shopkeeper.on('click', ()=>{
-        playButtonSound()
-        $shopToTown.hide()
-        $shopkeeper.hide()
-        $buyItems.show()
-        $sellItems.show()
-        $leaveShop.show()
-        $shopTalk.show()
-    })
-
-
-    ////////////////////////  SHOP  //////////////////////////////////////////
-
-
-    ///////////////////////// POKECENTRE ////////////////////////////////////
-
-    $pokeCentreDiv1 = $('<div>').addClass('pokeCentreDiv1')
-    $pokeCentre.append($pokeCentreDiv1)
-    $pokeCentreDiv2 = $('<div>').addClass('pokeCentreDiv2')
-    $pokeCentre.append($pokeCentreDiv2)
-
-    $pokeCentreNurse = $('<div>').addClass('pokeCentreNurse').text('Nurse Joy')
-    $pokeCentreDiv1.append($pokeCentreNurse)
-    // $pokeCentreText = $('<div>').addClass('pokeCentreText').text('')
-    // $pokeCentre.append($pokeCentreText)
-
-    // for (let i = 0; i < 2; i++){
-    //     $splitDisplay = $('<div>').addClass('pokeCentreDisplay').attr('id', 'pokeCentreDisplay'+i)
-    //     $pokeCentreText.append($splitDisplay)
-    // }
-
-    $pokeCentreToTown = $('<button>').addClass('pokeCentreToTown').text('Exit')
-    $pokeCentreDiv2.append($pokeCentreToTown)
-
-    $pokeCentreNurse.on('click', ()=>{
-        playButtonSound()
-        $pokeCentreNurse.hide()
-        $pokeCentreToTown.hide()
-        $healButton.show()
-        $leaveButton.show()
-        alert('Hi, I am Nurse Joy. How may I assist you today?')
-    })
-
-    $healButton = $('<button>').text('Heal Pokemon').addClass('healPokemon')
-    $pokeCentreDiv1.append($healButton)
-    $healButton.hide()
-    $leaveButton = $('<button>').text('Leave').addClass('leaveButton')
-    $pokeCentreDiv2.append($leaveButton)
-    $leaveButton.hide()
-    $respawnButton = $('<button>').text('Respawn').addClass('respawnButton')
-    $pokeCentreDiv1.append($respawnButton)
-    $respawnButton.hide()
-
-    $healButton.on('click', ()=>{
-        playButtonSound()
-        if (userPokemonList[0].health === 100){
-            console.log(userPokemonList)
-            console.log(userPokemonList[0])
-            console.log('aaaaaaaaaaaaaaaa')
-            alert('Your pokemon are fully healed.')
-        } else {
-            for (let i = 0; i < userPokemonList.length; i++){
-                userPokemonList[i].health = 100
-            }
-            console.log(userPokemonList)
-            console.log(userPokemonList[0])
-
-            alert('I have healed your pokemon!')
-            alert('Please come again')
-        }
-    })
-
-    $leaveButton.on('click', ()=>{
-        playButtonSound()
-        $healButton.hide()
-        $leaveButton.hide()
-        $pokeCentreNurse.show()
-        $pokeCentreToTown.show()
-    })
-
-    $pokeCentreToTown.on('click', ()=>{
-        playButtonSound()
-        $pokeCentre.hide()
-        $mainTown.show()
-        townBgm()
-    })
-    
-    $respawnButton.on('click', ()=>{
-        playButtonSound()
-        $respawnButton.hide()
-        userPokemonList[0].health = userPokemonList[0].fullHealth
-        alert('Looks like your pokemon ran out of hp!')
-        alert('I have healed your pokemon back to full health.')
-        alert('Please treat your pokemon with more care in the future.')
-        $pokeCentreNurse.show()
-        $pokeCentreToTown.show()
-    })
-    
-
-
-    ///////////////////////// POKECENTRE ////////////////////////////////////
-
-
-//////////////////////////////////////      MAIN TOWN         /////////////////////////////////////
-
-
-
-
-    ///////////////////////// FOREST ////////////////////////////////////
-
-   
-    for (let i = 0; i < 5; i++){
-        let $forestDiv = $('<div>').addClass('forestDiv'+i)
-        $forest.append($forestDiv)
-    }
-
-    $enterBeach = $('<button>').text('Beach').addClass('enterBeach')
-    $('.forestDiv4').append($enterBeach)
-    $enterBeach.hide()
-    $enterDeepForest = $('<button>').text('Deep Forest').addClass('enterDeepForest')
-    $('.forestDiv3').append($enterDeepForest)
-    $enterDeepForest.hide()
-
-    //need css animation and mouse hover to make it clickable
-    $shakeTrees = $('<div>').addClass('shakeTrees')
-    $('.forestDiv1').append($shakeTrees)
-
-    $suspiciousTree = $('<div>').addClass('suspiciousTree')
-    $('.forestDiv1').append($suspiciousTree)
-
-    $suspiciousTree1 = $('<div>').addClass('suspiciousTree1')
-    $('.forestDiv1').append($suspiciousTree1)
-    $suspiciousTree1.hide()
-
-    $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
-    $('.forestDiv2').append($enterCave)
-    // $enterCave.hide()
-
-    $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
-    $('.forestDiv0').append($enterMainTown)
-
-    $enterMainTown.on('click', ()=>{
-        playButtonSound()
-        $forest.hide()
-        $mainTown.show()
-        townBgm()
-        clearInterval(setInterval(randomBattle2, 10000))
-    })
-
-    $enterBeach.on('click', ()=>{
-        playButtonSound()
-        $forest.hide()
-        $beach.show()
-        clearInterval(setInterval(randomBattle2, 10000))
-    })
-
-    $enterDeepForest.on('click', ()=>{
-        playButtonSound()
-        $forest.hide()
-        $deepForest.show()
-        clearInterval(setInterval(randomBattle2, 10000))
-    })
-
-    $shakeTrees.on('click', ()=>{
-        suspiciousTree++
-        if (suspiciousTree%4 ===0){
-            randomBattle2()
-        }
-    })
-
-    $suspiciousTree.on('click', ()=>{
-        playButtonSound()
-        $suspiciousTree.hide()
-        teamRocketAppears()
-        $suspiciousTree1.show()
-    })
-
-    $suspiciousTree1.on('click', ()=>{
-        alert('There\'s no trace of team rocket but you found some footprints leading to the beach and deeper into the forest')
-        $enterBeach.show()
-        $enterDeepForest.show()
-    })
-
     function teamRocketAppears(){
         alert('Prepare for trouble! And make it double!')
         alert('To protect the world from devastation! To unite all peoples within our nation! ')
@@ -836,8 +832,7 @@ $(()=>{
         alert('Jessie! James!')
         alert('Team rocket blasts off in the speed of light! Surrender now or prepare to fight!')
         battleTeamRocket1()
-    }
-    
+    }    
     function battleTeamRocket1(){
         $forest.hide()
         battleOpponent.push(teamRocket1)
@@ -846,32 +841,6 @@ $(()=>{
         currentLocation = $forest
         $battle.css('background-image', 'url("css/images/forestbattle.png")')
     }
-
-    $enterCave.on('click', ()=>{
-        playButtonSound()
-        $forest.hide()
-        $cave.show()
-        caveBgm()
-    })
-
-
-    // var refreshId = setInterval(function() {
-    //     var properID = CheckReload();
-    //     if (properID > 0) {
-    //       clearInterval(refreshId);
-    //     }
-    //   }, 10000);
-
-    // setInterval(randomBattle2, 10000)
-    // clearInterval(setInterval(randomBattle2, 10000))
-
-    //   let intervalBattle2 = setInterval(function(){
-    //       randomBattle2();
-    //       if (a){
-    //           clearInterval(intervalBattle2)
-    //       }
-    //   })
-
     function randomBattle2(){
         currentLocation = $forest
         battleBgm()
@@ -880,54 +849,10 @@ $(()=>{
         randomBattle()
         // clearInterval(setInterval(randomBattle2, 10000))
     }
-
-    ///////////////////////// FOREST ////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-    ///////////////////////// BEACH ////////////////////////////////////
-
-    $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $beach.append($beachButton1)
-
-    $beachButton1.on('click', ()=>{
-        playButtonSound()
-        $beach.hide()
-        $forest.show()
-    })
-
-    $suspiciousRock = $('<div>').addClass('suspiciousRock')
-    $beach.append($suspiciousRock)
-    $suspiciousRock1 = $('<div>').addClass('suspiciousRock1')
-    $beach.append($suspiciousRock1)
-    $suspiciousRock1.hide()
-
-    $suspiciousRock.on('click', ()=>{
-        playButtonSound()
-        $suspiciousRock.hide()
-        suspiciousRockMoves()
-        $suspiciousRock1.show()
-    })
-
-    $suspiciousRock1.on('click', ()=>{
-        $suspiciousRock1.hide()
-        alert('You found a half of a map.')
-        cavemap++
-        unlockCave()
-    })
-
     function suspiciousRockMoves(){
         alert('The suspicious rock starts moving, and someone appears behind it!')
         battleTrainer1()
     }
-
     function battleTrainer1(){
         $beach.hide()
         battleOpponent.push(trainer1)
@@ -936,60 +861,6 @@ $(()=>{
         currentLocation = $beach
         $battle.css('background-image', 'url("css/images/beachbattle.png")')
     }
-
-    // setInterval(randomBattle3, 10000)
-
-    // function randomBattle3(){
-    //     currentLocation = $beach
-    //     battleBgm()
-    //     $beach.hide()
-    //     randomEncounter(randomPokemon3)
-    //     randomBattle()
-    // }
-
-    ///////////////////////// BEACH ////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-    ///////////////////////// DEEP FOREST  ////////////////////////////////////
-
-    $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $deepForest.append($deepForestButton1)
-
-    $deepForestButton1.on('click', ()=>{
-        playButtonSound()
-        $deepForest.hide()
-        $forest.show()
-    })
-
-    $suspiciousMoss = $('<div>').addClass('suspiciousMoss')
-    $deepForest.append($suspiciousMoss)
-    $suspiciousMoss1 = $('<div>').addClass('suspiciousMoss1')
-    $deepForest.append($suspiciousMoss1)
-    $suspiciousMoss1.hide()
-
-    $suspiciousMoss.on('click', ()=>{
-        playButtonSound()
-        $suspiciousMoss.hide()
-        suspiciousMossMoves()
-        $suspiciousMoss1.show()
-    })
-
-    $suspiciousMoss1.on('click', ()=>{
-        $suspiciousMoss1.hide()
-        alert('You found a half of a map.')
-        cavemap++
-        unlockCave()
-    })
-
     function suspiciousMossMoves(){
         alert('The suspicious Moss starts moving, and someone appears behind it!')
         battleTrainer2()
@@ -1002,25 +873,6 @@ $(()=>{
         currentLocation = $deepForest
         $battle.css('background-image', 'url("css/images/forestbattle.png")')
     }
-
-    // setInterval(randomBattle4, 30000)
-
-    // function randomBattle4(){
-    //     currentLocation = $deepForest
-    //     battleBgm()
-    //     $deepForest.hide()
-    //     randomEncounter(randomPokemon4)
-    //     randomBattle()
-    // }
-
-    ///////////////////////// DEEP FOREST  ////////////////////////////////////
-
-
-
-
-
-
-
     function unlockCave(){
         console.log(cavemap)
         if (cavemap === 2){
@@ -1028,58 +880,10 @@ $(()=>{
             $enterCave.show()
         }
     }
-
-
-
-    ///////////////////////// CAVE  ////////////////////////////////////
-
-
-
-    $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
-    $cave.append($caveToForest)
-    // $caveToForest.hide()
-    
-    $suspiciousObject = $('<div>').addClass('suspiciousObject')
-    $cave.append($suspiciousObject)
-    $suspiciousObject1 = $('<div>').addClass('suspiciousObject1')
-    $cave.append($suspiciousObject1)
-    $suspiciousObject1.hide()
-    
-    $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
-    $cave.append($caveToDeepCave)
-    $caveToDeepCave.hide()
-
-    $caveToForest.on('click', ()=>{
-        playButtonSound()
-        $cave.hide()
-        $forest.show()
-        forestBgm()
-    })
-
-    $caveToDeepCave.on('click', ()=>{
-        playButtonSound()
-        $cave.hide()
-        $deepCave.show()
-    })
-
-    $suspiciousObject.on('click', ()=>{
-        playButtonSound()
-        $suspiciousObject.hide()
-        $suspiciousObject1.show()
-        suspiciousObjectMoves()
-    })
-
-    $suspiciousObject1.on('click', ()=>{
-        $suspiciousObject1.hide()
-        alert('You hear some noise from deeper in the cave.')
-        $caveToDeepCave.show()
-    })
-
     function suspiciousObjectMoves(){
         alert('The suspicious Object starts moving, and someone appears behind it!')
         battleTrainer3()
     }
-
     function battleTrainer3(){
         $cave.hide()
         battleOpponent.push(trainer3)
@@ -1088,71 +892,10 @@ $(()=>{
         currentLocation = $cave
         $battle.css('background-image', 'url("css/images/cavebattle.png")')
     }
-
-    // setInterval(randomBattle5, 30000)
-
-    // function randomBattle5(){
-    //     currentLocation = $cave
-    //     battleBgm()
-    //     $cave.hide()
-    //     randomEncounter(randomPokemon5)
-    //     randomBattle()
-    // }
-    
-    ///////////////////////// CAVE  ////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///////////////////////// DEEP CAVE  ////////////////////////////////////
-
-    $deepCaveToCave = $('<button>').addClass('deepCaveToCave').text('Cave')
-    $deepCave.append($deepCaveToCave)
-
-    $deepCaveToCave.on('click', ()=>{
-        playButtonSound()
-        $deepCave.hide()
-        $cave.show()
-    })
-
-    $suspiciousThing = $('<div>').addClass('suspiciousThing')
-    $deepCave.append($suspiciousThing)
-    $suspiciousThing1 = $('<div>').addClass('suspiciousThing1')
-    $deepCave.append($suspiciousThing1)
-    $suspiciousThing1.hide()
-
-    $suspiciousThing.on('click', ()=>{
-        playButtonSound()
-        $suspiciousThing.hide()
-        $suspiciousThing1.show()
-        suspiciousThingMoves()
-    })
-
-    $suspiciousThing1.on('click', ()=>{
-        $suspiciousThing1.hide()
-        alert('You retrived the stolen package!')
-        $professorOak3.hide()
-        $professorOak4.show()
-    })
-
     function suspiciousThingMoves(){
         alert('The suspicious thing starts moving, and someone appears behind it!')
         battleTeamRocket2()
     }
-
     function battleTeamRocket2(){
         $deepCave.hide()
         battleOpponent.push(teamRocket2)
@@ -1161,17 +904,12 @@ $(()=>{
         currentLocation = $deepCave
         $battle.css('background-image', 'url("css/images/deep_cave.png")')
     }
-
-    ///////////////////////// DEEP CAVE  ////////////////////////////////////
-
-
     function exitBattle(){
         $battle.hide()
         currentLocation.show()
         playCurrentBgm()
         checkIfRivalDefeated()
     }
-
     function goToPokeCentre(){
         $battle.hide()
         $pokeCentre.show()
@@ -1180,33 +918,26 @@ $(()=>{
         $respawnButton.show()
         pokecentreBgm()
     }
-
     function userPokemonAnimation(){
         $('.userPicture').addClass('userAnimation')
     }
-
     function enemyPokemonAnimation(){
         $('.enemyPicture').addClass('enemyAnimation')
     }
-
     function randomEncounter(pokeArray){
         randomEncounterIndex = Math.floor(Math.random()*pokeArray.length)
         enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
         console.log(randomEncounterIndex)
     }
-
     function checkIfRivalDefeated(){
         if (rival.pokemonList.length === 0){
             alert(rival.name + ': Hmph, you just got lucky this time.')
-            alert(rival.name + ': Gramps told me to pass you this.')
+            // alert(rival.name + ': Gramps told me to pass you this.')
             alert(rival.name + ': See you, loser!')
             rival.pokemonList.push(eevee)
             console.log(rival.pokemonList.length)
         }
     }
-    ///////////////////////////////////////////      BATTLE       //////////////////////////////////////
-
-    // this should lead to the battle page
 
     function battle(){
         $battle.show()
@@ -1604,10 +1335,6 @@ $(()=>{
             })
         }
     }
-
-
-///////////////////////////////////////////     RANDOM BATTLE       //////////////////////////////////////
-
     function randomBattle(){
         $('.battle').show()
         let currentPokemon = userPokemonList[0]
@@ -1977,42 +1704,13 @@ $(()=>{
         }
     }
 
+    function endGame(){
+    $professorOaksLab.hide()
+    $endGamePage.show()
+    endingBgm()
+    }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-// class Scenes {
-//     constructor(){
-
-//     }
-// }
-
-// class mainPage extends Scenes {
-
-// }
-
-// class choosePokemon extends Scenes {
-
-// }
-
-
-
-// const handlers = {
-
-// }
-
-// const background = {
-
-// }
 
 
 
