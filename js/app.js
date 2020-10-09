@@ -770,6 +770,9 @@ $(()=>{
     $enterDeepForest.hide()
 
     //need css animation and mouse hover to make it clickable
+    $shakeTrees = $('<div>').addClass('shakeTrees')
+    $('.forestDiv1').append($shakeTrees)
+
     $suspiciousTree = $('<div>').addClass('suspiciousTree')
     $('.forestDiv1').append($suspiciousTree)
 
@@ -804,6 +807,13 @@ $(()=>{
         $forest.hide()
         $deepForest.show()
         clearInterval(setInterval(randomBattle2, 10000))
+    })
+
+    $shakeTrees.on('click', ()=>{
+        suspiciousTree++
+        if (suspiciousTree%4 ===0){
+            randomBattle2()
+        }
     })
 
     $suspiciousTree.on('click', ()=>{
@@ -1159,6 +1169,7 @@ $(()=>{
         $battle.hide()
         currentLocation.show()
         playCurrentBgm()
+        checkIfRivalDefeated()
     }
 
     function goToPokeCentre(){
@@ -1184,7 +1195,15 @@ $(()=>{
         console.log(randomEncounterIndex)
     }
 
-
+    function checkIfRivalDefeated(){
+        if (rival.pokemonList.length === 0){
+            alert(rival.name + ': Hmph, you just got lucky this time.')
+            alert(rival.name + ': Gramps told me to pass you this.')
+            alert(rival.name + ': See you, loser!')
+            rival.pokemonList.push(eevee)
+            console.log(rival.pokemonList.length)
+        }
+    }
     ///////////////////////////////////////////      BATTLE       //////////////////////////////////////
 
     // this should lead to the battle page
