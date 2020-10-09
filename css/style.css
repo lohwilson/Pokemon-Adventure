@@ -10,7 +10,6 @@
 
 /*//////////////////////////////////////////////////// PAGES ///////////////////////////////////////// */
 
-
 .mainPage {
     background-image: url('images/main_page.jpg');
     opacity: 0.5;
@@ -50,8 +49,7 @@
     animation-timing-function: linear;
 }
 
-
-@keyframes rainbow-move-change {
+/* @keyframes rainbow-move-change {
     0% {background: black; left:0%; top:0%;}
     10% {background: crimson; }
     25% {background: hotpink; left: 25%; top:0px;}
@@ -63,8 +61,7 @@
     80% {background: darkviolet;}
     90% {background: black; }
     100% {background: ghostwhite; left:0px; top:0px; }
-  }
-
+  } */
 
 .professorOaksLab {
     background-image: url('images/pokemon-professor-oak-facts-trivia.jpg');
@@ -104,8 +101,13 @@
     flex-direction: column-reverse;
 }
 
-
-
+.oakLabDiv3 {
+    width: 100px;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column-reverse;
+}
 
 .meadow {
     background-image: url('images/meadow.jpg');
@@ -1339,7 +1341,6 @@
     cursor: pointer;
     border: 2px solid blue;
 }
-
 
 .suspiciousRock {
     width: 100px;

@@ -134,58 +134,74 @@ $(()=>{
         sound = new Audio('sounds/click1.mp3')
         sound.play()
     }
+    
     /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
 
 
     ////////////////////////////////////        PAGES       //////////////////////////////////////////
 
+    let pagesArray = ['mainPage', 'meadow', 'professorOaksLab', 'mainTown', 'battle', 'pokeCentre', 'shop', 'forest', 'beach', 'deepForest', 'cave', 'deepCave', 'endGamePage']
 
-    let pagesArray = ['mainPage', 'meadow', 'forest', 'beach', 'deepForest', 'cave', 'deepCave', 'endGamePage', 'professorOaksLab', 'mainTown', 'battle', 'pokeCentre', 'shop']
+    for (let i = 0; i < pagesArray.length; i++){
+        let $page = $('<div>').addClass(pagesArray[i])
+        $layout.append($page)
+        $page.hide()
+    }
+    let $mainPage = $('.mainPage')
+    let $meadow = $('.meadow')
+    let $forest = $('.forest')
+    let $beach = $('.beach')
+    let $deepForest = $('.deepForest')
+    let $cave = $('.cave')
+    let $deepCave = $('.deepCave')
+    let $endGamePage = $('.endGamePage')
+    let $professorOaksLab = $('.professorOaksLab')
+    let $mainTown = $('.mainTown')
+    let $battle = $('.battle')
+    let $pokeCentre = $('.pokeCentre')
+    let $shop = $('.shop')
+    $mainPage.show()
 
+    // let $mainPage = $('<div>').addClass('mainPage')
+    // $layout.append($mainPage)
+    // let $meadow = $('<div>').addClass('meadow')
+    // $layout.append($meadow)
+    // $meadow.hide()
+    // let $forest = $('<div>').addClass('forest')
+    // $layout.append($forest)
+    // $forest.hide()
+    // let $beach = $('<div>').addClass('beach')
+    // $layout.append($beach)
+    // $beach.hide()
+    // let $deepForest = $('<div>').addClass('deepForest')
+    // $layout.append($deepForest)
+    // $deepForest.hide()
+    // let $cave = $('<div>').addClass('cave')
+    // $layout.append($cave)
+    // $cave.hide()
+    // let $deepCave = $('<div>').addClass('deepCave')
+    // $layout.append($deepCave)
+    // $deepCave.hide()
+    // let $endGamePage = $('<div>').addClass('endGamePage')
+    // $layout.append($endGamePage)
+    // $endGamePage.hide()
+    // let $professorOaksLab = $('<div>').addClass('professorOaksLab')
+    // $layout.append($professorOaksLab)
+    // $professorOaksLab.hide()
 
-    let $mainPage = $('<div>').addClass('mainPage')
-    $layout.append($mainPage)
-    let $meadow = $('<div>').addClass('meadow')
-    $layout.append($meadow)
-    $meadow.hide()
-    let $forest = $('<div>').addClass('forest')
-    $layout.append($forest)
-    $forest.hide()
-    let $beach = $('<div>').addClass('beach')
-    $layout.append($beach)
-    $beach.hide()
-    let $deepForest = $('<div>').addClass('deepForest')
-    $layout.append($deepForest)
-    $deepForest.hide()
-    let $cave = $('<div>').addClass('cave')
-    $layout.append($cave)
-    $cave.hide()
-    let $deepCave = $('<div>').addClass('deepCave')
-    $layout.append($deepCave)
-    $deepCave.hide()
-    let $endGamePage = $('<div>').addClass('endGamePage')
-    $layout.append($endGamePage)
-    $endGamePage.hide()
-    let $professorOaksLab = $('<div>').addClass('professorOaksLab')
-    $layout.append($professorOaksLab)
-    $professorOaksLab.hide()
-
-    let $mainTown = $('<div>').addClass('mainTown')
-    $layout.append($mainTown)
-    $mainTown.hide()
-    let $battle = $('<div>').addClass('battle')
-    $layout.append($battle)
-    $battle.hide()
-    let $pokeCentre = $('<div>').addClass('pokeCentre')
-    $layout.append($pokeCentre)
-    $pokeCentre.hide()
-    let $shop = $('<div>').addClass('shop')
-    $layout.append($shop)
-    $shop.hide()
-
-
-
+    // let $mainTown = $('<div>').addClass('mainTown')
+    // $layout.append($mainTown)
+    // $mainTown.hide()
+    // let $battle = $('<div>').addClass('battle')
+    // $layout.append($battle)
+    // $battle.hide()
+    // let $pokeCentre = $('<div>').addClass('pokeCentre')
+    // $layout.append($pokeCentre)
+    // $pokeCentre.hide()
+    // let $shop = $('<div>').addClass('shop')
+    // $layout.append($shop)
+    // $shop.hide()
 
 
     //////////////////////////////////////////      PAGES       ///////////////////////////////////////
@@ -1180,7 +1196,11 @@ $(()=>{
             $('#userDisplay0').text('Level '+ currentPokemon.level + ' ' + currentPokemon.name)
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             $userPicture.css('background-image', `url(${currentPokemon.image})`)
+            userPercentage = userCurrentHealth/userFullHealth*100
+            $progressBar2.text(`${userPercentage}%`)
+            $progressBar2.attr('style', `width: ${userPercentage}%`)
         }
+
         function displayEnemyInfo(){
             $('#enemyDisplay0').text('Level '+ enemyBattlePokemon[0].level + ' ' + enemyBattlePokemon[0].name)
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
@@ -1193,7 +1213,7 @@ $(()=>{
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             console.log(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
-            userPercentage = userCurrentHealth/userFullHealth*100
+            userPercentage = Math.round(userCurrentHealth/userFullHealth*100)
             $progressBar2.text(`${userPercentage}%`)
             $progressBar2.attr('style', `width: ${userPercentage}%`)
         }
@@ -1201,7 +1221,7 @@ $(()=>{
         function updateEnemyHealth () {
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
             console.log(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
-            enemyPercentage = enemyCurrentHealth/enemyFullHealth*100
+            enemyPercentage = Math.round(enemyCurrentHealth/enemyFullHealth*100)
             $progressBar1.text(`${enemyPercentage}%`)
             $progressBar1.attr('style', `width: ${enemyPercentage}%`)
         }
@@ -1585,7 +1605,7 @@ $(()=>{
         function updateUserHealth () {
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             console.log(currentPokemon.name + ' has ' + userCurrentHealth + ' hitpoints left.')
-            userPercentage = userCurrentHealth/userFullHealth*100
+            userPercentage = Math.round(userCurrentHealth/userFullHealth*100)
             $progressBar2.text(`${userPercentage}%`)
             $progressBar2.attr('style', `width: ${userPercentage}%`)
         }
@@ -1593,7 +1613,7 @@ $(()=>{
         function updateEnemyHealth () {
             $('#enemyDisplay1').text('Health Points: '+ enemyCurrentHealth + ' / ' + enemyFullHealth)
             console.log(enemyBattlePokemon[0].name + ' has ' + enemyCurrentHealth + ' hitpoints left.')
-            enemyPercentage = enemyCurrentHealth/enemyFullHealth*100
+            enemyPercentage = Math.round(enemyCurrentHealth/enemyFullHealth*100)
             $progressBar1.text(`${enemyPercentage}%`)
             $progressBar1.attr('style', `width: ${enemyPercentage}%`)
         }
