@@ -24,11 +24,9 @@ let battleOpponent = []
 let gymClickCounter = 0
 let caveUnlock = 0
 let rustledTrees = 0
-let suspiciousTree = 0
-let suspiciousMoss = 0
-let suspiciousRock = 0
-let suspiciousThing = 0
-let suspiciousObject = 0
+let swimCounter = 0
+let shroomCounter = 0
+let rockCounter = 0
 let cavemap = 0
 let unlockPikachu = 0
 let randomEncounterIndex
@@ -329,34 +327,51 @@ $(()=>{
     $('.forestDiv0').append($enterMainTown)
 
     // BEACH DIVS
+    $beachDiv1 = $('<div>').addClass('beachDiv1')
+    $beach.append($beachDiv1)
+    $beachDiv2 = $('<div>').addClass('beachDiv2')
+    $beach.append($beachDiv2)
     $beachButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $beach.append($beachButton1)
+    $beachDiv1.append($beachButton1)
+    $swim = $('<button>').addClass('swim').text('Swim')
+    $beachDiv1.append($swim)
     $suspiciousRock = $('<div>').addClass('suspiciousRock')
-    $beach.append($suspiciousRock)
+    $beachDiv2.append($suspiciousRock)
     $suspiciousRock1 = $('<div>').addClass('suspiciousRock1')
-    $beach.append($suspiciousRock1)
+    $beachDiv2.append($suspiciousRock1)
     $suspiciousRock1.hide()
 
     // DEEP FOREST DIVS
+    $deepForestDiv1 = $('<div>').addClass('deepForestDiv1')
+    $deepForest.append($deepForestDiv1)
+    $deepForestDiv2 = $('<div>').addClass('deepForestDiv2')
+    $deepForest.append($deepForestDiv2)
     $deepForestButton1 = $('<button>').addClass('enterForest').text('Forest')
-    $deepForest.append($deepForestButton1)
+    $deepForestDiv1.append($deepForestButton1)
+    $playWithShrooms = $('<button>').addClass('playWithShrooms').text('Play With Shrooms')
+    $deepForestDiv1.append($playWithShrooms)
     $suspiciousMoss = $('<div>').addClass('suspiciousMoss')
-    $deepForest.append($suspiciousMoss)
+    $deepForestDiv2.append($suspiciousMoss)
     $suspiciousMoss1 = $('<div>').addClass('suspiciousMoss1')
-    $deepForest.append($suspiciousMoss1)
+    $deepForestDiv2.append($suspiciousMoss1)
     $suspiciousMoss1.hide()
 
     // CAVE DIVS
+    $caveDiv1 = $('<div>').addClass('caveDiv1')
+    $cave.append($caveDiv1)
+    $caveDiv2 = $('<div>').addClass('caveDiv2')
+    $cave.append($caveDiv2)
     $caveToForest = $('<button>').addClass('caveToForest').text('Forest')
-    $cave.append($caveToForest)
-    // $caveToForest.hide()
+    $caveDiv1.append($caveToForest)
+    $kickRock = $('<button>').addClass('kickRock').text('Kick Rock')
+    $caveDiv1.append($kickRock)
     $suspiciousObject = $('<div>').addClass('suspiciousObject')
-    $cave.append($suspiciousObject)
+    $caveDiv2.append($suspiciousObject)
     $suspiciousObject1 = $('<div>').addClass('suspiciousObject1')
-    $cave.append($suspiciousObject1)
+    $caveDiv2.append($suspiciousObject1)
     $suspiciousObject1.hide()
     $caveToDeepCave = $('<button>').addClass('caveToDeepCave').text('Deep Cave')
-    $cave.append($caveToDeepCave)
+    $caveDiv2.append($caveToDeepCave)
     $caveToDeepCave.hide()
 
     // DEEP CAVE DIVS
@@ -711,6 +726,17 @@ $(()=>{
         cavemap++
         unlockCave()
     })
+    $swim.on('click', ()=>{
+        playButtonSound()
+        alert('You had a good swim.')
+        swimCounter++
+        if (swimCounter%3 === 0){
+            alert('Something snagged your leg while swimming!')
+            currentLocation = $beach
+            battleBgm()
+            beachBattle()
+        }
+    })
 
     $deepForestButton1.on('click', ()=>{
         playButtonSound()
@@ -730,6 +756,18 @@ $(()=>{
         cavemap++
         unlockCave()
     })
+    $playWithShrooms.on('click', ()=>{
+        playButtonSound()
+        alert('You played with the shrooms.')
+        shroomCounter++
+        if (shroomCounter%3 === 0){
+            alert('Something moved!')
+            currentLocation = $deepForest
+            battleBgm()
+            deepForestBattle()
+        }
+    })
+
 
     $caveToForest.on('click', ()=>{
         playButtonSound()
@@ -754,6 +792,19 @@ $(()=>{
         alert('You hear some noise from deeper in the cave.')
         $caveToDeepCave.show()
     })
+
+    $kickRock.on('click', ()=>{
+        playButtonSound()
+        alert('You kicked a rock deep into the cave.')
+        rockCounter++
+        if (rockCounter%3 === 0){
+            alert('Something moved!')
+            currentLocation = $cave
+            battleBgm()
+            caveBattle()
+        }
+    })
+
 
     $deepCaveToCave.on('click', ()=>{
         playButtonSound()
@@ -814,12 +865,14 @@ $(()=>{
             unlockPikachu++
             if (unlockPikachu%5 === 0){
                 playThundershock()
+                alert('Professor Oak: You need to choose from the PokeBalls!')
             }
             if (unlockPikachu === 25){
                 $pikachuDiv.hide()
                 $('.choosePokemonButton').hide()
                 $professorOak2.show()
-                alert('You got pikachu')
+                alert('Professor Oak: Alright, alright. Since you\'re so persistent, I have a surprise for you!')
+                alert('You received pikachu!')
                 userPokemonList.push(pikachu)
                 rivalPokemonList.push(eevee)
             }
@@ -832,6 +885,30 @@ $(()=>{
         $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
         // $battle.css('background-image', 'white')
     }
+    function beachBattle(){
+        $beach.hide()
+        randomEncounter(randomPokemon3)
+        randomBattle()
+        $battle.css('background-image', 'url("css/images/beachbattle.png")')
+        // $battle.css('background-image', 'white')
+    }
+    function deepForestBattle(){
+        $deepForest.hide()
+        randomEncounter(randomPokemon4)
+        randomBattle()
+        $battle.css('background-image', 'url("css/images/forestbattle.png")')
+        // $battle.css('background-image', 'white')
+    }
+    function caveBattle(){
+        $cave.hide()
+        randomEncounter(randomPokemon5)
+        randomBattle()
+        $battle.css('background-image', 'url("css/images/cavebattle.png")')
+        // $battle.css('background-image', 'white')
+    }
+
+
+
     function battleRival (){
         battleOpponent.push(rival)
         currentLocation = $mainTown
@@ -888,11 +965,12 @@ $(()=>{
         console.log(cavemap)
         if (cavemap === 2){
             alert('You joined two pieces of map and found a hidden entrance!')
+            alert('There is an X marked on the northeast of the map')
             $enterCave.show()
         }
     }
     function suspiciousObjectMoves(){
-        alert('The suspicious Object starts moving, and someone appears behind it!')
+        alert('Team Rocket Member: Who goes there?!')
         battleTrainer3()
     }
     function battleTrainer3(){
@@ -904,7 +982,7 @@ $(()=>{
         $battle.css('background-image', 'url("css/images/cavebattle.png")')
     }
     function suspiciousThingMoves(){
-        alert('The suspicious thing starts moving, and someone appears behind it!')
+        alert('You found the source of the sound!')
         battleTeamRocket2()
     }
     function battleTeamRocket2(){
@@ -1437,7 +1515,7 @@ $(()=>{
         // $('.battle').append($alertButton)
 
         for (let i = 0; i < 12; i++){
-            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons').hide()
+            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next').addClass('alertButtons').hide()
             $('#alertDisplay1').append($alertButton)
         }
 

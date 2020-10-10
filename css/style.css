@@ -339,6 +339,22 @@
     background-size: cover;
 }
 
+.beachDiv1 {
+    height: 99%;
+    width: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.beachDiv2 {
+    height: 99%;
+    width: 24%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
 .deepForest {
     background-image: url('images/deep_forest.jpg');
     opacity: 0.7;
@@ -352,6 +368,21 @@
     background-size: cover;
 }
 
+.deepForestDiv1 {
+    height: 99%;
+    width: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.deepForestDiv2 {
+    height: 99%;
+    width: 24%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .cave {
     background-image: url('images/cave.jpg');
     opacity: 0.7;
@@ -363,6 +394,21 @@
     justify-content: space-between;
     align-items: flex-end;
     background-size: cover;
+}
+
+.caveDiv1 {
+    height: 99%;
+    width: 75%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.caveDiv2 {
+    height: 99%;
+    width: 24%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .deepCave {
@@ -921,8 +967,63 @@
     cursor: pointer;
 }
 
+.playWithShrooms {
+    background-color: yellow;
+    border: none;
+    color: black;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
+    cursor: pointer;
+    align-self: center;
+}
 
+.swim {
+    background-color: yellow;
+    border: none;
+    color: black;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 0px 0px 100px 0px;
+    cursor: pointer;
+    /* align-self: center; */
+}
 
+.kickRock {
+    background-color: yellow;
+    border: none;
+    color: black;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    margin: 5px;
+    cursor: pointer;
+}
 
 /*//////////////////////////////////////////////////// BUTTONS //////////////////////////////////////////// */
 

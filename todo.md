@@ -1,6 +1,13 @@
 
 
 # Fixes
+
+
+- fix bgm loop
+- add divs for random poke battles
+
+
+
 - tidy up code
 - css UI
 
