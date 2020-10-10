@@ -157,7 +157,10 @@ $(()=>{
         sound.play()
     }
     
-
+    function playThundershock(){
+        sound = new Audio('sounds/battlesounds/ThunderShock.mp3')
+        sound.play()
+    }
 
 
 
@@ -458,7 +461,7 @@ $(()=>{
         alert('I have been a pokemon researcher for many years, and while researching about pokemon, I do have my own collection.')
         alert('So, alas, it is your lucky day! I have prepared 3 special pokemon for you.')
         alert('Each of them have unique talents which will be essential for your journey as a new Pokemon adventurer.')
-        alert('Please take your time to choose, but remember, the adventure is waiting for you out there')
+        alert('Please take your time to choose, but remember, the adventure is waiting for you out there.')
         choosePokemonButtons()
     })
     $professorOak2.on('click', ()=>{
@@ -580,6 +583,7 @@ $(()=>{
         alert('Oh, so Professor Oak sent you?')
         alert('I would love to help you but my shop a suspicious person entered my shop late last night and robbed me.')
         alert('Last I heard, they were spotted heading towards the forest.')
+        alert('Some locals mentioned that they had a secret hideout in the trees after entering the forest. You can check out that spot first.')
         alert('You might be able to track them down and retrieve the package.')
         $enterForest.show()
     })
@@ -787,15 +791,15 @@ $(()=>{
         $('.choosePokemonButton').on('click', (event)=>{
             playButtonSound()
             if (event.currentTarget.classList[0] === 'charmander'){
-                alert('You got charmander')
+                alert('You chose charmander!')
                 userPokemonList.push(charmander)
                 rivalPokemonList.push(squirtle)
             } else if (event.currentTarget.classList[0] === 'squirtle'){
-                alert('You got squirtle')
+                alert('You chose squirtle!')
                 userPokemonList.push(squirtle)
                 rivalPokemonList.push(bulbasaur)
             } else if (event.currentTarget.classList[0] === 'bulbasaur'){
-                alert('You got bulbasaur')
+                alert('You chose bulbasaur!')
                 userPokemonList.push(bulbasaur)
                 rivalPokemonList.push(charmander)
             }
@@ -809,6 +813,9 @@ $(()=>{
 
         $pikachuDiv.on('click', ()=>{
             unlockPikachu++
+            if (unlockPikachu%5 === 0){
+                playThundershock()
+            }
             if (unlockPikachu === 25){
                 $pikachuDiv.hide()
                 $('.choosePokemonButton').hide()

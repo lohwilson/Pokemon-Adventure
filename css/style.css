@@ -999,14 +999,14 @@
     animation-timing-function: linear;
 }
 
-@keyframes karolin {
+/* @keyframes karolin {
     0% {background: black; transform: rotate(3500deg) scale(.2)}
     25% {background: crimson;}
     50% {background: palegreen; transform: rotate(1500deg) scale(.6)}
     75% {background: rgb(172, 201, 12); transform: rotate(750deg)}
     90% {background: ghostwhite; transform: rotate(300deg)}
     100% {background: ghostwhite; transform: rotate(0deg)}
-  }
+  } */
 
 .battleDiv1 {
     width: 49%;
@@ -1026,6 +1026,9 @@
 }
 
 .enemyInfoDisplay{
+    background-image: linear-gradient(180deg, red, yellow);
+    /* background-color: #ffb3b3; */
+    border-radius: 15px;
     width: 300px;
     height: 50px;
     font-weight: 900;
@@ -1085,6 +1088,9 @@
   }
 
 .userInfoDisplay{
+    background-image: linear-gradient(180deg, rgb(53, 156, 224), rgb(206, 63, 158));
+    /* background-color:  #4da6ff; */
+    border-radius: 15px;
     width: 300px;
     height: 50px;
     align-items: center;
@@ -1125,11 +1131,13 @@
 }
 
 .alertBox{
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    /* background-color:  #b3ffcc; */
+    border-radius: 15px;
     width: 400px;
     height: 100px;
     text-align: center;
     font-weight: 900;
-
 }
 
 #alertDisplay0{
@@ -1151,6 +1159,7 @@
 .battleCommandsDisplay{
     width: 300px;
     height: 100px;
+    /* border: 2px solid gold; */
 }
 
 .alertButtons {
@@ -1160,24 +1169,28 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 30%;
     height: 75%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 .fightButton {
     background-color: yellow;
     border: none;
     color: black;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 3px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 .itemButton {
@@ -1188,11 +1201,13 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     margin: 4px 2px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 .changePokemonButton {
@@ -1203,10 +1218,12 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 .runButton {
@@ -1216,39 +1233,45 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 #skill0 {
     background-color: yellow;
     border: none;
     color: black;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 5px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 #skill1 {
     background-color: yellow;
     border: none;
     color: black;
-    padding: 15px 32px;
-    text-align: center;
+    /* padding: 15px 32px; */
+    /* text-align: center; */
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
-    margin: 4px 2px;
+    /* margin: 4px 2px; */
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 #skill2 {
@@ -1259,21 +1282,24 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 #skill3 {
     background-color: yellow;
     border: none;
     color: black;
-
-    font-size: 10px;
     cursor: pointer;
     width: 45%;
     height: 45%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 15px;
 }
 
 /*/////////////////////////////////////////////// BATTLE DISPLAY /////////////////////////////////////////// */
