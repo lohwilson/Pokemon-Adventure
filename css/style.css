@@ -1089,7 +1089,7 @@
   }
 
 .userInfoDisplay{
-    background-image: linear-gradient(180deg, #5f2c82, #49a09d);
+    background-image: linear-gradient(180deg, #514a9d, #24C6DC);
     /* background-image: linear-gradient(180deg, rgb(53, 156, 224), rgb(206, 63, 158)); */
     /* background-color:  #4da6ff; */
     border-radius: 15px;
@@ -1198,10 +1198,8 @@
 }
 
 .fightButton:hover {
-    background-position: right center; /* change the direction of the change here */
     color: #fff;
-    text-decoration: none;
-  }
+}
  
 
 .itemButton {
@@ -1330,6 +1328,7 @@
     width: 150px;
     height: 125px;
     cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 .professorOak2 {
@@ -1343,6 +1342,13 @@
     height: 125px;
     cursor: pointer;
 }
+
+.professorOak4 {
+    width: 150px;
+    height: 125px;
+    cursor: pointer;
+}
+
 
 .shopkeeper {
     width: 150px;

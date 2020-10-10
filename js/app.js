@@ -479,7 +479,7 @@ $(()=>{
     })
     $professorOak3.on('click', ()=>{
         playButtonSound()
-        alert('Please come back when you have my parcel.')
+        alert('Please come back when you have my parcel from the shopkeeper.')
     })
     $professorOak4.on('click', ()=>{
         playButtonSound()
@@ -617,18 +617,13 @@ $(()=>{
     $healButton.on('click', ()=>{
         playButtonSound()
         if (userPokemonList[0].health === userPokemonList[0].fullHealth){
-            console.log(userPokemonList)
-            console.log(userPokemonList[0])
-            console.log('aaaaaaaaaaaaaaaa')
             alert('Your pokemon are fully healed.')
         } else {
             for (let i = 0; i < userPokemonList.length; i++){
                 userPokemonList[i].health = userPokemonList[0].fullHealth
             }
-            console.log(userPokemonList)
-            console.log(userPokemonList[0])
-
-            alert('I have healed your pokemon!')
+            alert('Give me a second.')
+            alert('Okay, I have healed your pokemon!')
             alert('Please come again')
         }
     })
@@ -711,6 +706,7 @@ $(()=>{
     })
     $suspiciousRock1.on('click', ()=>{
         $suspiciousRock1.hide()
+        alert('The team rocket member is nowhere to be found, but there\'s something on the ground.')
         alert('You found a half of a map.')
         cavemap++
         unlockCave()
@@ -729,6 +725,7 @@ $(()=>{
     })
     $suspiciousMoss1.on('click', ()=>{
         $suspiciousMoss1.hide()
+        alert('The team rocket member is nowhere to be found, but there\'s something on the ground.')
         alert('You found a half of a map.')
         cavemap++
         unlockCave()
@@ -753,6 +750,7 @@ $(()=>{
     })
     $suspiciousObject1.on('click', ()=>{
         $suspiciousObject1.hide()
+        alert('The team rocket member is nowhere to be found.')
         alert('You hear some noise from deeper in the cave.')
         $caveToDeepCave.show()
     })
@@ -770,6 +768,7 @@ $(()=>{
     })
     $suspiciousThing1.on('click', ()=>{
         $suspiciousThing1.hide()
+        alert('Team Rocket is nowhere to be found, but there\'s something on the ground.')
         alert('You retrived the stolen package!')
         $professorOak3.hide()
         $professorOak4.show()
@@ -831,6 +830,7 @@ $(()=>{
         randomEncounter(randomPokemon1)
         randomBattle()
         $battle.css('background-image', 'url("css/images/meadowbattle.jpg")')
+        // $battle.css('background-image', 'white')
     }
     function battleRival (){
         battleOpponent.push(rival)
@@ -955,6 +955,7 @@ $(()=>{
             alert('Team Rocket: How... can you be so strong!')
             alert('Team Rocket: Retreat! Retreat!')
             alert('Team Rocket used a smoke bomb and vanished!')
+            alert('Something fell on the ground!')
             teamRocket1.pokemonList.push(koffing)
             console.log(teamRocket1.pokemonList.length)
         }
@@ -972,7 +973,6 @@ $(()=>{
         userBattlePokemon = userPokemonList[0]
         enemyName = battleOpponent[0].name
         enemyPokemonList = battleOpponent[0].pokemonList
-        console.log(enemyPokemonList)
 
         let $battleDiv1 = $('<div>').addClass('battleDiv1')
         $battle.append($battleDiv1)
@@ -982,7 +982,6 @@ $(()=>{
         // create battle containers
         for (let i = 0; i < battleContainerArray.length; i++){
             let $display = $('<div>').addClass(battleContainerArray[i])
-
             if (i%2 === 0){
                 $battleDiv1.append($display)
             } else {
@@ -1044,7 +1043,7 @@ $(()=>{
         }
 
         for (let i = 0; i < 12; i++){
-            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next'+i).addClass('alertButtons').hide()
+            let $alertButton = $('<button>').addClass('alertButton'+i).text('Next').addClass('alertButtons').hide()
             $('#alertDisplay1').append($alertButton)
         }
 
@@ -1183,11 +1182,6 @@ $(()=>{
 ////////////////////////////////    EVENT LISTENERS    ////////////////////////////////////
 
 
-
-
-
-
-
 ////////////////////////////////    FUNCTIONS    ////////////////////////////////////
 
         
@@ -1294,10 +1288,6 @@ $(()=>{
                 $alertButton9.show()
             }
         }
-
-        function userChooseNewPokemon(){
-            $alertButton10.show()
-        }
         
         function loseBattle(){
             $('#alertDisplay0').text(player.name + ' has no pokemon left!')
@@ -1345,6 +1335,7 @@ $(()=>{
         $enemyPicture.css('background-image', `url(${battleOpponent[0].backgroundImg})`)
 
         $('#userDisplay0').text(player.name)
+        $('#enemyDisplay0').text(enemyName)
         $userPicture.css('background-image', `url(${player.backgroundImg})`)
 
         $alertButton0.show()
