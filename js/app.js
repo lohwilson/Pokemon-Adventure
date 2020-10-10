@@ -47,8 +47,8 @@ $(()=>{
     $layout.append($audio)
     $audio.loop = true;
 
-    // let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
-    // $audio.append($source)
+    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    $audio.append($source)
 
     $('audio')[0].play();
 
@@ -135,11 +135,6 @@ $(()=>{
     function playButtonSound(){
         // let $sound = $('<source>').attr('src', 'sounds/click1.mp3').attr('type', 'audio')
         sound = new Audio('sounds/click1.mp3')
-        sound.play()
-    }
-    
-    function tackleSound(){
-        sound = new Audio('sounds/battlesounds/tackle.mp3')
         sound.play()
     }
 
@@ -326,7 +321,7 @@ $(()=>{
     $suspiciousTree1.hide()
     $enterCave = $('<button>').text('Mysterious Cave').addClass('enterCave')
     $('.forestDiv2').append($enterCave)
-    // $enterCave.hide()
+    $enterCave.hide()
     $enterMainTown = $('<button>').addClass('enterMainTown').text('Town')
     $('.forestDiv0').append($enterMainTown)
 
@@ -686,7 +681,9 @@ $(()=>{
         $suspiciousTree1.show()
     })
     $suspiciousTree1.on('click', ()=>{
-        alert('There\'s no trace of team rocket but you found some footprints leading to the beach and deeper into the forest')
+        alert('There\'s no trace of team rocket but you found some footprints leading to the beach and deeper into the forest.')
+        alert('There\'s also a note stating .... spores.... rocks....')
+        alert('Might be worth checking them out for clues!')
         $enterBeach.show()
         $enterDeepForest.show()
     }) 
@@ -916,6 +913,7 @@ $(()=>{
         currentLocation.show()
         playCurrentBgm()
         checkIfRivalDefeated()
+        checkIfTeamRocket1Defeated()
     }
     function goToPokeCentre(){
         $battle.hide()
@@ -945,6 +943,20 @@ $(()=>{
             console.log(rival.pokemonList.length)
         }
     }
+    function checkIfTeamRocket1Defeated(){
+        if (teamRocket1.pokemonList.length === 0){
+            alert('Team Rocket: How... can you be so strong!')
+            alert('Team Rocket: Retreat! Retreat!')
+            alert('Team Rocket used a smoke bomb and vanished!')
+            teamRocket1.pokemonList.push(koffing)
+            console.log(teamRocket1.pokemonList.length)
+        }
+    }
+
+
+
+
+
 
     function battle(){
         $battle.show()
@@ -1187,7 +1199,7 @@ $(()=>{
             $('#userDisplay0').text('Level '+ currentPokemon.level + ' ' + currentPokemon.name)
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             $userPicture.css('background-image', `url(${currentPokemon.image})`)
-            userPercentage = userCurrentHealth/userFullHealth*100
+            userPercentage = Math.round(userCurrentHealth/userFullHealth*100)
             $progressBar2.text(`${userPercentage}%`)
             $progressBar2.attr('style', `width: ${userPercentage}%`)
         }
@@ -1582,7 +1594,7 @@ $(()=>{
             $('#userDisplay0').text('Level '+ currentPokemon.level + ' ' + currentPokemon.name)
             $('#userDisplay1').text('Health Points: '+ userCurrentHealth + ' / ' + userFullHealth)
             $userPicture.css('background-image', `url(${currentPokemon.image})`)
-            userPercentage = userCurrentHealth/userFullHealth*100
+            userPercentage = Math.round(userCurrentHealth/userFullHealth*100)
             $progressBar2.text(`${userPercentage}%`)
             $progressBar2.attr('style', `width: ${userPercentage}%`)
         }
@@ -1705,9 +1717,8 @@ $(()=>{
                 event.preventDefault()
 
                 userPokemonAnimation()
-                tackleSound()
                 enemyCurrentHealth = enemyCurrentHealth - currentPokemon.skills[i].damage
-                playUserSound()
+                playUserSound(currentPokemon.skills[i].name)
                 if (enemyCurrentHealth <= 0){
                     enemyCurrentHealth = 0;
                 }

@@ -5,18 +5,18 @@
 #layout {
     width: 812px;
     height: 375px;
-    border: 2px solid gold;
+    /* border: 2px solid gold; */
 }
 
 /*//////////////////////////////////////////////////// PAGES ///////////////////////////////////////// */
 
 .mainPage {
     background-image: url('images/main_page.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-size: cover;
     display: flex;
     justify-content: flex-end;
@@ -26,11 +26,11 @@
 
 .endGamePage {
     background-image: url('images/endgame.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -65,11 +65,11 @@
 
 .professorOaksLab {
     background-image: url('images/pokemon-professor-oak-facts-trivia.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-content: center;
     background-size: cover;
@@ -78,7 +78,7 @@
 .oakLabDiv0 {
     width: 150px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -86,7 +86,7 @@
 .oakLabDiv1 {
     width: 500px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: space-around;
     align-content: center;
@@ -96,7 +96,7 @@
 .oakLabDiv2 {
     width: 100px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -104,19 +104,19 @@
 .oakLabDiv3 {
     width: 100px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
 
 .meadow {
     background-image: url('images/meadow.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     background-size: auto;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-content: center;
     background-size: cover;
@@ -125,7 +125,7 @@
 .meadowDiv0 {
     width: 150px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: center;
 }
@@ -133,7 +133,7 @@
 .meadowDiv1 {
     width: 450px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -142,7 +142,7 @@
 .meadowDiv2 {
     width: 180px;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -150,11 +150,11 @@
 
 .mainTown {
     background-image: url('images/img1.PNG');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     background-size: cover;
     display: flex;
     flex-wrap: wrap;
@@ -163,7 +163,7 @@
 .mainTownDiv0 {
     width: 32%;
     height: 70%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -171,7 +171,7 @@
 .mainTownDiv1 {
     width: 32%;
     height: 70%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -180,7 +180,7 @@
 .mainTownDiv2 {
     width: 32%;
     height: 70%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -189,7 +189,7 @@
 .mainTownDiv3 {
     width: 32%;
     height: 30%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -197,7 +197,7 @@
 .mainTownDiv4 {
     width: 32%;
     height: 30%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -206,7 +206,7 @@
 .mainTownDiv5 {
     width: 32%;
     height: 30%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -214,11 +214,11 @@
 
 .pokeCentre {
     background-image: url('images/pokemon\ centre.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -228,7 +228,7 @@
 .pokeCentreDiv1 {
     width: 99%;
     height: 49%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -237,18 +237,18 @@
 .pokeCentreDiv2 {
     width: 99%;
     height: 49%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: flex-end;
 }
 
 .shop {
     background-image: url('images/shop.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-content: center;
     background-size: cover;
@@ -271,11 +271,11 @@
 
 .forest {
     background-image: url('images/forest.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-content: center;
     background-size: cover;
@@ -284,7 +284,7 @@
 .forestDiv0 {
     width: 20%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -292,7 +292,7 @@
 .forestDiv1 {
     width: 20%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -302,7 +302,7 @@
 .forestDiv2 {
     width: 20%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -311,7 +311,7 @@
 .forestDiv3 {
     width: 20%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,7 +320,7 @@
 .forestDiv4 {
     width: 20%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
@@ -328,11 +328,11 @@
 
 .beach {
     background-image: url('images/beach.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -341,11 +341,11 @@
 
 .deepForest {
     background-image: url('images/deep_forest.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -354,11 +354,11 @@
 
 .cave {
     background-image: url('images/cave.jpg');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -367,11 +367,11 @@
 
 .deepCave {
     background-image: url('images/deep_cave.png');
-    opacity: 0.5;
+    opacity: 0.7;
     background-repeat: no-repeat, repeat;
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -731,7 +731,6 @@
     cursor: pointer;
 }
 
-
 .leaveShop {
     background-color: yellow;
     border: none;
@@ -974,7 +973,7 @@
 .pikachu {
     width: 150px;
     height: 100px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column-reverse;
 }
@@ -1329,42 +1328,42 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .suspiciousTree1 {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .shakeTrees {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
 }
 
 .suspiciousRock {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .suspiciousRock1 {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .suspiciousMoss {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     align-self: flex-start;
 }
 
@@ -1372,7 +1371,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     align-self: flex-start;
 }
 
@@ -1380,7 +1379,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     align-self: flex-start;
 }
 
@@ -1388,7 +1387,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     align-self: flex-start;
 }
 
@@ -1396,14 +1395,14 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .suspiciousThing1 {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 /*/////////////////////////////////////////////// NPC /////////////////////////////////////////// */
 
