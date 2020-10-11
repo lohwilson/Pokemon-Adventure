@@ -31,6 +31,8 @@ let randomEncounterIndex
 let currentBgm = 0
 let bgmOn = true;
 
+let myStorage = window.localStorage;
+
 $(()=>{
 
     let $layout = $('#layout')
@@ -464,16 +466,63 @@ $(()=>{
 
 
 
+    function checkMyStorage(){
+        if (myStorage.length > 0){
+            console.log('there is a save file')
+        } else {
+            console.log('there is no save file')
+        }
+        return;
+    }
 
+    let pokemonList 
 
+    function updateFiles(){
+        //update bgm to new page
 
+        //update userPokemonList to mystoragePokemonList
+        //update rivalPokemonList to mystorageRivalPokemonList
+        console.log('updating files')
 
+        pokemonList = JSON.parse(myStorage.pokemonList)
+        pageData = JSON.parse(myStorage.pageData)
+        userPokemonList = pokemonList.userPokemonList
+        rivalPokemonList = pokemonList.rivalPokemonList
+
+        console.log(userPokemonList)
+        console.log(rivalPokemonList)
+
+        console.log(pageData)
+
+        if (pageData.pageFlow === 1){
+            console.log('pageflow1')
+            oakBgm()
+            $professorOak1.hide()
+            $professorOak2.show()
+            $professorOaksLab.show()
+        } else if (pageDate.pageFlow === 2){
+            console.log('pageflow2')
+            oakBgm()
+            $professorOak1.hide()
+            $professorOak2.show()
+            $professorOaksLab.show()
+        }
+    }
 
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
 
     $pauseButton.on('click', ()=>{
         toggleBgm()
     })
+    
+    $continueButton.on('click', ()=>{
+        console.log('a')
+        console.log(myStorage)
+        $mainPage.hide()
+        checkMyStorage()
+        updateFiles()
+    })
+
 
     $professorOak1.on('click', ()=>{
         $professorOak1.hide()
@@ -510,12 +559,16 @@ $(()=>{
         alert('I\'m sure you will be a great Pokemon Trainer in the future')
         endGame()
     })
-    $exitLab.on('click', ()=>{
+    
+    function exitLab(){
         playButtonSound()
         $professorOaksLab.hide()
         $meadow.show()
         meadowBgm()
         currentBgm = 1
+    }
+    $exitLab.on('click', ()=>{
+        exitLab()
     })
 
     $townButton.on('click', ()=>{
@@ -841,25 +894,45 @@ $(()=>{
             $oakLabDiv1.append($button)
         }
 
+    
+        let chosenPokemon = ''
+        let rivalPokemon = ''
+
         // click button should push chosen pokemon to userpokemonlist
         $('.choosePokemonButton').on('click', (event)=>{
             playButtonSound()
             if (event.currentTarget.classList[0] === 'charmander'){
                 alert('You chose charmander!')
-                userPokemonList.push(charmander)
-                rivalPokemonList.push(squirtle)
+                chosenPokemon = charmander
+                rivalPokemon = squirtle
             } else if (event.currentTarget.classList[0] === 'squirtle'){
                 alert('You chose squirtle!')
-                userPokemonList.push(squirtle)
-                rivalPokemonList.push(bulbasaur)
+                chosenPokemon = squirtle
+                rivalPokemon = bulbasaur
             } else if (event.currentTarget.classList[0] === 'bulbasaur'){
                 alert('You chose bulbasaur!')
-                userPokemonList.push(bulbasaur)
-                rivalPokemonList.push(charmander)
+                chosenPokemon = bulbasaur
+                rivalPokemon = charmander
             }
             $pikachuDiv.hide()
             $('.choosePokemonButton').hide()
             $professorOak2.show()
+
+            userPokemonList.push(chosenPokemon)
+            rivalPokemonList.push(rivalPokemon)
+
+            let localStoragePokemonList = {
+                userPokemonList: userPokemonList,
+                rivalPokemonList: rivalPokemonList,
+            }
+            let localStoragePageData = {
+                pageFlow: 1
+            }
+
+            myStorage.pokemonList = JSON.stringify(localStoragePokemonList)
+            console.log(myStorage.pokemonList)
+            myStorage.pageData = JSON.stringify(localStoragePageData)
+            console.log(myStorage.pageData)
         })  
 
         $pikachuDiv = $('<div>').addClass('pikachu')
@@ -877,9 +950,11 @@ $(()=>{
                 $professorOak2.show()
                 alert('Professor Oak: Alright, alright. Since you\'re so persistent, I have a surprise for you!')
                 alert('You received pikachu!')
-                userPokemonList.push(pikachu)
-                rivalPokemonList.push(eevee)
+                chosenPokemon = pikachu
+                rivalPokemon = eevee
             }
+            userPokemonList.push(chosenPokemon)
+            rivalPokemonList.push(rivalPokemon)
         })
     }
     function meadowBattle(){
