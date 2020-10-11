@@ -36,24 +36,17 @@ $(()=>{
 
     /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
-
     let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
-    $audio.attr('onloadeddate', 'lowerVolume()')
+    $audio.attr('onloadeddata', 'lowerVolume')
     $layout.append($audio)
     let $source = $('<source>').attr('type', 'audio/mpeg')
     $audio.append($source)
 
-    console.log($audio)
-    console.log($audio.eq(0).eq(0).loop)
-
-    $audio.loop = true;
-
+    $audio[0].loop = true;
     $(document).ready(mainPageBgm)
 
-    // lower volume doesnt work
     function lowerVolume(){
-        let backgroundMusic = $("#bgm");
-        backgroundMusic.volume = 0.5;
+        $audio[0].volume = 0.5;
     }
     lowerVolume()
 
