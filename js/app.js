@@ -29,6 +29,7 @@ let cavemap = 0
 let unlockPikachu = 0
 let randomEncounterIndex
 let currentBgm = 0
+let bgmOn = true;
 
 $(()=>{
 
@@ -37,7 +38,6 @@ $(()=>{
     /////////////////////////////////////       SOUND         //////////////////////////////////////////
 
     let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
-    $audio.attr('onloadeddata', 'lowerVolume')
     $layout.append($audio)
     let $source = $('<source>').attr('type', 'audio/mpeg')
     $audio.append($source)
@@ -46,9 +46,21 @@ $(()=>{
     $(document).ready(mainPageBgm)
 
     function lowerVolume(){
-        $audio[0].volume = 0.5;
+        $audio[0].volume = 1;
     }
     lowerVolume()
+
+    function toggleBgm(){
+        if (bgmOn === true){
+            $('audio')[0].pause();
+            bgmOn = false;
+            $pauseButton.css('background-image', 'url("css/images/audio_off.png")')
+        } else {
+            $('audio')[0].play();
+            bgmOn = true;
+            $pauseButton.css('background-image', 'url("css/images/audio_on.png")')
+        }
+    }
 
     function mainPageBgm (){
         $source.attr('src', 'sounds/opening.mp3')
@@ -192,6 +204,8 @@ $(()=>{
     $mainPage.append($mainPageButton)
     $continueButton = $('<button>').addClass('continueButton').text('Continue')
     $mainPage.append($continueButton)
+    $pauseButton = $('<div>').addClass('pauseButton').css('background-image', 'url("css/images/audio_on.png")')
+    $layout.append($pauseButton)
 
     // OAK LAB DIVS
     for (let i = 0; i < 3; i++){
@@ -456,6 +470,10 @@ $(()=>{
 
 
     //////////////////////////////////      EVENT LISTENERS         //////////////////////////////////
+
+    $pauseButton.on('click', ()=>{
+        toggleBgm()
+    })
 
     $professorOak1.on('click', ()=>{
         $professorOak1.hide()

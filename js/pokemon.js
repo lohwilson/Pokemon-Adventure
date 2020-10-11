@@ -337,6 +337,49 @@ let eeveeSkill = [
     }
 ]
 
+const allPokemon = [
+    {
+        name: 'Pikachu',
+        health: 200,
+        skill: [
+            {
+                name: 'QuickAttack',
+                damage: 10
+            },
+            {
+                name: 'ThunderShock',
+                damage: 15
+            },
+            {
+                name: 'Thunderbolt',
+                damage: 30
+            }
+        ],
+        level: 5,
+        image: 'css/images/pokemon/pikachu.png'
+    },
+    {
+        name: 'Pikachu',
+        health: 200,
+        skill: [
+            {
+                name: 'QuickAttack',
+                damage: 10
+            },
+            {
+                name: 'ThunderShock',
+                damage: 15
+            },
+            {
+                name: 'Thunderbolt',
+                damage: 30
+            }
+        ],
+        level: 5,
+        image: 'css/images/pokemon/pikachu.png'
+    }
+]
+
 const pikachu = new Pokemon('Pikachu', 200, 200, pikachuSkill, 5, 'css/images/pokemon/pikachu.png')
 const charmander = new Pokemon('Charmander', 150, 150, charmanderSkill, 5, 'css/images/pokemon/charmander.png')
 const squirtle = new Pokemon('Squirtle', 150, 150, squirtleSkill, 5, 'css/images/pokemon/squirtle.png')

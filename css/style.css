@@ -448,6 +448,15 @@
     cursor: pointer;
 }
 
+.pauseButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+
 .continueButton { 
     background-color: yellow;
     border: none;
