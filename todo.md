@@ -4,21 +4,10 @@
 
 
 - fix bgm loop
-- add divs for random poke battles
-
-
+- bgm volume not working
 
 - tidy up code
 - css UI
-
-    arrange buttons in order
-    change button styles accordingly
-    loop bgm
-
-    sound effect when pokemon attacks
-    sound for on clicks?
-
-
 
 
 # Features

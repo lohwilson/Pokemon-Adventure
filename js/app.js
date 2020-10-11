@@ -1,8 +1,6 @@
 console.log('hello world')
 
 let choosePokemonArray = ['charmander', 'squirtle', 'bulbasaur']
-let starterPokemonName = ['Charmander', 'S']
-let choosePokemonText = ['my name is charmander', 'my name is squirtle', 'my name is bulbasaur']
 
 let mainTownButtons = ['training', 'enterPokeCentre', 'enterForest', 'enterMeadow', 'enterShop', 'gym']
 let mainTownText = ['Training Grounds', 'Pokemon Centre', 'Forest', 'Meadow', 'Shop', 'Gym']
@@ -36,26 +34,34 @@ $(()=>{
 
     let $layout = $('#layout')
 
-
-
     /////////////////////////////////////       SOUND         //////////////////////////////////////////
+
 
     let $audio = $('<audio>').attr('id', 'bgm').attr('preload', 'auto')
     $audio.attr('onloadeddate', 'lowerVolume()')
     $layout.append($audio)
-    $audio.loop = true;
-
-    let $source = $('<source>').attr('src', 'sounds/opening.mp3').attr('type', 'audio/mpeg')
+    let $source = $('<source>').attr('type', 'audio/mpeg')
     $audio.append($source)
 
-    $('audio')[0].play();
+    console.log($audio)
+    console.log($audio.eq(0).eq(0).loop)
+
+    $audio.loop = true;
+
+    $(document).ready(mainPageBgm)
 
     // lower volume doesnt work
     function lowerVolume(){
         let backgroundMusic = $("#bgm");
-        backgroundMusic.volume = 0.3;
+        backgroundMusic.volume = 0.5;
     }
     lowerVolume()
+
+    function mainPageBgm (){
+        $source.attr('src', 'sounds/opening.mp3')
+        $('audio')[0].load();
+        $('audio')[0].play();
+    }
 
     function oakBgm(){
         $source.attr('src', 'sounds/oak.mp3')
@@ -129,21 +135,11 @@ $(()=>{
         }
     }
 
-
     function playButtonSound(){
         // let $sound = $('<source>').attr('src', 'sounds/click1.mp3').attr('type', 'audio')
         sound = new Audio('sounds/click1.mp3')
         sound.play()
     }
-
-    // function playEnemySound(){
-    //     for (let i = 0; i < soundsArray.length; i++){
-    //         if (enemyBattlePokemon[0].skills[random] === soundsArray[i]){
-    //             sound = new Audio('sounds/battlesounds/'+i+'.mp3')
-    //             sound.play()
-    //         }
-    //     }
-    // }
 
     function playUserSound(chosenSkill){
         sound = new Audio('sounds/battlesounds/'+chosenSkill+'.mp3')
@@ -768,7 +764,6 @@ $(()=>{
         }
     })
 
-
     $caveToForest.on('click', ()=>{
         playButtonSound()
         $cave.hide()
@@ -792,7 +787,6 @@ $(()=>{
         alert('You hear some noise from deeper in the cave.')
         $caveToDeepCave.show()
     })
-
     $kickRock.on('click', ()=>{
         playButtonSound()
         alert('You kicked a rock deep into the cave.')
@@ -804,7 +798,6 @@ $(()=>{
             caveBattle()
         }
     })
-
 
     $deepCaveToCave.on('click', ()=>{
         playButtonSound()
@@ -962,13 +955,26 @@ $(()=>{
         $battle.css('background-image', 'url("css/images/forestbattle.png")')
     }
     function unlockCave(){
-        console.log(cavemap)
         if (cavemap === 2){
             alert('You joined two pieces of map and found a hidden entrance!')
             alert('There is an X marked on the northeast of the map')
+            alert(userPokemonList[0].name + ' learned a new skill!')
             $enterCave.show()
+            pokemonLearnNewSkill()
         }
     }
+    function pokemonLearnNewSkill(){
+        if(userPokemonList[0].name === 'Pikachu'){
+            userPokemonList[0].skills.push(newPikachuSkill)
+        } else if(userPokemonList[0].name === 'Charmander'){
+            userPokemonList[0].skills.push(newCharmanderSkill)
+        } else if(userPokemonList[0].name === 'Squirtle'){
+            userPokemonList[0].skills.push(newSquirtleSkill)
+        } else if(userPokemonList[0].name === 'Bulbasaur'){
+            userPokemonList[0].skills.push(newCharmanderSkill)
+        }
+    }
+
     function suspiciousObjectMoves(){
         alert('Team Rocket Member: Who goes there?!')
         battleTrainer3()
@@ -999,6 +1005,7 @@ $(()=>{
         playCurrentBgm()
         checkIfRivalDefeated()
         checkIfTeamRocket1Defeated()
+        checkIfTeamRocket2Defeated()
     }
     function goToPokeCentre(){
         $battle.hide()
@@ -1017,7 +1024,6 @@ $(()=>{
     function randomEncounter(pokeArray){
         randomEncounterIndex = Math.floor(Math.random()*pokeArray.length)
         enemyBattlePokemon.push(pokeArray[randomEncounterIndex])
-        console.log(randomEncounterIndex)
     }
     function checkIfRivalDefeated(){
         if (rival.pokemonList.length === 0){
@@ -1025,7 +1031,6 @@ $(()=>{
             // alert(rival.name + ': Gramps told me to pass you this.')
             alert(rival.name + ': See you, loser!')
             rival.pokemonList.push(eevee)
-            console.log(rival.pokemonList.length)
         }
     }
     function checkIfTeamRocket1Defeated(){
@@ -1035,12 +1040,15 @@ $(()=>{
             alert('Team Rocket used a smoke bomb and vanished!')
             alert('Something fell on the ground!')
             teamRocket1.pokemonList.push(koffing)
-            console.log(teamRocket1.pokemonList.length)
         }
     }
-
-
-
+    function checkIfTeamRocket2Defeated(){
+        if (teamRocket2.pokemonList.length === 0){
+            alert('Team Rocket: Team Rocket\'s blasting off again!')
+            alert('Team Rocket disappeared in the distance, but something dropped down.')
+            teamRocket2.pokemonList.push(koffing)
+        }
+    }
 
 
 
@@ -1222,7 +1230,6 @@ $(()=>{
 
         $alertButton10.on('click', ()=>{
             $alertButton10.hide()
-            
         })
 
         $alertButton11.on('click', ()=>{
@@ -1240,7 +1247,6 @@ $(()=>{
         })
 
         $fightButton.on('click', ()=>{
-            console.log('fight')
             hideBattleButtons()
             showSkillButtons()
         })
@@ -1357,12 +1363,8 @@ $(()=>{
                 $('#alertDisplay0').text(battleOpponent[0].name + ' chose ' + enemyBattlePokemon[0].name + '.')
                 enemyPokemonList.shift()
 
-                console.log(userCurrentHealth)
                 setEnemyHealth()
-                console.log(userCurrentHealth)
-
                 displayEnemyInfo()
-
                 $alertButton9.show()
             }
         }
@@ -1378,7 +1380,6 @@ $(()=>{
             hideBattleButtons()
             currentPokemon.health = userCurrentHealth
             $alertButton8.show()
-            console.log(currentPokemon)
         }
         
         function hideBattleButtons (){
@@ -1616,7 +1617,6 @@ $(()=>{
         })
 
         $fightButton.on('click', ()=>{
-            console.log('fight')
             hideBattleButtons()
             showSkillButtons()
         })
@@ -1635,8 +1635,6 @@ $(()=>{
         })
 
         $changePokemonButton.on('click', (event)=>{
-            console.log('change')
-            console.log($(event.eventListener))
             $('#alertDisplay0').text(player.name + ' only have 1 pokemon now.')
         })
 

@@ -55,6 +55,10 @@ let pikachuSkill = [
         damage: 30
     }
 ]
+newPikachuSkill = {
+    name: 'Thunder',
+    damage: 50
+}
 
 let charmanderSkill = [
     {
@@ -67,13 +71,13 @@ let charmanderSkill = [
     },
     {
         name: 'Slash',
-        damage: 20
-    },
-    {
-        name: 'FireSpin',
-        damage: 45
+        damage: 25
     }
 ]
+newCharmanderSkill = {
+    name: 'FireSpin',
+    damage: 45
+}
 
 let squirtleSkill = [
     {
@@ -86,13 +90,13 @@ let squirtleSkill = [
     },
     {
         name: 'WaterGun',
-        damage: 20
-    },
-    {
-        name: 'Bubblebeam',
-        damage: 45
+        damage: 25
     }
 ]
+newSquirtleSkill = {
+    name: 'BubbleBeam',
+    damage: 45
+}
 
 let bulbasaurSkill = [
     {
@@ -105,13 +109,13 @@ let bulbasaurSkill = [
     },
     {
         name: 'VineWhip',
-        damage: 20
-    },
-    {
-        name: 'SolarBeam',
-        damage: 45
+        damage: 25
     }
 ]
+newBulbasaurSkill = {
+    name: 'SolarBeam',
+    damage: 45
+}
 
 let caterpieSkill = [
     {
@@ -333,7 +337,6 @@ let eeveeSkill = [
     }
 ]
 
-
 const pikachu = new Pokemon('Pikachu', 200, 200, pikachuSkill, 5, 'css/images/pokemon/pikachu.png')
 const charmander = new Pokemon('Charmander', 150, 150, charmanderSkill, 5, 'css/images/pokemon/charmander.png')
 const squirtle = new Pokemon('Squirtle', 150, 150, squirtleSkill, 5, 'css/images/pokemon/squirtle.png')
@@ -365,7 +368,6 @@ randomPokemon2.push(spearow, sandshrew, nidoran) // forest poke
 randomPokemon3.push(magikarp ,krabby, poliwag) // beach poke
 randomPokemon4.push(oddish, paras, venonat) // deep forest poke
 randomPokemon5.push(geodude, diglett, zubat) // cave poke
-
 
 rivalPokemonList.push(ratata, caterpie)
 trainer1PokemonList.push(magikarp, krabby, poliwag)
