@@ -48,7 +48,7 @@ $(()=>{
     $(document).ready(mainPageBgm)
 
     function lowerVolume(){
-        $audio[0].volume = 1;
+        $audio[0].volume = 0.5;
     }
     lowerVolume()
 
@@ -986,8 +986,6 @@ $(()=>{
         // $battle.css('background-image', 'white')
     }
 
-
-
     function battleRival (){
         battleOpponent.push(rival)
         currentLocation = $mainTown
@@ -1135,8 +1133,6 @@ $(()=>{
             teamRocket2.pokemonList.push(koffing)
         }
     }
-
-
 
     function battle(){
         $battle.show()
